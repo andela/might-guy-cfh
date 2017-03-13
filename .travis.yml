@@ -2,9 +2,6 @@ language: node_js
 node_js:
   - "iojs"
   - "6"
-branches:
-  only:
-    - chore/141409287/integrate-travisci-readme-badge
 before_script:
   - npm install
   - npm install -g grunt-cli
