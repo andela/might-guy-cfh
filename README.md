@@ -2,8 +2,6 @@ Cards for Humanity - [http://cfh.io](http://cfh.io)
 ===========
 Cards for Humanity is a fast-paced online version of the popular card game, Cards Against Humanity, that gives you the opportunity to donate to children in need - all while remaining as despicable and awkward as you naturally are.
 
-[![Build Status](https://travis-ci.org/andela/might-guy-cfh.svg?branch=chore%2F141409241%2Fhound-ci-integration-to-repo)](https://travis-ci.org/andela/might-guy-cfh)
-
 Our Team
 --------
 Cards for Humanity was created at [Hack Reactor](http://www.hackreactor.com) by:
