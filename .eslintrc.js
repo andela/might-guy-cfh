@@ -1,4 +1,4 @@
-"root": true,
+[{"root": true,
   "extends": "airbnb-base",
   "env": {
     "node": true,
@@ -29,4 +29,4 @@
         }
     }]
   }
-}
+}]
