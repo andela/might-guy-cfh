@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/andela/might-guy-cfh.svg?branch=master)](https://travis-ci.org/andela/might-guy-cfh)
+[![Coverage Status](https://coveralls.io/repos/github/andela/might-guy-cfh/badge.svg?branch=master)](https://coveralls.io/github/andela/might-guy-cfh?branch=master)
 
 Cards for Humanity - [http://cfh.io](http://cfh.io)
 ===========
