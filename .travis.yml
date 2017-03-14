@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - "0.10.x"
+before_script:
+  - nvm install 0.10.x
+  - npm install
+  - npm install -g grunt-cli
