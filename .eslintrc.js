@@ -6,6 +6,7 @@
     "mocha": true
   },
   "rules": {
+    "max-len": [2, 80],
     "one-var": 0,
     "one-var-declaration-per-line": 0,
     "new-cap": 0,
