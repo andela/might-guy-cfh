@@ -3,8 +3,9 @@
  */
 var should = require('should'),
     app = require('../../server'),
+    Schema = mongoose.Schema;
     mongoose = require('mongoose'),
-    User = mongoose.model('User');
+    User = mongoose.model('User', new Schema({}));
 
 //Globals
 var user;
