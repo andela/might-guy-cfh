@@ -1,0 +1,71 @@
+var gulp = require('gulp');
+var browserSync = require('browser-sync');
+var nodemon = require('gulp-nodemon');
+var sass = require('gulp-sass');
+var eslint = require('gulp-eslint');
+var mocha = require('gulp-mocha');
+
+
+gulp.task('lint', function(){
+    // ESLint ignores files with "node_modules" paths.
+    // So, it's best to have gulp ignore the directory as well.
+    // Also, Be sure to return the stream from the task;
+    // Otherwise, the task may end before the stream has finished.
+    return gulp.src(['**/*.js','!node_modules/**'])
+        // eslint() attaches the lint output to the "eslint" property
+        // of the file object so it can be used by other modules.
+        .pipe(eslint())
+        // eslint.format() outputs the lint results to the console.
+        // Alternatively use eslint.formatEach() (see Docs).
+        .pipe(eslint.format())
+        // To have the process exit with an error code (1) on
+        // lint error, return the stream and pipe to failAfterError last.
+        .pipe(eslint.failAfterError());
+});
+
+gulp.task('mocha', function() {
+  return gulp.src(['./test/**/*.js'])
+    .pipe(mocha({
+      reporter: 'spec',
+      globals: {
+        should: require('should')
+      }
+    })
+    .on("error", handleError));
+});
+
+gulp.task('nodemon', function(cb){
+  var started = false;
+  nodemon({
+    script: 'server.js',
+  }).on('start', function(){
+    if(!started) {
+      cb()
+      started = true
+    }
+  });
+});
+
+gulp.task('reload', ['nodemon'], function(){
+  browserSync.init(null, {
+    proxy: "http://localhost:3000",
+    port: 5000,
+    files: ['public/**/**'],
+  });
+});
+
+gulp.task('scss', function(){
+  gulp.src('./public/css/*.scss')
+  .pipe(sass())
+  .pipe(gulp.dest('./public/css'));
+});
+
+
+gulp.task('default',['reload', 'scss', 'lint'], function(){
+  gulp.watch(['public/**/**/**'], browserSync.reload());
+});
+
+function handleError(err) {
+  console.log(err.toString());
+  this.emit('end');
+}

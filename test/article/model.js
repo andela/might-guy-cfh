@@ -4,8 +4,9 @@
 var should = require('should'),
     app = require('../../server'),
     mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
     User = mongoose.model('User'),
-    Article = mongoose.model('Article');
+    Article = mongoose.model('Article', new Schema({}));
 
 //Globals
 var user;
@@ -22,7 +23,7 @@ describe('<Unit Test>', function() {
                 password: 'password'
             });
 
-            user.save(function(err) {                
+            user.save(function(err) {
                 article = new Article({
                     title: 'Article Title',
                     content: 'Article Content',
