@@ -1,7 +1,7 @@
 // Karma configuration
 // Generated on Wed Mar 15 2017 13:39:20 GMT+0100 (WAT)
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -10,7 +10,7 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine',],
+    frameworks: ['jasmine'],
 
 
     // list of files / patterns to load in the browser
@@ -25,7 +25,8 @@ module.exports = function(config) {
 
 
     // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+    // available preprocessors:
+    // https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
     },
 
@@ -44,16 +45,20 @@ module.exports = function(config) {
 
 
     // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+    // possible values: config.LOG_DISABLE || config.LOG_ERROR ||
+    // config.LOG_WARN || config.LOG_INFO
+    //  || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
 
 
-    // enable / disable watching file and executing tests whenever any file changes
+    // enable / disable watching file and
+    // executing tests whenever any file changes
     autoWatch: true,
 
 
     // start these browsers
-    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+    // available browser launchers:
+    // https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['Chrome', 'Firefox', 'PhantomJS'],
 
 
@@ -64,5 +69,5 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  })
-}
+  });
+};
