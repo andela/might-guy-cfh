@@ -23,25 +23,23 @@ describe('<Unit Test>', () => {
       });
       done();
     });
-    describe('Method Save', () => (
+    describe('Method Save', () => {
       it('should be able to save whithout problems', (done) => {
         return user.save((err) => {
-          should.not.exist(err)
-          done()
+          should.not.exist(err);
+          done();
         });
       });
-
-      it('should be able to show an error when try to save witout name', (done) => (
+      it('should be able to show an error when try to save witout name', (done) => {
         user.name = '';
-        user.save(function(err) {
-            should.exist(err);
-            done();
+        user.save((err) => {
+          should.exist(err);
+          done();
         });
-      ));
+      });
     });
-
-  after(function(done) {
+    after((done) => {
       done();
-  });
+    });
   });
 });
