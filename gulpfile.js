@@ -5,7 +5,6 @@ const sass = require('gulp-sass');
 const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
 
-
 /**
  * Adds two numbers together.
  * @param {null} The first number.
