@@ -15,7 +15,7 @@
   "scripts": {
     "start": "gulp",
     "test": "gulp mocha",
-    "postinstall": ""
+    "postinstall": "gulp bower"
   },
   "dependencies": {
     "async": "~0.2.9",
@@ -63,6 +63,7 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-mocha-test": "~0.7.0",
     "grunt-nodemon": "~0.1.1",
+    "gulp-bower": "0.0.13",
     "gulp-eslint": "^3.0.1",
     "gulp-mocha": "^4.1.0",
     "gulp-nodemon": "^2.2.1",
