@@ -1,12 +1,14 @@
-[{"root": true,
+{
+  "root": true,
   "extends": "airbnb-base",
   "env": {
     "node": true,
     "es6": true,
-    "mocha": true
+    "mocha": true,
+    "commonjs": true
   },
   "rules": {
-    "max-len": [2, 80],
+    "max-len": ["error", 80, 4],
     "one-var": 0,
     "one-var-declaration-per-line": 0,
     "new-cap": 0,
@@ -14,8 +16,8 @@
     "no-param-reassign": 0,
     "comma-dangle": 0,
     "curly": ["error", "multi-line"],
-    "import/no-unresolved": [2, { "commonjs": true }],
     "no-shadow": ["error", { "allow": ["req", "res", "err"] }],
+    "import/no-unresolved": [2, { "commonjs": true }],
     "valid-jsdoc": ["error", {
       "requireReturn": true,
       "requireReturnType": true,
@@ -30,4 +32,4 @@
         }
     }]
   }
-}]
+}
