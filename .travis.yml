@@ -4,4 +4,5 @@ node_js:
 before_script:
   - nvm install 6
   - npm install
-  - npm install -g grunt-cli
+  - npm install -g gulp
+script: gulp mocha
