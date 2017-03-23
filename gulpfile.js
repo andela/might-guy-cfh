@@ -74,6 +74,6 @@ gulp.task('bower', () => (
 ));
 
 
-gulp.task('default', ['reload', 'scss'], () => {
+gulp.task('default', ['scss', 'reload'], () => {
   gulp.watch(['public/**/**/**'], browserSync.reload());
 });
