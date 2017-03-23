@@ -77,3 +77,5 @@ gulp.task('bower', () => (
 gulp.task('default', ['scss', 'reload'], () => {
   gulp.watch(['public/**/**/**'], browserSync.reload());
 });
+
+gulp.task('install', ['bower']);
