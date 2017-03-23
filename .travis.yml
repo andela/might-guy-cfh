@@ -5,5 +5,5 @@ before_script:
   - nvm install 6
   - npm install
   - npm install -g gulp
-  - gulp
+  - gulp bower
 script: gulp mocha
