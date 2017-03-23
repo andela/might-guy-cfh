@@ -15,7 +15,7 @@
   "scripts": {
     "start": "gulp",
     "test": "gulp mocha",
-    "postinstall": "gulp bower"
+    "postinstall": "gulp install"
   },
   "dependencies": {
     "async": "~0.2.9",
@@ -32,6 +32,7 @@
     "grunt-bower-task": "~0.4.0",
     "grunt-cli": "~0.1.9",
     "gulp": "^3.9.1",
+    "gulp-jade": "^1.1.0",
     "gulp-sass": "^3.1.0",
     "jade": "~0.35.0",
     "jsonwebtoken": "^7.3.0",

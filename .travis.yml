@@ -3,7 +3,6 @@ node_js:
   - "6"
 before_script:
   - nvm install 6
-  - npm install
   - npm install -g gulp
-  - gulp bower
+  - npm install
 script: gulp mocha
