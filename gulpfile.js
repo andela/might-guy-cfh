@@ -4,6 +4,7 @@ const nodemon = require('gulp-nodemon');
 const sass = require('gulp-sass');
 const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
+const bower = require('gulp-bower');
 
 /**
  * Adds two numbers together.
@@ -68,7 +69,13 @@ gulp.task('scss', () => {
   .pipe(gulp.dest('./public/css'));
 });
 
+gulp.task('bower', () => (
+  bower({ directory: './public/lib' })
+));
 
-gulp.task('default', ['reload', 'scss', 'lint'], () => {
+
+gulp.task('default', ['scss', 'reload'], () => {
   gulp.watch(['public/**/**/**'], browserSync.reload());
 });
+
+gulp.task('install', ['bower']);
