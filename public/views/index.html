@@ -4,7 +4,7 @@ $(document).ready(function() {
   var ChroMo = '(Chrome)/(\d+)\.(\d+)\.(\d+)\.(\d+) Mobile';
 
   if (/Android|webOS|CriOs|ChroMo|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) === false && location.href !== "http://localhost:3000/#!/app") {
-    $('body').append('<a href="http://hackreactor.com"><img style="z-index: 10000; position: absolute; top: 0; right: 0; width: 125px; height: 125px; border: 0;" src="http://i.imgur.com/x86kKmF.png" alt="Built at Hack Reactor"></a>');
+    $('body').append('');
   }
 
   //Twitter buttons
@@ -12,26 +12,21 @@ $(document).ready(function() {
 
   });
 </script>
-
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <script></script>
 <div landing id="main-bod">
   <!-- Fixed Logo & Menu Bar Start -->
-  <div id="top-part">
+  <!-- <div id="top-part">
     <div class="wpb-top-bar">
       <div class="mod-contain" id="navver">
-        <div class="row">
+        <div class="row"> -->
           <!-- Logo -->
-          <div class="wpb-logo-container">
-            <div id="landing-logo">
-              <span id="first-word">Cards</span>
-              <span id="second-word"> for</span>
-              <span id="third-word">Humanity</span>
-            </div>
-            <div class="col-md-9 wpb-menu-container">
+          <!-- <div class="wpb-logo-container"> -->
+           <!--  <div class="col-md-9 wpb-menu-container">
               <ul class="wpb-main-menu">
                 <li><a onClick="scroll(0,0)">Home</a></li>
                 <li><a onClick="scroll(0,742);">How to Play</a></li>
-                <li><a onClick="scroll(0,1411);">Charity</a></li>
+                <li><a >Charity</a></li>
                 <li><a onClick="scroll(0,2021);">About Us</a></li>
                 <span ng-show="showOptions">
                   <li><a href="#!/signup">Sign Up</a></li>
@@ -41,30 +36,118 @@ $(document).ready(function() {
                   <li><a href="/signout">Sign Out</a></li>
                 </span>
               </ul>
-            </div>
-          </div>
+            </div> -->
+      <!--     </div> -->
         </div>
       </div>
     </div>
   </div>
 <!-- Fixed Logo & Menu Bar End -->
 
+<!-- header -->
+<div class="top-banner">
+   <div class="header">
+   </div>
+   <!--banner-info--> 
+   <div class="banner-info">
+      <div class="container">
+        <div class="logo">
+           <a href="index.html"><span>Cards For Humanity</span></a>
+          <span class="menu"></span>
+       <div class="top-menu">
+          <ul class="nav1 pull-right">
+             <li class="active"><a onClick="scroll(0,0)">Home</a></li>
+             <li><a onClick="scroll(0,742);">How to Play?</a></li>
+             <li><a onClick="scroll(0,1411);">Charity</a></li>
+             <li><a onClick="scroll(0,2021);">About</a></li>
+             <li class="donate"><a href="">Donate Now</a></li>
+             <li ng-show="showOptions" class="donate"><a href="#!/signin">Login</a></li>
+             <li ng-hide="showOptions" class="donate"><a href="/signout">Sign Out</a></li>
+          </ul>
+       </div> 
+       </div>
+   <!-- script-for-menu -->
+            <script>
+               $( "span.menu" ).click(function() {
+              $( "ul.nav1" ).slideToggle( 300, function() {
+              // Animation complete.
+                });
+                });
+            </script>
+          <!-- /script-for-menu -->
+       
+       <div class="clearfix"></div>
+     </div>
+   </div>
+</div>
+<!-- banner -->
+<!-- Slider-starts-Here -->
+   <script>
+    $(function () {
+      $("#slider").responsiveSlides({
+      auto:true,
+      nav: false,
+      speed: 500,
+      namespace: "",
+      pager:true,
+      });
+    });
+    
+     </script>
+   <div class="slider">
+      <div class="callbacks_container">
+        <ul class="rslides" id="slider">
+        
+          <div class="slid banner1">
+              <div class="caption">
+                  <h3>Cards for Humanity</h3>
+                <h2>A Game For Horrible People Desperately Trying to Look Good</h2>
+                <p ng-show="showOptions">
+                <div class="stn"> Sign Up </div>
+                <button  href="#!/signup" class="stn"> Play as Guest </button>
+                </p>
+              </div>
+          </div>
+        
+        
+           <div class="slid banner2"> 
+              <div class="caption">
+                <h3>Play with Friends</h3>
+                <h2>You are not alone, Send Invites to all your Friends</h2>
+                <p ng-show="showOptions"><button href="#!/signup" class="stn"> Sign Up </button> <button href="/play" class="stn"> Play as Guest </button></p>
+              </div>
+              </div>
+        
+        
+          <div class="slid banner3">  
+            <div class="caption">
+              <h3>Give to Charity</h3>
+              <h2>Gives you the opportunity to donate to children in need</h2>
+              <p ng-show="showOptions"><button href="#!/signup" class="stn"> Sign Up </button> <button href="/play" class="stn"> Play as Guest </button></p>
+            </div>
+          </div>
+        
+        </ul>
+     
+     </div>
+   </div>
+   </br>
 <!-- Landing Start -->
-  <div class="wpb-teaser parallax-background" id="homer">
+  <!-- <div class="wpb-teaser parallax-background" id="homer">
     <div class="background-opacity"></div>
     <div class="container">
       <div class="row" id="main-text">
         <div class="col-md-12" id="avatars" ng-controller="IndexController">
           <img ng-repeat="avatar in avatars" ng-src="{{avatar}}" id="avatar-face">
-        </div>
+        </div> -->
         <!-- Teaser Slogan Start -->
-        <div class="wpb-slogan">
+        <!-- <div class="wpb-slogan">
           <h2>A Game for Horrible People <span id="third-word">Desperately</span> Trying to do Good</h2>
-        </div>
+        </div> -->
         <!-- Teaser Slogan End -->
 
       <!-- Teaser Text Start -->
-      <div class="wpb-text">
+      <!-- <div class="wpb-text">
         <h3 id="slogan">What is Cards for Humanity?</h3>
         <p>
           Cards for Humanity is a fast-paced online version of the popular card game, <a href="http://cardsagainsthumanity.com/" target="_blank">Cards Against Humanity</a>, that gives you the opportunity to donate to children in need - all while remaining as despicable and awkward as you naturally are.
@@ -72,9 +155,9 @@ $(document).ready(function() {
         <p>
           <span id="warning-word">Warning!</span>  This game contains offensive, profane, explicit content created by <a href="http://cardsagainsthumanity.com/" target="_blank">Cards Against Humanity</a> and provided here, uncensored and complete, in digital form. Human Resources made us say that.
         </p>
-      </div>
+      </div> -->
       <!-- Teaser Text End -->
-      <span id='send-link' ng-show="showOptions"> *To send a private link to your friends, sign up! </span>
+      <!-- <span id='send-link' ng-show="showOptions"> *To send a private link to your friends, sign up! </span>
       <div id="sign-up">
         <span ng-show="showOptions">
         <a href="#!/signup"><div id="sign-up-btn-landing">Sign Up</div></a>
@@ -123,7 +206,7 @@ $(document).ready(function() {
        </div>
       </div>
     </div>
-  </div>
+  </div> -->
 <!-- Landing End -->
 
 
@@ -155,7 +238,7 @@ $(document).ready(function() {
        <!-- Teaser Text End -->
       </div>
 
-      <div id="sign-up">
+      <div id="sign-u">
         <span ng-show="showOptions">
           <a href="#!/signup"><div id="sign-up-btn-landing">Sign Up</div></a>
           <div id="sign-up-text"><a href="/play">
