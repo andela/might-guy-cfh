@@ -69,6 +69,6 @@ gulp.task('scss', () => {
 });
 
 
-gulp.task('default', ['reload', 'scss', 'lint'], () => {
+gulp.task('default', ['reload', 'scss'], () => {
   gulp.watch(['public/**/**/**'], browserSync.reload());
 });

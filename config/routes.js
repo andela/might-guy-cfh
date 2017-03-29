@@ -1,4 +1,47 @@
 var async = require('async');
+const mongoose = require('mongoose');
+
+const User = mongoose.model('User');
+
+var sg = require('sendgrid')('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');
+
+const sendMail = (to, gameLink, gameOwner) => {
+  const request = sg.emptyRequest({
+    method: 'POST',
+    path: '/v3/mail/send',
+    body: {
+      personalizations: [
+        {
+          to: [
+            {
+              email: `${to}`,
+            },
+          ],
+          subject: 'Cards For Humanity',
+        },
+      ],
+      from: {
+        email: 'cardsforhumanity@mightguy.io',
+      },
+      content: [
+        {
+          type: 'text/plain',
+          value: `${gameOwner} would like to invite you to game ${gameLink}.\nClick on the link to join them in a rough ride.`,
+        },
+      ],
+    },
+  });
+
+  sg.API(request)
+    .then(response => {
+      console.log(response);
+      // return 'Success: Invite(s) Sent.';
+    })
+    .catch(error => {
+      console.log(error);
+      // return 'There was a problem sending the invites. Please try again.';
+    });
+  }
 
 module.exports = function(app, passport, auth) {
     //User Routes
@@ -11,6 +54,24 @@ module.exports = function(app, passport, auth) {
     //Setting up the users api
     app.post('/users', users.create);
     app.post('/users/avatars', users.avatars);
+
+    app.get('/api/search/users', (req, res) => {
+      User.find({}, (error, result) => {
+        if(!(error)) {
+          res.send(result)
+        } else {
+          res.send(error);
+        }
+      })
+    });
+
+    app.post('/inviteusers', (req, res) => {
+      const url = req.body.url;
+      const userEmail = req.body.invitee;
+      const gameOwner = req.body.gameOwner;
+
+      sendMail(userEmail, url, gameOwner);
+    });
 
     // Donation Routes
     app.post('/donations', users.addDonation);

@@ -12,7 +12,7 @@ angular.module('mean.system')
     table: [],
     czar: null,
     playerMinLimit: 3,
-    playerMaxLimit: 6,
+    playerMaxLimit: 12,
     pointLimit: null,
     state: null,
     round: 0,
@@ -175,6 +175,11 @@ angular.module('mean.system')
 
   socket.on('notification', function(data) {
     addToNotificationQueue(data.notification);
+  });
+
+  socket.on('gameBegun', function() {
+    // game.joinOverride = false;
+    $('#gameBegun').modal('show');
   });
 
   game.joinGame = function(mode,room,createPrivate) {
