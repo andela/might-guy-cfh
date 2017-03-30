@@ -20,7 +20,7 @@ angular.module('mean.system')
       return false;
     };
     $scope.signUp = () => {
-      $http.post('/api/auth/signup', $scope.formData)
+      $http.post('/api/auth/signup', JSON.stringify($scope.formData))
       .success((data) => {
         if (data.success === true) {
           $window.localStorage.setItem('user-token', data.token);
@@ -34,7 +34,7 @@ angular.module('mean.system')
     };
 
     $scope.signIn = () => {
-      $http.post('/api/auth/signin', $scope.formData)
+      $http.post('/api/auth/signin', JSON.stringify($scope.formData))
         .success((data) => {
           if (data.success === true) {
             $window.localStorage.setItem('user-token', data.token);

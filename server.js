@@ -21,7 +21,9 @@ const env = process.env.NODE_ENV = process.env.NODE_ENV || 'development',
   mongoose = require('mongoose');
 
 // Bootstrap db connection
-mongoose.connect(config.db);
+mongoose.connect(config.db, (err, db) => {
+  if (err) throw err;
+});
 
 // Bootstrap models
 const models_path = `${__dirname}/app/models`;
