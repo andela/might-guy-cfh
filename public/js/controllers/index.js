@@ -1,26 +1,39 @@
-
 angular.module('mean.system')
-.controller('IndexController', ['$scope', '$http', 'Global',
-  '$location', 'socket', 'game', 'AvatarService',
-  '$window',
-  ($scope, $http, Global, $location, socket, game,
-  AvatarService, $window) => {
-    $scope.global = Global;
-    $scope.formData = {};
+.controller('IndexController',
+  [
+    '$scope',
+    'Global',
+    '$location',
+    '$http',
+    '$window',
+    'socket',
+    'game',
+    'AvatarService',
+    (
+      $scope,
+      Global,
+      $location,
+      $http,
+      $window,
+      socket,
+      game,
+      AvatarService) => {
+      $scope.global = Global;
+      $scope.formData = {};
 
-    $scope.playAsGuest = () => {
-      game.joinGame();
-      $location.path('/app');
-    };
+      $scope.playAsGuest = () => {
+        game.joinGame();
+        $location.path('/app');
+      };
 
-    $scope.showError = () => {
-      if ($location.search().error) {
-        return $location.search().error;
-      }
-      return false;
-    };
-    $scope.signUp = () => {
-      $http.post('/api/auth/signup', JSON.stringify($scope.formData))
+      $scope.showError = () => {
+        if ($location.search().error) {
+          return $location.search().error;
+        }
+        return false;
+      };
+      $scope.signUp = () => {
+        $http.post('/api/auth/signup', JSON.stringify($scope.formData))
       .success((data) => {
         if (data.success === true) {
           $window.localStorage.setItem('user-token', data.token);
@@ -31,10 +44,10 @@ angular.module('mean.system')
       }).error((error, status) => {
         $scope.showMessage = `${status} : ${error}`;
       });
-    };
+      };
 
-    $scope.signIn = () => {
-      $http.post('/api/auth/signin', JSON.stringify($scope.formData))
+      $scope.signIn = () => {
+        $http.post('/api/auth/signin', JSON.stringify($scope.formData))
         .success((data) => {
           if (data.success === true) {
             $window.localStorage.setItem('user-token', data.token);
@@ -45,11 +58,11 @@ angular.module('mean.system')
         }).error((error, status) => {
           $scope.showMessage = `${status} : ${error}`;
         });
-    };
+      };
 
-    $scope.avatars = [];
-    AvatarService.getAvatars()
+      $scope.avatars = [];
+      AvatarService.getAvatars()
       .then((data) => {
         $scope.avatars = data;
       });
-  }]);
+    }]);

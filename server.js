@@ -26,10 +26,10 @@ mongoose.connect(config.db, (err, db) => {
 });
 
 // Bootstrap models
-const models_path = `${__dirname}/app/models`;
+const models_path = __dirname + '/app/models';
 const walk = (path) => {
   fs.readdirSync(path).forEach((file) => {
-    const newPath = `${path}/${file}`;
+    const newPath = path + '/' + file;
     const stat = fs.statSync(newPath);
     if (stat.isFile()) {
       if (/(.*)\.(js|coffee)/.test(file)) {
@@ -56,9 +56,6 @@ require('./config/express')(app, passport, mongoose);
 
 // Bootstrap routes
 require('./config/routes')(app, passport, auth);
-
-// API routes
-require('./config/api/routes')(app, passport, auth);
 
 // Start the app by listening on <port>
 const port = config.port;
