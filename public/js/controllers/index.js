@@ -1,24 +1,69 @@
+
 angular.module('mean.system')
-.controller('IndexController', ['$scope', 'Global', '$location', 'socket', 'game', 'AvatarService', function ($scope, Global, $location, socket, game, AvatarService) {
-    $scope.global = Global;
+.controller('IndexController',
+  [
+    '$scope',
+    'Global',
+    '$location',
+    '$http',
+    '$window',
+    'socket',
+    'game',
+    'AvatarService',
+    (
+      $scope,
+      Global,
+      $location,
+      $http,
+      $window,
+      socket,
+      game,
+      AvatarService) => {
+      $scope.global = Global;
+      $scope.formData = {};
 
-    $scope.playAsGuest = function() {
-      game.joinGame();
-      $location.path('/app');
-    };
+      $scope.playAsGuest = () => {
+        game.joinGame();
+        $location.path('/app');
+      };
 
-    $scope.showError = function() {
-      if ($location.search().error) {
-        return $location.search().error;
-      } else {
+      $scope.showError = () => {
+        if ($location.search().error) {
+          return $location.search().error;
+        }
         return false;
-      }
-    };
+      };
+      $scope.signUp = () => {
+        $http.post('/api/auth/signup', JSON.stringify($scope.formData))
+      .success((data) => {
+        if (data.success === true) {
+          $window.localStorage.setItem('user-token', data.token);
+          $window.location.href = '/';
+        } else {
+          $scope.showMessage = data.message;
+        }
+      }).error((error, status) => {
+        $scope.showMessage = `${status} : ${error}`;
+      });
+      };
 
-    $scope.avatars = [];
-    AvatarService.getAvatars()
-      .then(function(data) {
+      $scope.signIn = () => {
+        $http.post('/api/auth/signin', JSON.stringify($scope.formData))
+        .success((data) => {
+          if (data.success === true) {
+            $window.localStorage.setItem('user-token', data.token);
+            $window.location.href = '/';
+          } else {
+            $scope.showMessage = data.message;
+          }
+        }).error((error, status) => {
+          $scope.showMessage = `${status} : ${error}`;
+        });
+      };
+
+      $scope.avatars = [];
+      AvatarService.getAvatars()
+      .then((data) => {
         $scope.avatars = data;
       });
-
-}]);
+    }]);
