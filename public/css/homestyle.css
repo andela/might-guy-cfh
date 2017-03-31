@@ -313,6 +313,13 @@ color:#fff !important;
   display:inline-block;
   
 }
+input {
+  background-color: #ccc !important;
+}
+
+input[type="text"]::-webkit-input-placeholder {
+  color: orange;
+}
 ul.callbacks_tabs.callbacks1_tabs {
   position: absolute;
   bottom: 50px;
