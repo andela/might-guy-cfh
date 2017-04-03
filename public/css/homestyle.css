@@ -56,6 +56,7 @@ a#toTop{
   margin:2em 0;
   text-align:left;
 }
+
 /*-- header_top --*/
 .header{
   background:#213367;
@@ -109,7 +110,7 @@ span.menu {
   color: #efb20e;
 }
 ::-webkit-input-placeholder{
-color:#fff !important;
+color:rgba(51, 29, 29, 0.74) !important;
 }
 .top-banner{
   position:relative;
@@ -312,13 +313,6 @@ color:#fff !important;
 .callbacks_tabs li{
   display:inline-block;
   
-}
-input {
-  background-color: #ccc !important;
-}
-
-input[type="text"]::-webkit-input-placeholder {
-  color: orange;
 }
 ul.callbacks_tabs.callbacks1_tabs {
   position: absolute;
