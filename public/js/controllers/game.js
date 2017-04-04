@@ -1,5 +1,5 @@
 angular.module('mean.system')
-.controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', '$http', function ($scope, game, $timeout, $location, MakeAWishFactsService, $dialog, $http) {
+.controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', '$http', function ($scope, game, $timeout, $location, MakeAWishFactsService, $dialog, $http, toastr) {
     $scope.hasPickedCards = false;
     $scope.winningCardPicked = false;
     $scope.showTable = false;
@@ -131,6 +131,10 @@ angular.module('mean.system')
 
     $scope.invite = (user, button) => {
       $scope.invitedUsers = JSON.parse(sessionStorage.invitedUsers);
+      if ($scope.invitedUsers.length === 10) {
+          $('[data-toggle="popover"]').popover();
+      }
+
       if ($scope.invitedUsers.length <= 10) {
         const inviteButton = document.getElementById(`${button.target.id}`);
         inviteButton.disabled = true;
@@ -138,8 +142,6 @@ angular.module('mean.system')
           $scope.invitedUsers.push(user.name);
           sessionStorage.invitedUsers = JSON.stringify($scope.invitedUsers);
         }
-      } else {
-        alert('You can\'t invite more than 11 users.')
       }
 
       const url = button.target.baseURI;
@@ -228,15 +230,12 @@ angular.module('mean.system')
     $scope.$watch('game.gameID', function() {
       if (game.gameID && game.state === 'awaiting players') {
         if (!$scope.isCustomGame() && $location.search().game) {
-          // The Invite Player button should be displayed only when playing with friends.
-          // $scope.displayInviteButton = false;
           // If the player didn't successfully enter the request room,
           // reset the URL so they don't think they're in the requested room.
           $location.search({});
         } else if ($scope.isCustomGame() && !$location.search().game) {
           // Once the game ID is set, update the URL if this is a game with friends,
           // where the link is meant to be shared.
-          // $scope.displayInviteButton = true;
           $location.search({game: game.gameID});
           if(!$scope.modalShown){
             setTimeout(function(){

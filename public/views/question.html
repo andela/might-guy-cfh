@@ -40,7 +40,7 @@
 
           <h2 ng-show="userMatches.length"> Search Result: </h2>
           <div style="margin-top: 10px;">
-            <pre ng-repeat="user in userMatches"> {{user.name}} <span style="float: right">  <button id={{joinName(user.name)}} ng-click="invite(user, $event)" ng-disabled={{user.disabled}}> Invite! </button>  </span> </pre>
+            <pre ng-repeat="user in userMatches">{{user.name}}<span style="float: right"><button id={{joinName(user.name)}} ng-click="invite(user, $event)" ng-disabled={{user.disabled}} data-toggle="popover" data-content="Don't invite a country! You can only invite 11 players." data-placement="bottom" data-trigger="focus" title="Hey Emperor!"> Invite! </button></span></pre>
           </div>
 
           </div>
