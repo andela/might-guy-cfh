@@ -1255,3 +1255,36 @@
       margin: 0 0 0 4px;
    }
  }
+
+ #searchbox {
+  width: 400px;
+  height: 45px;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+}
+
+#searchbox .glyphicon-search {
+  vertical-align: middle;
+  position: absolute;
+  left: 15px;
+  top: 8px;
+}
+
+#searchbox input#search {
+  width: 180px;
+  height: 30px;
+  background: #eaeeef;
+  border: none;
+  font-size: 12px;
+  color: #63717f;
+  padding-left: 45px;
+  border-radius: 5px;
+  outline: 0;
+}
+
+.search-button, .search-button:active, .search-button:focus {
+  height: 30px;
+  font-size: 13px;
+  outline: 0;
+}

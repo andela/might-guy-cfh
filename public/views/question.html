@@ -22,15 +22,21 @@
         <div class="modal-content">
           <div class="modal-header">
             <span>
-              <h4 class="modal-title" style="color: blue; display:inline">Send Invites</h4>
+              <h4 class="modal-title" style="color: #008080; display:inline">Send Invites</h4>
            </span>
           </div>
           <div class="modal-body">
-            <div id="searchbox">
+            <div id="searchbox" style="display:inline-block">
               <span class="glyphicon glyphicon-search"></span>
-              <input type="search" id="search" placeholder="Search for users..." ng-model="searchString" />
-              <button ng-click="searchUsers()"> Search </button>
+              <input type="search" id="search" placeholder="Search for users..." ng-model="searchString" ng-keyup="searchUsers()"/>
           </div>
+
+          <div class="dropdown pull-right" ng-show="invitedUsers.length > 0">
+            <button id="dropdown" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Invited Users <span class="caret"></span> </button>
+            <ul class="dropdown-menu">
+              <li ng-repeat="user in invitedUsers" style="display: block; margin-left: 13px;"> {{user}} </li>
+            </ul>
+        </div>
 
           <h2 ng-show="userMatches.length"> Search Result: </h2>
           <div style="margin-top: 10px;">
@@ -39,7 +45,7 @@
 
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary pull-right" data-dismiss="modal" style="background-color: #B22222; border:none;">Close</button>
           </div>
         </div>
 

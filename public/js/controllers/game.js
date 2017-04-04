@@ -8,9 +8,6 @@ angular.module('mean.system')
     $scope.pickedCards = [];
     var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
     $scope.makeAWishFact = makeAWishFacts.pop();
-    $scope.invitedUsers = [];
-    // $scope.showGetUsers = false;
-    // $scope.showGetUsers = true;
 
     $scope.pickCard = function(card) {
       if (!$scope.hasPickedCards) {
@@ -133,24 +130,22 @@ angular.module('mean.system')
     }
 
     $scope.invite = (user, button) => {
-      const inviteButton = document.getElementById(`${button.target.id}`);
-      inviteButton.disabled = true;
-
+      $scope.invitedUsers = JSON.parse(sessionStorage.invitedUsers);
       if ($scope.invitedUsers.length <= 10) {
+        const inviteButton = document.getElementById(`${button.target.id}`);
+        inviteButton.disabled = true;
         if ($scope.invitedUsers.indexOf(user.name) === -1) {
           $scope.invitedUsers.push(user.name);
-          // user.disabled = true;
-          console.log('invited', $scope.invitedUsers);
+          sessionStorage.invitedUsers = JSON.stringify($scope.invitedUsers);
         }
       } else {
-        alert('You can\'t invite more than 11 users')
-        console.log('stop');
+        alert('You can\'t invite more than 11 users.')
       }
 
-      const url = user.baseURI;
+      const url = button.target.baseURI;
       const obj = {
         url: url,
-        invitee: userMail,
+        invitee: user.email,
         gameOwner: game.players[0].username
       }
 
@@ -170,6 +165,10 @@ angular.module('mean.system')
     }
 
     $scope.searchUsers = () => {
+      if (!sessionStorage.invitedUsers) {
+        sessionStorage.invitedUsers = JSON.stringify([]);
+      }
+
       $scope.userMatches = [];
       $scope.currentUsers.forEach((user) => {
         const userName = user.name.toLowerCase();
@@ -183,6 +182,7 @@ angular.module('mean.system')
       });
 
       $scope.userMatches.forEach((user) => {
+        $scope.invitedUsers = JSON.parse(sessionStorage.invitedUsers);
         user.disabled = $scope.invitedUsers.includes(user.name) ? true : false;
       });
 
@@ -200,6 +200,7 @@ angular.module('mean.system')
     };
 
     $scope.abandonGame = function() {
+      sessionStorage.invitedUsers = JSON.stringify([]);
       game.leaveGame();
       $location.path('/');
     };
@@ -227,12 +228,15 @@ angular.module('mean.system')
     $scope.$watch('game.gameID', function() {
       if (game.gameID && game.state === 'awaiting players') {
         if (!$scope.isCustomGame() && $location.search().game) {
+          // The Invite Player button should be displayed only when playing with friends.
+          // $scope.displayInviteButton = false;
           // If the player didn't successfully enter the request room,
           // reset the URL so they don't think they're in the requested room.
           $location.search({});
         } else if ($scope.isCustomGame() && !$location.search().game) {
           // Once the game ID is set, update the URL if this is a game with friends,
           // where the link is meant to be shared.
+          // $scope.displayInviteButton = true;
           $location.search({game: game.gameID});
           if(!$scope.modalShown){
             setTimeout(function(){

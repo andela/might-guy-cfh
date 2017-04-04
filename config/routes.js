@@ -26,7 +26,7 @@ const sendMail = (to, gameLink, gameOwner) => {
       content: [
         {
           type: 'text/plain',
-          value: `${gameOwner} would like to invite you to game ${gameLink}.\nClick on the link to join them in a rough ride.`,
+          value: `Cards For Humanity player, *${gameOwner}*, would like to invite you to game their game: ${gameLink}.\nClick on the link to join them in a rough ride.`,
         },
       ],
     },
