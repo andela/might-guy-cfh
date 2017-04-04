@@ -54,7 +54,7 @@
 
 <div id="question-container-inner">
   <div class="card longBlack">
-    <button class="btn btn-primary" ng-click="getUsers()" ng-hide="gameStarted">Invite Players</button>
+    <button class="btn btn-primary" ng-click="getUsers()" ng-show="showInviteButton">Invite Players</button>
     <span ng-bind-html-unsafe="game.curQuestion.text" ng-hide="game.state === 'game ended' || game.state ==='game dissolved' || game.state === 'awaiting players'"></span>
 
     <div id="notifications" ng-if="game.notification" ng-animate="{enter:'animated fadeInLeft', leave:'animated fadeOut'}">{{game.notification}}</div>
