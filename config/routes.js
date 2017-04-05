@@ -54,7 +54,9 @@ module.exports = function(app, passport, auth) {
     app.post('/users', users.create);
     app.post('/users/avatars', users.avatars);
 
-    app.get('/api/search/users', (req, res) => {
+    const middleware = require('./middlewares/authorization.js');
+
+    app.get('/api/search/users', middleware.requiresLogin, (req, res) => {
       User.find({}, (error, result) => {
         if (!(error)) {
           res.send(result);
@@ -64,7 +66,7 @@ module.exports = function(app, passport, auth) {
       });
     });
 
-    app.post('/inviteusers', (req) => {
+    app.post('/inviteusers', middleware.requiresLogin, (req) => {
       const url = req.body.url;
       const userEmail = req.body.invitee;
       const gameOwner = req.body.gameOwner;
