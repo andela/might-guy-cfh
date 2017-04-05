@@ -7,7 +7,7 @@ const config = require('../config');
 
 module.exports = (app) => {
     //  api Routes
-  app.post('/api/auth/signup', (req, res) => {
+  app.post('/api/auth/signup', (req, res, next) => {
     if (req.body.name && req.body.password && req.body.email) {
       User.findOne({
         email: req.body.email
@@ -40,7 +40,7 @@ module.exports = (app) => {
   });
 
   // Create signin api
-  app.post('/api/auth/signin', (req, res) => {
+  app.post('/api/auth/signin', (req, res, next) => {
     if (!req.body.email || !req.body.password) {
       res.json({ success: false,
         message: 'You need to enter username and password' });
