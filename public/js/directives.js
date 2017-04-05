@@ -11,7 +11,7 @@ angular.module('mean.directives', [])
     return {
       restrict: 'EA',
       templateUrl: '/views/answers.html',
-      link: function(scope, elem, attr) {
+      link: function (scope, elem, attr) {
 
         scope.$watch('game.state', function() {
           if (scope.game.state === 'winner has been chosen') {
@@ -56,7 +56,7 @@ angular.module('mean.directives', [])
     return {
       restrict: 'EA',
       templateUrl: '/views/question.html',
-      link: function(scope, elem, attr) {
+      link: (scope) => {
         if (scope.isCustomGame()) {
           scope.showInviteButton = true;
         } else {

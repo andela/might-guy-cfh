@@ -120,7 +120,7 @@ angular.module('mean.system')
       return game.winningCard !== -1;
     };
 
-    displayMessage = (message, modalID) => {
+    var displayMessage = (message, modalID) => {
       $scope.message = message;
       $(modalID).modal();
     };
@@ -146,25 +146,22 @@ angular.module('mean.system')
 
       const url = button.target.baseURI;
       const obj = {
-        url: url,
+        url,
         invitee: user.email,
         gameOwner: game.players[0].username
-      }
+      };
 
       $http.post('/inviteusers', obj);
-    }
+    };
 
     $scope.getUsers = () => {
       $http.get('/api/search/users')
         .success((response) => {
-
           $scope.currentUsers = response;
           displayMessage('', '#users-modal');
-
-        }, (error) => {
-          console.log(error);
-        });
-    }
+        }, error => error
+        );
+    };
 
     $scope.searchUsers = () => {
       if (!sessionStorage.invitedUsers) {
@@ -185,11 +182,11 @@ angular.module('mean.system')
 
       $scope.userMatches.forEach((user) => {
         $scope.invitedUsers = JSON.parse(sessionStorage.invitedUsers);
-        user.disabled = $scope.invitedUsers.includes(user.name) ? true : false;
+        user.disabled = $scope.invitedUsers.includes(user.name);
       });
 
       return $scope.userMatches;
-    }
+    };
 
     $scope.startGame = function() {
       if (game.players.length >= game.playerMinLimit
@@ -197,7 +194,11 @@ angular.module('mean.system')
         $scope.gameStarted = true;
         game.startGame();
       } else {
-        displayMessage(`You need at least ${game.playerMinLimit - game.players.length} more player(s) to be able to start. `, '#error-modal');
+        const minNumberOfPlayersLeft =
+            game.playerMinLimit - game.players.length;
+        displayMessage(`You need at least ${minNumberOfPlayersLeft}
+          more player${minNumberOfPlayersLeft > 1 ? 's' : ''}
+            to be able to start. `, '#error-modal');
       }
     };
 

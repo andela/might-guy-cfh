@@ -87,10 +87,10 @@ html {
 body {
   font-family: "helvetica neue", helvetica, sans-serif;
   background: transparent;
-  margin: 10px; }
+  margin: 0; }
   @media only screen and (min-width: 521px) and (max-width: 768px) {
     body {
-      margin: 5px; } }
+      margin: 0; } }
   @media (max-width: 520px) {
     body {
       margin: 1px; } }
@@ -108,7 +108,7 @@ body {
   #main-container #app-container {
     height: 100%;
     max-width: 1200px;
-    margin: 0px auto;
+    margin: 0 auto;
     position: relative; }
     #main-container #app-container #menu-container {
       width: 100%;
@@ -144,7 +144,7 @@ body {
         -moz-border-radius: 8px;
         -webkit-border-radius: 8px;
         font-size: 20px;
-        font-size: 1.25rem;
+        font-size: 0.8rem;
         font-weight: 400;
         text-align: center;
         color: white;
@@ -213,7 +213,7 @@ body {
           #main-container #app-container #social-bar-container #player-container {
             min-height: 0;
             display: inline-block;
-            margin: 0px .5%;
+            margin: 0 .5%;
             width: 15.5%;
             height: 48px;
             padding-top: 1%;
@@ -476,7 +476,7 @@ body {
             height: 100%; }
             #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card {
               width: 100%;
-              margin: 0px auto;
+              margin: 0 auto;
               display: block; }
               #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #notifications {
                 position: absolute;
@@ -569,7 +569,7 @@ body {
           #main-container #app-container #gameplay-container #info-container {
             width: 100%;
             padding: 1px;
-            margin: 0px auto;
+            margin: 0 auto;
             height: 72%; } }
         #main-container #app-container #gameplay-container #info-container #inner-info {
           width: 90%;
@@ -738,7 +738,7 @@ body {
           #main-container #app-container #gameplay-container #czar-blank-container {
             width: 100%;
             font-size: 16px;
-            margin: 0px auto; } }
+            margin: 0 auto; } }
         #main-container #app-container #gameplay-container #czar-blank-container #czar-blank-inner {
           position: absolute;
           left: 10%;

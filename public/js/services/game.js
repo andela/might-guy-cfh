@@ -177,7 +177,7 @@ angular.module('mean.system')
     addToNotificationQueue(data.notification);
   });
 
-  socket.on('gameBegun', function() {
+  socket.on('gameBegun', () => {
     // game.joinOverride = false;
     $('#gameBegun').modal('show');
   });

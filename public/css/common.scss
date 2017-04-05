@@ -407,10 +407,10 @@ html{
 body{
     font-family: $main-font;
     background: transparent;
-    margin: 10px;
+    margin: 0;
 
     @include tablet-portrait-only{
-        margin: 5px;
+        margin: 0;
     }
 
     @include mobile-only{
@@ -434,7 +434,7 @@ body{
     #app-container {
         height: 100%;
         max-width: 1200px;
-        margin: 0px auto;
+        margin: 0 auto;
         position: relative;
 
         #menu-container{
@@ -482,7 +482,7 @@ body{
                 -moz-border-radius: 8px;
                 -webkit-border-radius: 8px;
                 font-size: 20px;
-                font-size: 1.25rem;
+                font-size: 0.8rem;
                 font-weight: 400;
                 text-align: center;
                 color: white;
@@ -567,7 +567,7 @@ body{
                 @include mobile-only{
                     min-height: 0;
                     display: inline-block;
-                    margin: 0px .5%;
+                    margin: 0 .5%;
                     width: 15.5%;
                     height: 48px;
                     padding-top: 1%;
@@ -874,7 +874,7 @@ body{
                         height: 100%;
                         .card{
                             width: 100%;
-                            margin: 0px auto;
+                            margin: 0 auto;
                             display: block;
 
                             #notifications {
@@ -1003,7 +1003,7 @@ body{
                 @include mobile-only{
                     width: 100%;
                     padding: 1px;
-                    margin: 0px auto;
+                    margin: 0 auto;
                     height: 72%;
                 }
 
@@ -1144,7 +1144,7 @@ body{
                 @include mobile-only{
                     width: 100%;
                     font-size: 16px;
-                    margin: 0px auto;
+                    margin: 0 auto;
                 }
 
                 #czar-blank-inner{
