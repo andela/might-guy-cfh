@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 
 const User = mongoose.model('User');
 
-var sg = require('sendgrid')('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');
+const sg = require('sendgrid')(`SG.SsgxbJ1IRiSImn2gI1qAkA.
+  VdN9m18YcsrOoc6-kpg_C3h4B207Ftxc_znG3dHE5qk`);
 
 const sendMail = (to, gameLink, gameOwner) => {
   const request = sg.emptyRequest({
@@ -26,22 +27,20 @@ const sendMail = (to, gameLink, gameOwner) => {
       content: [
         {
           type: 'text/plain',
-          value: `Cards For Humanity player, *${gameOwner}*, would like to invite you to game their game: ${gameLink}.\nClick on the link to join them in a rough ride.`,
+          value: `Cards For Humanity player, *${gameOwner}*, would like to
+          invite you to game their game: ${gameLink}.
+          \nClick on the link to join them in a rough ride.`,
         },
       ],
     },
   });
 
   sg.API(request)
-    .then(response => {
-      console.log(response);
-      // return 'Success: Invite(s) Sent.';
-    })
-    .catch(error => {
-      console.log(error);
-      // return 'There was a problem sending the invites. Please try again.';
-    });
-  }
+    .then(response => response)
+    .catch(error =>
+      `${error} There was a problem sending the invites. Please try again.`
+    );
+};
 
 module.exports = function(app, passport, auth) {
     //User Routes
@@ -57,15 +56,15 @@ module.exports = function(app, passport, auth) {
 
     app.get('/api/search/users', (req, res) => {
       User.find({}, (error, result) => {
-        if(!(error)) {
-          res.send(result)
+        if (!(error)) {
+          res.send(result);
         } else {
           res.send(error);
         }
-      })
+      });
     });
 
-    app.post('/inviteusers', (req, res) => {
+    app.post('/inviteusers', (req) => {
       const url = req.body.url;
       const userEmail = req.body.invitee;
       const gameOwner = req.body.gameOwner;

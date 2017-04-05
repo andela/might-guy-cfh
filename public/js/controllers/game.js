@@ -1,5 +1,8 @@
 angular.module('mean.system')
-.controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', '$http', function ($scope, game, $timeout, $location, MakeAWishFactsService, $dialog, $http, toastr) {
+.controller('GameController', ['$scope', 'game',
+  '$timeout', '$location', 'MakeAWishFactsService', '$dialog', '$http',
+  ($scope, game, $timeout, $location,
+    MakeAWishFactsService, $dialog, $http) => {
     $scope.hasPickedCards = false;
     $scope.winningCardPicked = false;
     $scope.showTable = false;
@@ -120,19 +123,17 @@ angular.module('mean.system')
       return game.winningCard !== -1;
     };
 
-    var displayMessage = (message, modalID) => {
+    const displayMessage = (message, modalID) => {
       $scope.message = message;
       $(modalID).modal();
     };
 
-    $scope.joinName = (name) => {
-      return name.split(' ').join('');
-    }
+    $scope.joinName = name => name.split(' ').join('');
 
     $scope.invite = (user, button) => {
       $scope.invitedUsers = JSON.parse(sessionStorage.invitedUsers);
       if ($scope.invitedUsers.length === 10) {
-          $('[data-toggle="popover"]').popover();
+        $('[data-toggle="popover"]').popover();
       }
 
       if ($scope.invitedUsers.length <= 10) {
@@ -188,7 +189,7 @@ angular.module('mean.system')
       return $scope.userMatches;
     };
 
-    $scope.startGame = function() {
+    $scope.startGame = () => {
       if (game.players.length >= game.playerMinLimit
               && game.players.length < game.playerMaxLimit) {
         $scope.gameStarted = true;

@@ -5,6 +5,7 @@ const sass = require('gulp-sass');
 const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
 const bower = require('gulp-bower');
+const should = require('should');
 
 /**
  * Adds two numbers together.
@@ -37,7 +38,7 @@ gulp.task('mocha', () => (
     .pipe(mocha({
       reporter: 'spec',
       globals: {
-        should: require('should')
+        should
       }
     })
     .on('error', handleError))
@@ -72,6 +73,7 @@ gulp.task('scss', () => {
 gulp.task('bower', () => (
   bower({ directory: './public/lib' })
 ));
+
 
 gulp.task('default', ['scss', 'reload'], () => {
   gulp.watch(['public/**/**/**'], browserSync.reload());
