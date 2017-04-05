@@ -73,6 +73,7 @@ gulp.task('bower', () => (
   bower({ directory: './public/lib' })
 ));
 
+
 gulp.task('default', ['scss', 'reload'], () => {
   gulp.watch(['public/**/**/**'], browserSync.reload());
 });
