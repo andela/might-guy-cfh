@@ -136,6 +136,8 @@ module.exports = function(io) {
         }
       } else {
         // TODO: Send an error message back to this user saying the game has already started
+        exitGame(socket);
+        socket.emit('gameBegun');
       }
     } else {
       // Put players into the general queue
@@ -189,7 +191,7 @@ module.exports = function(io) {
     // Generate a random 6-character game ID
     while (!isUniqueRoom) {
       uniqueRoom = '';
-      for (var i = 0; i < 6; i++) {
+      for (var i = 0; i < 12; i++) {
         uniqueRoom += chars[Math.floor(Math.random()*chars.length)];
       }
       if (!allGames[uniqueRoom] && !(/^\d+$/).test(uniqueRoom)) {
