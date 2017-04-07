@@ -6,14 +6,14 @@
         <div class="row">
           <!-- Logo -->
           <div class="wpb-logo-container">
-            <div id="landing-logo"> 
-              <span id="first-word">Cards</span>
+            <div class="landing-logo-font">
+              <a href="#!/"><span id="first-word">Cards</span>
               <span id="second-word"> for</span> 
-              <span id="third-word">Humanity</span> 
+              <span id="third-word">Humanity</span></a>
             </div> 
             <div class="col-md-9 wpb-menu-container">
               <ul class="wpb-main-menu">
-                <li><a href="/">Home</a></li>
+                <li><a href="#!/"><button id="btn-sign" class="btn donate-log">Home</button></a></li>
               </ul>
             </div>
           </div>      
@@ -21,6 +21,7 @@
       </div>
     </div>
   </div>
+</div>
 <!-- Fixed Logo & Menu Bar End -->
 
 <!-- Landing Start -->
@@ -30,56 +31,61 @@
     <div class="row" id="main-text"> 
     <!-- Teaser Text Start -->
     <div id="landing-logo">
-      <h2 id="slogan">Sign Up with:</h2>
-      <div id="login-buttons">
-        <a href="/auth/facebook"><img class="login-item" src="/img/icons/facebook.png"></a>
-        <a href="/auth/github"><img class="login-item" src="/img/icons/github.png"></a>
-        <a href="/auth/twitter"><img class="login-item" src="/img/icons/twitter.png"></a>
-        <a href="/auth/google"><img class="login-item" src="/img/icons/google.png"></a>
-      </div>
-      <p id="create">Or create a username/password and select an avatar:</p>
-      <div class="sign-body">
-        <div class="more-sign">
-          <form ng-controller="IndexController" class="signup form-horizontal" ng-submit="signUp()">
-            <div class="control-group">
-              <label for="name" class="control-label"></label>
-              <div class="controls">
-                <input class="input-info" id="name" type="text" name="name" ng-model="formData.name" placeholder="Full name" required novalidate />
+      <div class="col-md-12" ng-controller="IndexController">
+        <div class="col-md-9">
+          <div class="sign-body">
+              <div class="more-sign">
+                <form class="signup form-horizontal" ng-submit="signUp()">
+                  <p id="slogan">Sign Up with</p>
+                    <div id="login-buttons">
+                      <a href="/auth/facebook"><img src="/img/icons/004-facebook.png"></a>&nbsp;&nbsp;
+                      <a href="/auth/github"><img src="/img/icons/001-github.png"></a>&nbsp;&nbsp;
+                      <a href="/auth/twitter"><img src="/img/icons/003-twitter.png"></a>&nbsp;&nbsp;
+                      <a href="/auth/google"><img src="/img/icons/002-google-plus.png"></a>
+                    </div>
+                    <p id="slogan">OR</p>
+                    <p id="slogan">Create an Account</p>
+                    <div class="control-group">
+                      <label for="name" class="control-label" id="slogan">Full Name</label>
+                      <div class="controls">
+                        <input class="input-info form-control" id="name" type="text" name="name" ng-model="formData.name" placeholder="enter full name" required novalidate />
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label for="email" class="control-label" id="slogan">Email</label>
+                      <div class="controls">
+                        <input class="input-info form-control" id="email" type="email" name="email" placeholder="enter email" ng-model="formData.email" required novalidate />
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label for="password" class="control-label" id="slogan">Password</label>
+                      <div class="controls">
+                        <input class="input-info form-control" id="password" type="password" name="password" ng-model="formData.password" placeholder="password" required novalidate />
+                      </div>
+                    </div>
+                  <br>
+                  <div class="form-actions" id="btn-style">
+                  <button id="sign-up-btn-other" type='submit'>Sign Up</button>
+                  </div>
+                </form>
               </div>
-            </div>
-            <div class="control-group">
-              <label for="email" class="control-label"></label>
-              <div class="controls">
-                <input class="input-info" id="email" type="email" name="email" placeholder="Email" ng-model="formData.email" required novalidate />
-
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="password" class="control-label"></label>
-              <div class="controls">
-                <input class="input-info" id="password" type="password" name="password" ng-model="formData.password" placeholder="Password" required novalidate />
-              </div>
-            </div>
-            <div id="contain-avatars">
-              <ul class="avatar-list">
-                <li ng-repeat="avatar in avatars" class="avatars ng-scope">
-                  <input name="avatar" type='radio' value="{{$index}}">
-                    <img ng-src="{{avatar}}">
-                  </input>
-                </li>
-              </ul>
-            </div>
-            <div class="form-actions">
-              <button id="sign-up-btn-other" type='submit'>Sign Up</button>
-            </div>
-          </form>
+          </div>
         </div>
+        <div class="col-md-3 avatar-right">
+          <div id="contain-avatars">Select an Avatar
+            <ul class="avatar-list">
+              <li ng-repeat="avatar in avatars" class="avatars ng-scope">
+                <input name="avatar" type='radio' value="{{$index}}">
+                  <img ng-src="{{avatar}}">
+                </input>
+              </li>
+            </ul>
+        </div>
+      </div>
       </div>
     </div>
     </div>
     </div>
   </div>
-</div>
-
 
 

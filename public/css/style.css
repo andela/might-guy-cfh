@@ -1,3 +1,27 @@
+ form {
+  text-align: left;
+  background: white;
+  padding: 20px;
+ }
+ 
+ #btn-style {
+  text-align: center;
+ }
+
+ .avatar-right {
+    background: white;
+ }
+
+#navL {
+  background: black;
+}
+
+#btn-sign {
+  margin-bottom: 8px; 
+  font-size: 17px;
+  font-family: 'Roboto-BoldItalic';
+}
+
  .clear {
    clear:both;
  }
@@ -163,25 +187,35 @@
    padding: 5px;
 }
 
+.landing-logo-font {
+  margin: 0 0 5px 0px;
+  font-size: 28px;
+  border-radius: 8px;
+  background: rgba(255, 187, 0, 2);
+  padding: 5px 5px 5px 13px;
+  font-family: 'Roboto-BoldItalic';
+}
+
 #landing-logo {
    margin: 5px 0 5px 0px;
    font-size: 28px;
    font-family: 'Lobster', cursive;
    border-radius: 8px;
-   background: #252525;
    padding: 5px 5px 5px 13px;
 }
 
+
+
 #first-word {
-   color: #7CE4E8;
+   color: #213367;
 }
 
 #second-word {
-   color: #FFFFA5;
+   color: #FFFFFF;
 }
 
 #third-word {
-   color: #FC575E;
+   color: #213367;
 }
 
 #warning-word {
@@ -240,7 +274,7 @@
  }
 
   .wpb-menu-container .wpb-main-menu li a:hover {
-   color: #2ECC71 !important;
+   color: #213367!important;
    -webkit-transition: color 0.5s ease;
    -moz-transition: color 0.5s ease;
    -ms-transition: color 0.5s ease;
@@ -253,7 +287,7 @@
    height: 100%;
    line-height: 100px;
    font-weight: bold;
-   color: white;
+   color: #213367;
    padding: 0px 10px;
    -webkit-transition: color 0.5s ease;
    -moz-transition: color 0.5s ease;
@@ -263,6 +297,8 @@
    text-transform: uppercase;
    position: relative;
    z-index:1000;
+   font-size: 14px;
+   font-family: 'Roboto-BoldItalic';
  }
 
 
@@ -303,7 +339,7 @@
    height: 100%;
    min-height: 100%;
    z-index:999;
-   background: #252525;
+   background: #213367;
    border-radius: 8px;
    padding: 20px;
  }
@@ -330,7 +366,8 @@
 
  #slogan {
    text-align: center;
-   color: white;
+   color: black;
+   font-size: 30px;
  }
 
  .wpb-teaser .wpb-text p {
@@ -375,7 +412,7 @@
 
  #create {
     text-align: center;
-    color: white;
+    color: black;
     font-family: arial;
     margin-bottom: -13px;
  }
@@ -408,7 +445,7 @@
    font-weight: 400;
    text-align: center;
    color: white;
-   background: #C54141;
+   background: rgba(255, 187, 0, 2);
    margin-top: 3px;
    margin-bottom: 3px;
    margin-right: 10px;
@@ -1038,7 +1075,7 @@
       height: 100%;
       line-height: 100px;
       font-weight: bold;
-      color: white;
+      color: #213367;
       padding: 0px 3px;
       -webkit-transition: color 0.5s ease;
       -moz-transition: color 0.5s ease;
@@ -1082,7 +1119,7 @@
       height: 100%;
       line-height: 100px;
       font-weight: bold;
-      color: white;
+      color: #213367;
       padding: 0px 6px;
       -webkit-transition: color 0.5s ease;
       -moz-transition: color 0.5s ease;
@@ -1177,7 +1214,7 @@
 
    #slogan {
       text-align: center;
-      color: white;
+      color: #000;
       font-size: 1.3em;
    }
 

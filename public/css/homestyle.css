@@ -143,7 +143,9 @@ color:rgba(51, 29, 29, 0.74) !important;
 }
 .donate-log:hover {
   background-color: transparent;
+  color: #213367 !important;
 }
+
 .stn {
   display: inline-block;
   margin-top: 5px;
