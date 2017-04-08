@@ -1,91 +1,121 @@
-<div id="main-bod">
-  <!-- Fixed Logo & Menu Bar Start -->
-  <div id="top-part">
-    <div class="wpb-top-bar">
-      <div class="mod-contain" id="navver">
-        <div class="row">
-          <!-- Logo -->
-          <div class="wpb-logo-container">
-            <div class="landing-logo-font">
-              <a href="#!/"><span id="first-word">Cards</span>
-              <span id="second-word"> for</span> 
-              <span id="third-word">Humanity</span></a>
-            </div> 
-            <div class="col-md-9 wpb-menu-container">
-              <ul class="wpb-main-menu">
-                <li><a href="#!/"><button id="btn-sign" class="btn donate-log">Home</button></a></li>
-              </ul>
-            </div>
-          </div>      
-        </div>
-      </div>
-    </div>
-  </div>
+<script type="text/javascript">
+$(document).ready(function() {
+
+  var ChroMo = '(Chrome)/(\d+)\.(\d+)\.(\d+)\.(\d+) Mobile';
+
+  if (/Android|webOS|CriOs|ChroMo|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) === false && location.href !== "http://localhost:3000/#!/app") {
+    $('body').append('');
+  }
+
+  //Twitter buttons
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
+  });
+</script>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script></script>
+<div landing id="main-bod">
+
+<!-- header -->
+<div class="top-banner" ng-controller="IndexController">
+   <!--banner-info--> 
+   <div class="banner-info">
+      <div class="container">
+        <div class="logo">
+          <a href="#!/"><span>Cards For Humanity</span></a>
+          <span class="menu"></span>
+       </div>
+       <div class="pull-right"><a href="/"><span class="home-btn-text">Go back</span><i class="fa fa-home fa-3x"></i></a></div>
+   <!-- script-for-menu -->
+            <script>
+               $( "span.menu" ).click(function() {
+              $( "ul.nav1" ).slideToggle( 300, function() {
+              // Animation complete.
+                });
+                });
+            </script>
+          <!-- /script-for-menu -->
+       
+     </div>
+   </div>
 </div>
-<!-- Fixed Logo & Menu Bar End -->
-
-<!-- Landing Start -->
-<div class="wpb-teaser parallax-background" id="homer">
-  <div class="background-opacity"></div> 
-  <div class="modified-container">
-    <div class="row" id="main-text"> 
-    <!-- Teaser Text Start -->
-    <div id="landing-logo">
-      <div class="col-md-12" ng-controller="IndexController">
-        <div class="col-md-9">
-          <div class="sign-body">
-              <div class="more-sign">
-                <form class="signup form-horizontal" ng-submit="signUp()">
-                  <p id="slogan">Sign Up with</p>
-                    <div id="login-buttons">
-                      <a href="/auth/facebook"><img src="/img/icons/004-facebook.png"></a>&nbsp;&nbsp;
-                      <a href="/auth/github"><img src="/img/icons/001-github.png"></a>&nbsp;&nbsp;
-                      <a href="/auth/twitter"><img src="/img/icons/003-twitter.png"></a>&nbsp;&nbsp;
-                      <a href="/auth/google"><img src="/img/icons/002-google-plus.png"></a>
-                    </div>
-                    <p id="slogan">OR</p>
-                    <p id="slogan">Create an Account</p>
-                    <div class="control-group">
-                      <label for="name" class="control-label" id="slogan">Full Name</label>
-                      <div class="controls">
-                        <input class="input-info form-control" id="name" type="text" name="name" ng-model="formData.name" placeholder="enter full name" required novalidate />
+<!-- banner -->
+<!-- Slider-starts-Here -->
+   <script>
+    $(function () {
+      $("#slider").responsiveSlides({
+      auto:true,
+      nav: false,
+      speed: 500,
+      namespace: "callbacks",
+      pager:true,
+      });
+    });
+     </script>
+   <div class="slider">
+      <div class="callbacks_container">
+        <ul class="rslides" id="slider">
+           <div class="slid banner2">
+              <div class="caption">
+                <div class="row">
+                  <div class="form-container col-md-6 col-md-offset-3" ng-controller="IndexController">
+                    <div>
+                      <form class="signup form-horizontal" ng-submit="signUp()">
+                      <p id="slogan">Sign up with</p>
+                      <div id="login-buttons">
+                        <a href="/auth/facebook"><i class="fa fa-facebook fa-3x"></i></a>
+                        <a href="/auth/github"><i class="fa fa-github fa-3x"></i></a>
+                        <a href="/auth/twitter"><i class="fa fa-twitter fa-3x"></i></a>
+                        <a href="/auth/google"><i class="fa fa-google fa-3x"></i></a>
                       </div>
-                    </div>
-                    <div class="control-group">
-                      <label for="email" class="control-label" id="slogan">Email</label>
-                      <div class="controls">
-                        <input class="input-info form-control" id="email" type="email" name="email" placeholder="enter email" ng-model="formData.email" required novalidate />
+                      <p id="slogan">OR</p>
+                      <p id="slogan">Create an Account</p>
+                        <div class="control-group">
+                          <label for="name" class="control-label" id="slogan"></label>
+                          <div class="controls">
+                            <input class="input-info form-control" id="name" type="text" name="name" ng-model="formData.name" placeholder="Full name" required novalidate />
+                          </div>
+                        </div>
+                        <div class="control-group">
+                          <label for="email" class="control-label" id="slogan"></label>
+                          <div class="controls">
+                            <input class="input-info form-control" id="email" type="email" name="email" placeholder="Email" ng-model="formData.email" required novalidate />
+                          </div>
+                        </div>
+                        <div class="control-group">
+                          <label for="password" class="control-label" id="slogan"></label>
+                          <div class="controls">
+                            <input class="input-info form-control" id="password" type="password" name="password" ng-model="formData.password" placeholder="Password" required novalidate />
+                          </div>
+                        </div>
+                      <br>
+                      <div>
+                        <div id="contain-avatars">Select an Avatar
+                          <ul class="avatar-list">
+                            <li ng-repeat="avatar in avatars" class="avatars ng-scope">
+                              <input name="avatar" type='radio' value="{{$index}}">
+                                <img ng-src="{{avatar}}">
+                              </input>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
+                      <br>
+                      <div class="form-actions" id="btn-style">
+                      <button id="sign-up-btn-other" type='submit'>Sign Up</button>
+                      </div></div>
+                      
+                    </form>
                     </div>
-                    <div class="control-group">
-                      <label for="password" class="control-label" id="slogan">Password</label>
-                      <div class="controls">
-                        <input class="input-info form-control" id="password" type="password" name="password" ng-model="formData.password" placeholder="password" required novalidate />
-                      </div>
-                    </div>
-                  <br>
-                  <div class="form-actions" id="btn-style">
-                  <button id="sign-up-btn-other" type='submit'>Sign Up</button>
                   </div>
-                </form>
-              </div>
+                </div>
+            </div>
           </div>
-        </div>
-        <div class="col-md-3 avatar-right">
-          <div id="contain-avatars">Select an Avatar
-            <ul class="avatar-list">
-              <li ng-repeat="avatar in avatars" class="avatars ng-scope">
-                <input name="avatar" type='radio' value="{{$index}}">
-                  <img ng-src="{{avatar}}">
-                </input>
-              </li>
-            </ul>
-        </div>
-      </div>
-      </div>
-    </div>
-    </div>
-    </div>
+        
+        </ul>
+     </div>
+   </div>
+   </br>
   </div>
-
-
+<!-- Landing End -->
+</div>

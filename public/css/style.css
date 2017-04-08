@@ -4,6 +4,48 @@
   padding: 20px;
  }
  
+ .form-container {
+   margin-top: 90px;
+ }
+
+ .signup, .signin {
+   opacity: 0.6;
+ }
+
+.fa {
+  padding: 10px;
+}
+
+ .fa-facebook {
+   color: #3b5998;
+ }
+
+ .fa-github {
+   color: gray;
+ }
+
+ .fa-twitter {
+   color: #4099FF;
+ }
+
+ .fa-google {
+   color: #db3236;
+ }
+
+ .fa-home {
+   text-align: center;
+   color: rgba(255, 187, 0, 0.8);
+   opacity: 1;
+ }
+
+.banner-info {
+  text-align: center;
+}
+
+ .home-btn-text {
+   color: white;
+ }
+ 
  #btn-style {
   text-align: center;
  }
@@ -20,6 +62,11 @@
   margin-bottom: 8px; 
   font-size: 17px;
   font-family: 'Roboto-BoldItalic';
+}
+
+.text-right {
+  float: right;
+  
 }
 
  .clear {
@@ -368,6 +415,8 @@
    text-align: center;
    color: black;
    font-size: 30px;
+   margin-top: 0;
+   padding: 0;
  }
 
  .wpb-teaser .wpb-text p {
@@ -445,7 +494,7 @@
    font-weight: 400;
    text-align: center;
    color: white;
-   background: rgba(255, 187, 0, 2);
+   background: rgba(255, 187, 0, 0.8);
    margin-top: 3px;
    margin-bottom: 3px;
    margin-right: 10px;
@@ -486,6 +535,14 @@
  .input-info {
    max-width: 100%;
  }
+
+/*.input-info {
+    max-width: 100%;
+    border: none;
+    border-bottom: 3px solid #CCC;
+    border-radius: 0;
+    outline: none;
+}*/
 
  #how-to {
    max-width: 1400px;
@@ -560,11 +617,12 @@
 
  #contain-avatars {
    margin-top: 25px;
+   text-align: center;
  }
 
  .avatar-list {
    overflow: hidden;
-   padding-left: 0px;
+   padding-left: 33px;
    margin-left: 3%;
  }
 
