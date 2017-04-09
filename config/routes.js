@@ -66,12 +66,41 @@ module.exports = function(app, passport, auth) {
       });
     });
 
-    app.post('/inviteusers', middleware.requiresLogin, (req) => {
+    app.post('/inviteusers', middleware.requiresLogin, (req, res) => {
       const url = req.body.url;
       const userEmail = req.body.invitee;
       const gameOwner = req.body.gameOwner;
 
       sendMail(userEmail, url, gameOwner);
+      res.send(`Invite sent to ${userEmail}`);
+    });
+
+    app.post('/api/games/:id/start', middleware.requiresLogin, (req, res) => {
+      const gameRounds = req.body.gameRounds;
+      const gameOwner = req.body.gameOwner;
+      const winner = req.body.gameWinner;
+      const gamePlayers = req.body.gamePlayers;
+      const gameID = req.params.id;
+
+      const gameStats = {
+        [gameID]: {
+          gameRounds,
+          gameOwner,
+          winner,
+          gamePlayers
+        }
+      };
+
+      User.findOneAndUpdate({ name: gameOwner },
+        {
+          $push: { gameRecord: gameStats }
+        }, (error) => {
+          if (error) {
+            res.send('An error occured.');
+          } else {
+            res.send(`Game ${gameID} has been successfully recorded`);
+          }
+        });
     });
 
     // Donation Routes

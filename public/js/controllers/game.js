@@ -189,11 +189,17 @@ angular.module('mean.system')
       return $scope.userMatches;
     };
 
+    $scope.startGameChoice = false;
+
     $scope.startGame = () => {
       if (game.players.length >= game.playerMinLimit
               && game.players.length < game.playerMaxLimit) {
-        $scope.gameStarted = true;
-        game.startGame();
+        displayMessage('You are about to start a new game. ' +
+         'Do you want to continue?', '#message-modal');
+
+        if ($scope.startGameChoice) {
+          game.startGame();
+        }
       } else {
         const minNumberOfPlayersLeft =
             game.playerMinLimit - game.players.length;
