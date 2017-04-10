@@ -199,6 +199,7 @@ angular.module('mean.system')
 
         if ($scope.startGameChoice) {
           game.startGame();
+          $scope.showInviteButton = false;
         }
       } else {
         const minNumberOfPlayersLeft =
