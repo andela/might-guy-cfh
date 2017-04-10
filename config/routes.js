@@ -1,7 +1,7 @@
 var async = require('async');
 const mongoose = require('mongoose');
-
 const User = mongoose.model('User');
+const gameRecord = require('../app/models/gameRecord');
 
 const sg = require('sendgrid')(`SG.SsgxbJ1IRiSImn2gI1qAkA.
   VdN9m18YcsrOoc6-kpg_C3h4B207Ftxc_znG3dHE5qk`);
@@ -76,31 +76,41 @@ module.exports = function(app, passport, auth) {
     });
 
     app.post('/api/games/:id/start', middleware.requiresLogin, (req, res) => {
+      const gamePlayDate = req.body.gamePlayDate;
       const gameRounds = req.body.gameRounds;
-      const gameOwner = req.body.gameOwner;
       const winner = req.body.gameWinner;
       const gamePlayers = req.body.gamePlayers;
       const gameID = req.params.id;
 
-      const gameStats = {
-        [gameID]: {
-          gameRounds,
-          gameOwner,
-          winner,
-          gamePlayers
-        }
-      };
-
-      User.findOneAndUpdate({ name: gameOwner },
+      const record = new gameRecord(
         {
-          $push: { gameRecord: gameStats }
-        }, (error) => {
-          if (error) {
-            res.send('An error occured.');
-          } else {
-            res.send(`Game ${gameID} has been successfully recorded`);
-          }
-        });
+          gamePlayDate,
+          gameID,
+          gamePlayers,
+          gameRounds,
+          winner
+        }
+      );
+
+      record.save((error) => {
+        if (error) {
+          console.log(error);
+        }
+      }
+    );
+
+      gamePlayers.forEach((userName) => {
+        User.findOneAndUpdate({ name: userName },
+          {
+            $push: { gameRecord: gameID }
+          }, (error) => {
+            if (error) {
+              res.send('An error occured.');
+            } else {
+              res.send(`Game ${gameID} has been successfully recorded`);
+            }
+          });
+      });
     });
 
     // Donation Routes

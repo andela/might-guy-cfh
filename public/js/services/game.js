@@ -171,15 +171,15 @@ angular.module('mean.system')
       game.players[game.playerIndex].hand = [];
       game.time = 0;
 
+      const gamePlayDate = new Date();
       const gameRounds = game.round;
-      const gameOwner = game.players[0].username;
       const gameWinner = game.players[game.gameWinner].username;
-      const gamePlayers = game.players.slice(1).map(player => player.username);
+      const gamePlayers = game.players.map(player => player.username);
       const gameID = game.gameID;
 
       const gameRecord = {
+        gamePlayDate,
         gameRounds,
-        gameOwner,
         gameWinner,
         gamePlayers
       };
