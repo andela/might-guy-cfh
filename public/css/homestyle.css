@@ -348,6 +348,12 @@ ul.callbacks_tabs.callbacks1_tabs {
     padding-left: 10px;
 }
 
+.col-md-25 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
 
 .col-xs-15 {
     width: 20%;
@@ -362,6 +368,10 @@ ul.callbacks_tabs.callbacks1_tabs {
 @media (min-width: 992px) {
     .col-md-15 {
         width: 19%;
+        float: left;
+    }
+    .col-md-25 {
+        width: 17.5%;
         float: left;
     }
     .col-md-19 {
@@ -396,27 +406,35 @@ ul.callbacks_tabs.callbacks1_tabs {
  float: left;
  position: relative;
  display: block;
- vertical-align: middle;
+ margin-top: 10px;
+
 
 }
 .sub-text {
  float:right;
 }
-.sub-text span {
+.mawl {
+  margin-bottom: 25px;
+}
+.trailer-text span {
   padding: 0.5em;
   font-size:1.4em;
-  color: #af830b;
+  color: #213367;
   font-family: 'Roboto-Regular';
-    line-height: 1.4em;
+  line-height: 1em;
   text-decoration:none;
-    display: block;
+  display: block;
+  text-align: center;
+  font-weight: 400;
 }
 .sub-text p {
-    font-size: 0.9em;
+  font-size: 1.0em;
   line-height: 1.8em;
-  color: #888;
+  color: #213367;
   font-weight: 400;
   margin-top: 0.5em;
+  font-family: 'Roboto-Regular';
+  
 }
 .sub-trailer {
     margin-bottom: 0.6em;
@@ -520,7 +538,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 .about h2,.review h2,h2.top,.gallery h2,.contact h2{
   font-family: 'Roboto-Bold';
   font-size: 2.5em;
-  color: #f43c60;
+  color: #213367;
   text-align:center;
 }
 .about-info-grids{
@@ -594,7 +612,7 @@ ul.callbacks_tabs.callbacks1_tabs {
   margin-top:15px;
 }
 .testi-info a{
-  color:#f43c60;
+  color:#213367;
   text-decoration:none;
   font-size: 0.75em;
   font-weight:600;
@@ -718,13 +736,13 @@ p.snglp{
 .recent-posts h4,.category h4,.coment-form h4,.response h4{
   font-family: 'Roboto-Regular';
   font-size: 1.6em;
-  color: #f43c60;
+  color: #213367;
   margin-bottom: 0.7em;
 }
 .posts-right label {
   margin: 0 0 0px 0;
   font-size: 1em;
-  color:#f43c60;
+  color:#213367;
   line-height: 1.6em;
 }
 .blog-img img{
@@ -1028,8 +1046,8 @@ h3.ghj {
 .img-res {
   margin-left: 300px;
 }
-.amount-raise {
-  margin-left: 300px;
+.team-grid_1, .team-grid_2, .team-grid_3, .team-grid_4, .team-grid_5 {
+  margin-left: 75px;
 }
 }
 @media (max-width: 991px){
@@ -1085,7 +1103,7 @@ a i.youtube {
   width: 64%;
 }
 .img-responsive {
-  margin-left: 300px;
+  margin-left: 30px;
 }
 .caption h3 {
   font-size:1.85em;
@@ -1341,8 +1359,11 @@ ul.callbacks_tabs.callbacks1_tabs {
   font-size: 2em !important;
 }
 .sub-trailer img {
-  width: 20%;
+  width: 40px;
+  height: 40px;
   padding-left:0;
+  margin-left: 15px;
+  margin-top: 10px;
 }
 .trailer-text{
   padding-left:0;
@@ -1502,18 +1523,18 @@ ul.nav1 {
   width: 100%;
   left: 0;
   margin-top:2.5em;
-  background: #69d2e8;
+  background: #707277;
   cursor: pointer;
 }
 .top-menu ul.nav1 li.active{
-  background:#f43c60;
+  background:#213367;
   color:#fff;
 }
 .top-menu ul li.active a, .top-menu ul li a:hover {
   color: #FFFFFF;
 }
 .top-menu ul.nav1 li:hover{
-  background:#f43c60;
+  background:#213367;
   color:#fff;
   transition:0.5s all;
   -webkit-transition:0.5s all;

@@ -296,7 +296,7 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
 
     display: inline-block;
     box-sizing: border-box;
-    width: 17.5%;
+    width: 170.5%;
     height: 215px;
     padding: 1%;
     margin: 1%;
@@ -567,8 +567,8 @@ body{
                 @include mobile-only{
                     min-height: 0;
                     display: inline-block;
-                    margin: 0 .5%;
-                    width: 15.5%;
+                    margin: 0 0.5%;
+                    width: 150.5%;
                     height: 48px;
                     padding-top: 1%;
                     padding-bottom: 0;

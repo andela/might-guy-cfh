@@ -89,5 +89,6 @@ module.exports = function(app, passport, auth) {
     var index = require('../app/controllers/index');
     app.get('/play', index.play);
     app.get('/', index.render);
+    app.get('/gametour', index.gameTour);
 
 };

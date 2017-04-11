@@ -38,7 +38,7 @@ angular.module('mean.system')
       .success((data) => {
         if (data.success === true) {
           $window.localStorage.setItem('user-token', data.token);
-          $window.location.href = '/';
+          $window.location.href = '/gametour';
         } else {
           $scope.showMessage = data.message;
         }
