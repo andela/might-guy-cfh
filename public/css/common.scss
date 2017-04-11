@@ -1,4 +1,4 @@
-$main-font: "helvetica neue", helvetica, sans-serif;
+$main-font: 'Roboto', "helvetica neue", helvetica, sans-serif;
 
 $mq-mobile-portrait : 320px !default;
 $mq-mobile-landscape : 520px !default;
@@ -436,6 +436,7 @@ body{
         max-width: 1200px;
         margin: 0 auto;
         position: relative;
+        background-color: rgb(38,35,38,0.8);
 
         #menu-container{
             width: 100%;
@@ -478,12 +479,13 @@ body{
             #abandon-game-button{
                 display: inline-block;
                 float:right;
+                text-shadow: 0 2px 3px rgb(0,0,0);
                 border-radius: 8px;
                 -moz-border-radius: 8px;
                 -webkit-border-radius: 8px;
                 font-size: 20px;
                 font-size: 0.8rem;
-                font-weight: 400;
+                font-weight: 700;
                 text-align: center;
                 color: white;
                 background: #C54141;
@@ -803,12 +805,11 @@ body{
 
                     #timer-container {
                         height: 100%;
-
                         #inner-timer-container{
                             text-align: center;
                             @include soft-button;
-                            background: #FFF;
-                            text-shadow: none;
+        
+                            text-shadow: 0 2px 3px rgb(0,0,0);
                             cursor: default;
                             border: none;
                             min-width: 85px;
@@ -934,13 +935,13 @@ body{
 
                                     #start-game-button{
                                         border-radius: 8px;
-                                        -moz-border-radius: 5px;
-                                        -webkit-border-radius: 5px;
+                                        -moz-border-radius: 8px;
+                                        -webkit-border-radius: 8px;
                                         font-size: 20px;
                                         font-size: 1.25rem;
                                         font-weight: 400;
                                         color: white;
-                                        background: #1F959C;
+                                        background-color: rgb(38, 31, 38);
                                         padding: 0.65em 20px;
                                         margin: 10px;
                                         width: 65%;
