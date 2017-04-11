@@ -1,5 +1,8 @@
 angular.module('mean.system')
-.controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', function ($scope, game, $timeout, $location, MakeAWishFactsService, $dialog) {
+.controller('GameController', ['$scope', 'game',
+  '$timeout', '$location', 'MakeAWishFactsService', '$dialog', '$http',
+  ($scope, game, $timeout, $location,
+    MakeAWishFactsService, $dialog, $http) => {
     $scope.hasPickedCards = false;
     $scope.winningCardPicked = false;
     $scope.showTable = false;
@@ -120,11 +123,95 @@ angular.module('mean.system')
       return game.winningCard !== -1;
     };
 
-    $scope.startGame = function() {
-      game.startGame();
+    const displayMessage = (message, modalID) => {
+      $scope.message = message;
+      $(modalID).modal();
+    };
+
+    $scope.joinName = name => name.split(' ').join('');
+
+    $scope.invite = (user, button) => {
+      $scope.invitedUsers = JSON.parse(sessionStorage.invitedUsers);
+      if ($scope.invitedUsers.length === 10) {
+        $('[data-toggle="popover"]').popover();
+      }
+
+      if ($scope.invitedUsers.length <= 10) {
+        const inviteButton = document.getElementById(`${button.target.id}`);
+        inviteButton.disabled = true;
+        if ($scope.invitedUsers.indexOf(user.name) === -1) {
+          $scope.invitedUsers.push(user.name);
+          sessionStorage.invitedUsers = JSON.stringify($scope.invitedUsers);
+        }
+      }
+
+      const url = button.target.baseURI;
+      const obj = {
+        url,
+        invitee: user.email,
+        gameOwner: game.players[0].username
+      };
+
+      $http.post('/inviteusers', obj);
+    };
+
+    $scope.getUsers = () => {
+      $http.get('/api/search/users')
+        .success((response) => {
+          $scope.currentUsers = response;
+          displayMessage('', '#users-modal');
+        }, error => error
+        );
+    };
+
+    $scope.searchUsers = () => {
+      if (!sessionStorage.invitedUsers) {
+        sessionStorage.invitedUsers = JSON.stringify([]);
+      }
+
+      $scope.userMatches = [];
+      $scope.currentUsers.forEach((user) => {
+        const userName = user.name.toLowerCase();
+        const userEmail = user.email.toLowerCase();
+
+        if (userName.indexOf($scope.searchString.toLowerCase()) !== -1) {
+          $scope.userMatches.push(user);
+        } else if (userEmail === $scope.searchString.toLowerCase()) {
+          $scope.userMatches.push(user);
+        }
+      });
+
+      $scope.userMatches.forEach((user) => {
+        $scope.invitedUsers = JSON.parse(sessionStorage.invitedUsers);
+        user.disabled = $scope.invitedUsers.includes(user.name);
+      });
+
+      return $scope.userMatches;
+    };
+
+    $scope.startGameChoice = false;
+
+    $scope.startGame = () => {
+      if (game.players.length >= game.playerMinLimit
+              && game.players.length < game.playerMaxLimit) {
+        displayMessage('You are about to start a new game. ' +
+         'Do you want to continue?', '#message-modal');
+
+        if ($scope.startGameChoice) {
+          game.startGame();
+          $scope.showInviteButton = false;
+        }
+      } else {
+        const minNumberOfPlayersLeft =
+            game.playerMinLimit - game.players.length;
+        displayMessage(`You need at least ${minNumberOfPlayersLeft}
+          more player${minNumberOfPlayersLeft > 1 ? 's' : ''}
+            to be able to start. `, '#error-modal');
+      }
     };
 
     $scope.abandonGame = function() {
+      sessionStorage.invitedUsers = JSON.stringify([]);
       game.leaveGame();
       $location.path('/');
     };
@@ -165,7 +252,7 @@ angular.module('mean.system')
               var txt = 'Give the following link to your friends so they can join your game: ';
               $('#lobby-how-to-play').text(txt);
               $('#oh-el').css({'text-align': 'center', 'font-size':'22px', 'background': 'white', 'color': 'black'}).text(link);
-            }, 200);
+            }, 20);
             $scope.modalShown = true;
           }
         }

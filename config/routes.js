@@ -1,4 +1,46 @@
 var async = require('async');
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
+const gameRecord = require('../app/models/gameRecord');
+
+const sg = require('sendgrid')(`SG.SsgxbJ1IRiSImn2gI1qAkA.
+  VdN9m18YcsrOoc6-kpg_C3h4B207Ftxc_znG3dHE5qk`);
+
+const sendMail = (to, gameLink, gameOwner) => {
+  const request = sg.emptyRequest({
+    method: 'POST',
+    path: '/v3/mail/send',
+    body: {
+      personalizations: [
+        {
+          to: [
+            {
+              email: `${to}`,
+            },
+          ],
+          subject: 'Cards For Humanity',
+        },
+      ],
+      from: {
+        email: 'cardsforhumanity@mightguy.io',
+      },
+      content: [
+        {
+          type: 'text/plain',
+          value: `Cards For Humanity player, *${gameOwner}*, would like to
+          invite you to game their game: ${gameLink}.
+          \nClick on the link to join them in a rough ride.`,
+        },
+      ],
+    },
+  });
+
+  sg.API(request)
+    .then(response => response)
+    .catch(error =>
+      `${error} There was a problem sending the invites. Please try again.`
+    );
+};
 
 module.exports = function(app, passport, auth) {
     //User Routes
@@ -11,6 +53,65 @@ module.exports = function(app, passport, auth) {
     //Setting up the users api
     app.post('/users', users.create);
     app.post('/users/avatars', users.avatars);
+
+    const middleware = require('./middlewares/authorization.js');
+
+    app.get('/api/search/users', middleware.requiresLogin, (req, res) => {
+      User.find({}, (error, result) => {
+        if (!(error)) {
+          res.send(result);
+        } else {
+          res.send(error);
+        }
+      });
+    });
+
+    app.post('/inviteusers', middleware.requiresLogin, (req, res) => {
+      const url = req.body.url;
+      const userEmail = req.body.invitee;
+      const gameOwner = req.body.gameOwner;
+
+      sendMail(userEmail, url, gameOwner);
+      res.send(`Invite sent to ${userEmail}`);
+    });
+
+    app.post('/api/games/:id/start', middleware.requiresLogin, (req, res) => {
+      const gamePlayDate = req.body.gamePlayDate;
+      const gameRounds = req.body.gameRounds;
+      const winner = req.body.gameWinner;
+      const gamePlayers = req.body.gamePlayers;
+      const gameID = req.params.id;
+
+      const record = new gameRecord(
+        {
+          gamePlayDate,
+          gameID,
+          gamePlayers,
+          gameRounds,
+          winner
+        }
+      );
+
+      record.save((error) => {
+        if (error) {
+          console.log(error);
+        }
+      }
+    );
+
+      gamePlayers.forEach((userName) => {
+        User.findOneAndUpdate({ name: userName },
+          {
+            $push: { gameRecord: gameID }
+          }, (error) => {
+            if (error) {
+              res.send('An error occured.');
+            } else {
+              res.send(`Game ${gameID} has been successfully recorded`);
+            }
+          });
+      });
+    });
 
     // Donation Routes
     app.post('/donations', users.addDonation);
