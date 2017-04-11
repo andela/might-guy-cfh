@@ -427,20 +427,71 @@ ul.callbacks_tabs.callbacks1_tabs {
   text-align: center;
   font-weight: 400;
 }
+.btnz {
+    display: block;
+    float: left;
+    padding: 10px 15px;
+    border:none;
+    background-color: #ececec;
+    text-decoration: none;
+    font-size: 18px;
+    color: #FFF;
+    width: 33.33%;
+    text-align: center;
+    -webkit-transition: all 150ms ease;
+	  transition: all 150ms ease;
+}
+
+.btnz:hover, .btnz:focus
+{
+	-webkit-animation: pulsate 1.2s linear infinite;
+	animation: pulsate 1.2s linear infinite;
+}
+
+@-webkit-keyframes pulsate
+{
+	0%   { color: #ddd; text-shadow: 0 -1px 0 #000; }
+	50%  { color: #fff; text-shadow: 0 -1px 0 #444, 0 0 5px #ffd, 0 0 8px #fff; }
+	100% { color: #ddd; text-shadow: 0 -1px 0 #000; }
+}
+		
+@keyframes pulsate
+{
+	0%   { color: #ddd; text-shadow: 0 -1px 0 #000; }
+	50%  { color: #fff; text-shadow: 0 -1px 0 #444, 0 0 5px #ffd, 0 0 8px #fff; }
+	100% { color: #ddd; text-shadow: 0 -1px 0 #000; }
+}
+.btnz:hover {
+    color: #efefef;
+}
+.facebook {
+    background-color: #3b5998;
+}
+.gplus {
+    background-color: #dd4b39;
+}
+.twitter {
+    background-color: #55acee;
+}
 .sub-text p {
-  font-size: 1.0em;
+  font-size: 1.1em;
   line-height: 1.8em;
   color: #213367;
   font-weight: 400;
   margin-top: 0.5em;
-  font-family: 'Roboto-Regular';
+  font-family: 'Roboto-BoldItalic';
   
 }
 .sub-trailer {
     margin-bottom: 0.6em;
     background-color: #F4F4F4;
 }
-
+.imag {
+  font-size:45px;
+  color:#b79406;
+  margin-top: 7px;
+  margin-left: 10px;
+}
 .poster{
   background:url(../images/non-profit.png) no-repeat 0px 0px;
   background-size:cover;
