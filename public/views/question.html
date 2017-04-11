@@ -9,7 +9,7 @@
             <p>{{message}}</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary pull-right" data-dismiss="modal" style="background-color: #B22222; border:none;">Close</button>
           </div>
         </div>
 
@@ -46,11 +46,29 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary pull-right" data-dismiss="modal" style="background-color: #B22222; border:none;">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+  <div id="message-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" style="color: #800000">Be sure not to crash a spaceship.</h4>
+            </div>
+            <div class="modal-body">
+              <p>{{message}}</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #B22222; border:none;">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="startGameChoice = true; startGame();">Join the Rough Ride</button>
+            </div>
           </div>
         </div>
-
       </div>
-    </div>
 
 <div id="question-container-inner">
   <div class="card longBlack">
@@ -68,7 +86,7 @@
       <div id="loading-container">
         <div id="loading-gif"><img ng-src="../img/loader.gif"/></div>
       </div>
-      <div id="start-game-container" ng-click="startGame()">
+      <div id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride)">
         <div id='start-game-button'>
           Start Game
         </div>
