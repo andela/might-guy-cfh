@@ -207,8 +207,7 @@
 
 .sign-error {
    text-align: center;
-   color: white;
-   font-family: arial;
+   color: red;
    margin-bottom: -13px;
 }
 
