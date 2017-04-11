@@ -1,4 +1,4 @@
-$main-font: 'Roboto', "helvetica neue", helvetica, sans-serif;
+$main-font: "helvetica neue", helvetica, sans-serif;
 
 $mq-mobile-portrait : 320px !default;
 $mq-mobile-landscape : 520px !default;
@@ -7,7 +7,7 @@ $mq-tablet-landscape : 1024px !default;
 $mq-desktop: 1100px !default;
 $mq-custom-wide : 1200px !default;
 
-$color-background: #fff;
+$color-background: rgb(66,67,80);
 
 @mixin gradient-bg {
 /* IE10 Consumer Preview */
@@ -336,7 +336,7 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
     }
 
     &.longBlack {
-        background: #252525;
+        background: linear-gradient(#19547b, #2c3e50);
         border-color: white;
         color: white;
         height: 100%;
@@ -436,7 +436,6 @@ body{
         max-width: 1200px;
         margin: 0 auto;
         position: relative;
-        background-color: rgb(38,35,38,0.8);
 
         #menu-container{
             width: 100%;
@@ -456,23 +455,24 @@ body{
             #logo{
                 display: inline-block;
                 margin-left: 10px;
-                font-size: 28px;
-                font-family: 'Lobster', cursive;
+                font-size: 25px;
+                font-family: 'Roboto', cursive;
+                font-style: italic;
 
                 @include mobile-only{
                     font-size: 20px;
                 }
 
                 #first-word{
-                    color: #7CE4E8;
+                    color: rgb(255,255,255);
                 }
 
                 #second-word{
-                    color: #FFFFA5;
+                    color: rgb(255,255,255);
                 }
 
                 #third-word{
-                    color: #FC575E;
+                    color: rgb(255,255,255);
                 }
             }
 
@@ -490,7 +490,7 @@ body{
                 color: white;
                 background: #C54141;
                 margin-top: 3px;
-                margin-bottom: 3px;
+                margin-bottom: 10px;
                 margin-right: 10px;
                 padding: 0.65em 20px;
                 width: 140px;
@@ -506,14 +506,15 @@ body{
             }
 
             #abandon-game-button:hover{
-               background:#F34444;
+               background:red;
             }
 
             #tweet-container{
                 float: right;
-                padding-top: 10px;
-                width: 77px;
-                margin-right: 10px;
+                padding-top: 5px;
+                width: 70px;
+                margin-right: 5px;
+                margin-bottom: 10px;
 
                 @include mobile-only{
                     float: right;
@@ -562,7 +563,7 @@ body{
                 padding-top: 4%;
                 padding-bottom: 4%;
                 min-height: 85px;
-                background: #7CE4E8;
+                background-color: rgb(65,194,202);
                 margin: 0 0 6% 8%;
                 @include br;
 
@@ -585,8 +586,8 @@ body{
                     }
 
                     #avatar_ {
-                        height: 100%;
-                        width: 38%;
+                        height: 60%;
+                        width: 20%;
                         float: left;
                         position: relative;
                         z-index: 999;
@@ -639,7 +640,7 @@ body{
                         position: relative;
                         bottom: 8px;
                         left: 2px;
-                        max-width: 62%;
+                        max-width: 65%;
                         overflow: hidden;
 
                         @include tablet-portrait-only{
@@ -656,8 +657,10 @@ body{
                         #player-name{
 
                             h4{
-                                font-family: 'Lobster', cursive;
+                                font-family: 'Roboto', cursive;
                                 margin-bottom: 0px;
+                                font-style: italic;
+                                font-size: 0.9em;
                             }
                             h4{
 
@@ -666,7 +669,7 @@ body{
                                 }
 
                                 @include mobile-only{
-                                    font-family: 'Lobster', cursive;
+                                    font-family: 'Roboto', cursive;
                                     font-size: 10px;
                                     margin-top: 3px;
                                     margin-bottom: 5px;
@@ -679,7 +682,7 @@ body{
 
                             h2{
 
-                                font-size: 26px;
+                                font-size: 22px;
                                 margin-top: 0;
                                 margin-bottom: 0;
 
@@ -748,6 +751,7 @@ body{
         #gameplay-container{
             height: 100%;
             width: 80%;
+            border-radius: 5px;
 
             @include mobile-only{
                 width: 100%;
@@ -790,7 +794,7 @@ body{
                     #menu-container{
                         display: none;
                         @include soft-button;
-                        height: 20%;
+                        height: 30%;
                         margin-bottom: 16px;
                         line-height: 20%;
                         @include br;
@@ -805,6 +809,8 @@ body{
 
                     #timer-container {
                         height: 100%;
+                        background-color: #fff;
+
                         #inner-timer-container{
                             text-align: center;
                             @include soft-button;
@@ -816,6 +822,7 @@ body{
                             min-height: 85px;
                             height: 100%;
                             color: #000;
+                            font-style: italic
 
                             #timer-status-round, #timer-status-czar-choosing{
                                 position: absolute;
@@ -835,12 +842,14 @@ body{
                             }
 
                             #time{
-                                font-family: 'Lobster', cursive;
+                                font-family: 'Roboto', cursive;
+                                font-style: italic;
                                 font-size: 110px;
                                 position: absolute;
                                 bottom: 25%;
                                 left: 0;
                                 right: 0;
+                                color:#000;
 
                                 @include tablet-landscape-and-below{
                                     font-size: 90px;
@@ -911,14 +920,14 @@ body{
 
                                 #player-count-container{
                                     #player-count{
-                                        font-size: 33px;
+                                        font-size: 25px;
 
                                         @include mobile-only{
-                                            font-size: 21px;
+                                            font-size: 20px;
                                         }
                                     }
                                     #the-word-players{
-                                        font-size: 17px;
+                                        font-size: 15px;
                                     }
                                 }
 
@@ -941,7 +950,6 @@ body{
                                         font-size: 1.25rem;
                                         font-weight: 400;
                                         color: white;
-                                        background-color: rgb(38, 31, 38);
                                         padding: 0.65em 20px;
                                         margin: 10px;
                                         width: 65%;
@@ -961,6 +969,13 @@ body{
                                     #start-game-button:hover{
                                        background:#41C2CA;
                                     }
+                                }
+
+                                #card-deck-container{
+                                    width:150px;
+                                    height:180px;
+                                    float: right;
+                                    background-color: #eef;
                                 }
                             }
 
@@ -988,7 +1003,7 @@ body{
             }
             #info-container{
                 width: 100%;
-                background: #252525;
+                background: linear-gradient(#19547b, #2c3e50);
                 color: white;
                 @include br;
                 text-align: center;
@@ -1009,6 +1024,7 @@ body{
                 }
 
                 #inner-info{
+                    font-family: 'Roboto';
                     width: 90%;
                     margin: 0 5%;
 
@@ -1179,7 +1195,7 @@ body{
                     }
 
                     #charity-fact-tagline{
-                        font-family: 'Lobster', cursive;
+                        font-family: 'Roboto', cursive;
                         font-size: 22px;
                         margin-left: 2%;
                         margin-bottom: 3px;
