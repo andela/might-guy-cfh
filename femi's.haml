@@ -1,5 +1,4 @@
-
-$main-font: "Roboto", "helvetica neue", helvetica, sans-serif;
+$main-font: "helvetica neue", helvetica, sans-serif;
 
 $mq-mobile-portrait : 320px !default;
 $mq-mobile-landscape : 520px !default;
@@ -8,7 +7,7 @@ $mq-tablet-landscape : 1024px !default;
 $mq-desktop: 1100px !default;
 $mq-custom-wide : 1200px !default;
 
-$color-background: #fff;
+$color-background: rgb(66,67,80);
 
 @mixin gradient-bg {
 /* IE10 Consumer Preview */
@@ -337,14 +336,13 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
     }
 
     &.longBlack {
-        background: linear-gradient(rgba(25, 84, 123,0.4), rgba(71, 80, 86,0.6));
+        background: #252525;
         border-color: white;
         color: white;
         height: 100%;
         width: 35.5em;
         padding-left: 2%;
         padding-right: 2%;
-        margin-left: 5px;
     }
 
     &.smallest {
@@ -433,20 +431,18 @@ body{
 
 #main-container{
     height: 100%;
-
     #app-container {
         height: 100%;
         max-width: 1200px;
         margin: 0 auto;
         position: relative;
-        background:url(../images/blue.jpg) no-repeat 0px 0px;
-        background-size:cover;
+
         #menu-container{
             width: 100%;
             -webkit-border-radius: 8px;
             -moz-border-radius: 8px;
             border-radius: 8px;
-            background: linear-gradient(rgba(25, 84, 123,0.4), rgba(71, 80, 86,0.6));
+            background: #252525;
             margin-bottom: 10px;
             margin-top: 5px;
             padding: 5px;
@@ -459,7 +455,7 @@ body{
             #logo{
                 display: inline-block;
                 margin-left: 10px;
-                font-size: 28px;
+                font-size: 25px;
                 font-family: 'Roboto', cursive;
                 font-style: italic;
 
@@ -468,15 +464,15 @@ body{
                 }
 
                 #first-word{
-                    color: #ffffff;
+                    color: rgb(255,255,255);
                 }
 
                 #second-word{
-                    color: #ffffff;
+                    color: rgb(255,255,255);
                 }
 
                 #third-word{
-                    color: #ffffff;
+                    color: rgb(255,255,255);
                 }
             }
 
@@ -489,12 +485,12 @@ body{
                 -webkit-border-radius: 8px;
                 font-size: 20px;
                 font-size: 0.8rem;
-                font-weight: 400;
+                font-weight: 700;
                 text-align: center;
                 color: white;
                 background: #C54141;
                 margin-top: 3px;
-                margin-bottom: 3px;
+                margin-bottom: 10px;
                 margin-right: 10px;
                 padding: 0.65em 20px;
                 width: 140px;
@@ -567,8 +563,8 @@ body{
                 padding-top: 4%;
                 padding-bottom: 4%;
                 min-height: 85px;
-                background: #7CE4E8;
-                margin: 0 4% 6% 6%;
+                background-color: rgb(65,194,202);
+                margin: 0 0 6% 8%;
                 @include br;
 
                 @include mobile-only{
@@ -644,8 +640,8 @@ body{
                         position: relative;
                         bottom: 8px;
                         left: 2px;
-                        max-width: 70%;
-                        overflow: visible;
+                        max-width: 65%;
+                        overflow: hidden;
 
                         @include tablet-portrait-only{
                             left: 3px;
@@ -691,18 +687,18 @@ body{
                                 margin-bottom: 0;
 
                                 @include tablet-portrait-only{
-                                    font-size: 20px;
+                                    font-size: 21px;
                                 }
 
                                 @include mobile-only{
-                                    font-size: 15px;
+                                    font-size: 17px;
                                     line-height: 40%;
                                 }
                             }
                         }
 
                         #player-star{
-                        float: right;
+                        float: left;
                         margin-top: 3px;
                         margin-left: 10px;
 
@@ -755,6 +751,7 @@ body{
         #gameplay-container{
             height: 100%;
             width: 80%;
+            border-radius: 5px;
 
             @include mobile-only{
                 width: 100%;
@@ -783,9 +780,7 @@ body{
                     float: left;
                     width: 19%;
                     height: 100%;
-                    margin-right: 1%;
-                    margin-left: 1%;
-                    background: rgba(255,255,255,0.3);
+                    margin-right: 2%;
 
                     @include tablet-portrait-only{
                         width: 21%;
@@ -799,7 +794,7 @@ body{
                     #menu-container{
                         display: none;
                         @include soft-button;
-                        height: 20%;
+                        height: 30%;
                         margin-bottom: 16px;
                         line-height: 20%;
                         @include br;
@@ -814,20 +809,20 @@ body{
 
                     #timer-container {
                         height: 100%;
-                        background-color: rgba(255,255,255,0);
+                        background-color: #fff;
 
                         #inner-timer-container{
                             text-align: center;
                             @include soft-button;
-                            text-shadow: none;
+        
+                            text-shadow: 0 2px 3px rgb(0,0,0);
                             cursor: default;
                             border: none;
                             min-width: 85px;
                             min-height: 85px;
                             height: 100%;
-                            color: #fff;
-                            font-style: italic;
-                            background-color: rgba(255,255,255,0);
+                            color: #000;
+                            font-style: italic
 
                             #timer-status-round, #timer-status-czar-choosing{
                                 position: absolute;
@@ -847,14 +842,14 @@ body{
                             }
 
                             #time{
-                                font-style: italic;
                                 font-family: 'Roboto', cursive;
+                                font-style: italic;
                                 font-size: 110px;
                                 position: absolute;
                                 bottom: 25%;
                                 left: 0;
                                 right: 0;
-
+                                color:#000;
 
                                 @include tablet-landscape-and-below{
                                     font-size: 90px;
@@ -925,14 +920,14 @@ body{
 
                                 #player-count-container{
                                     #player-count{
-                                        font-size: 33px;
+                                        font-size: 25px;
 
                                         @include mobile-only{
-                                            font-size: 21px;
+                                            font-size: 20px;
                                         }
                                     }
                                     #the-word-players{
-                                        font-size: 17px;
+                                        font-size: 15px;
                                     }
                                 }
 
@@ -949,13 +944,12 @@ body{
 
                                     #start-game-button{
                                         border-radius: 8px;
-                                        -moz-border-radius: 5px;
-                                        -webkit-border-radius: 5px;
+                                        -moz-border-radius: 8px;
+                                        -webkit-border-radius: 8px;
                                         font-size: 20px;
                                         font-size: 1.25rem;
                                         font-weight: 400;
                                         color: white;
-                                        background: #1F959C;
                                         padding: 0.65em 20px;
                                         margin: 10px;
                                         width: 65%;
@@ -975,6 +969,13 @@ body{
                                     #start-game-button:hover{
                                        background:#41C2CA;
                                     }
+                                }
+
+                                #card-deck-container{
+                                    width:150px;
+                                    height:180px;
+                                    float: right;
+                                    background-color: #eef;
                                 }
                             }
 
@@ -1002,14 +1003,13 @@ body{
             }
             #info-container{
                 width: 100%;
-                background: linear-gradient(rgba(25, 84, 123,0.4), rgba(71, 80, 86,0.6));
+                background: linear-gradient(#19547b, #2c3e50);
                 color: white;
                 @include br;
                 text-align: center;
                 padding: 15px;
                 height: 50%;
                 margin-top: 10px;
-                margin-left: 10px;
 
                 @include tablet-portrait-only{
                     padding-top: 5px;
@@ -1024,6 +1024,7 @@ body{
                 }
 
                 #inner-info{
+                    font-family: 'Roboto';
                     width: 90%;
                     margin: 0 5%;
 
@@ -1194,7 +1195,7 @@ body{
                     }
 
                     #charity-fact-tagline{
-                        font-family: 'Lobster', cursive;
+                        font-family: 'Roboto', cursive;
                         font-size: 22px;
                         margin-left: 2%;
                         margin-bottom: 3px;
@@ -1341,3 +1342,5 @@ body{
         border-top: 0px solid black !important;
     }
 }
+
+
