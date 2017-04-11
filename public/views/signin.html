@@ -1,71 +1,97 @@
-<div id="main-bod" ng-controller="IndexController">
-  <!-- Fixed Logo & Menu Bar Start -->
-  <div id="top-part">
-    <div class="wpb-top-bar">
-      <div class="mod-contain" id="navver">
-        <div class="row">
-          <!-- Logo -->
-          <div class="wpb-logo-container">
-            <div id="landing-logo"> 
-              <span id="first-word">Cards</span>
-              <span id="second-word"> for</span> 
-              <span id="third-word">Humanity</span> 
-            </div> 
-            <div class="col-md-9 wpb-menu-container">
-              <ul class="wpb-main-menu">
-                <li><a href="/">Home</a></li>
-              </ul>
-            </div>
-          </div>      
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- Fixed Logo & Menu Bar End -->
+<script type="text/javascript">
+$(document).ready(function() {
 
-<!-- Landing Start -->
-<div class="wpb-teaser parallax-background" id="homer">
-  <div class="background-opacity"></div> 
-  <div class="modified-container">
-    <div class="row" id="main-text"> 
-    <!-- Teaser Text Start -->
-    <div id="landing-logo">
-      <h2 id="slogan">Sign in with:</h2>
-      <div id="login-buttons">
-        <a href="/auth/facebook"><img class="login-item" src="/img/icons/facebook.png"></a>
-        <a href="/auth/github"><img class="login-item" src="/img/icons/github.png"></a>
-        <a href="/auth/twitter"><img class="login-item" src="/img/icons/twitter.png"></a>
-        <a href="/auth/google"><img class="login-item" src="/img/icons/google.png"></a>
-      </div>
-      <p id="create">Or log in below:</p>
+  var ChroMo = '(Chrome)/(\d+)\.(\d+)\.(\d+)\.(\d+) Mobile';
 
-      <div class="sign-body" ng-controller="IndexController">
-        <div class="more-sign">
-          <div class="sign-error" ng-show="showError() === 'invalid'">
-            Please check your username/password and try again.
-          </div>
-          <form ng-controller="IndexController" class="signup form-horizontal" ng-submit="signIn()">
-            <div class="control-group">
-              <label for="email" class="control-label"></label>
-              <div class="controls">
-                <input class="input-info" id="email" type="text" name="email" ng-model="formData.email" placeholder="Email" required novalidate />
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="password" class="control-label"></label>
-              <div class="controls">
-                <input class="input-info" id="password" type="password" name="password" ng-model="formData.password" placeholder="Password" required novalidate />
-              </div>
-            </div>
-            <div class="form-actions top-margin">
-              <button id="sign-up-btn-other" type='submit'>Sign In</button>
-            </div>
-          </form>
+  if (/Android|webOS|CriOs|ChroMo|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) === false && location.href !== "http://localhost:3000/#!/app") {
+    $('body').append('');
+  }
+
+  //Twitter buttons
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
+  });
+</script>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script></script>
+<div landing id="main-bod">
+
+<!-- header -->
+<div class="top-banner" ng-controller="IndexController">
+   <!--banner-info--> 
+   <div class="banner-info">
+      <div class="container">
+        <div class="logo">
+          <a href="#!/"><span>Cards For Humanity</span></a>
         </div>
-      </div>
-    </div>
-    </div>
-    </div>
-  </div>
+   <!-- script-for-menu -->
+            <script>
+               $( "span.menu" ).click(function() {
+              $( "ul.nav1" ).slideToggle( 300, function() {
+              // Animation complete.
+                });
+                });
+            </script>
+          <!-- /script-for-menu -->
+       
+     </div>
+   </div>
 </div>
-
+<!-- banner -->
+<!-- Slider-starts-Here -->
+   <script>
+    $(function () {
+      $("#slider").responsiveSlides({
+      auto:true,
+      nav: false,
+      speed: 500,
+      namespace: "callbacks",
+      pager:true,
+      });
+    });
+     </script>
+   <div class="slider">
+      <div class="callbacks_container">
+        <ul class="rslides" id="slider">
+           <div class="slid banner2 slider2">
+              <div class="caption">
+                <div class="row">
+                  <div class="form-container col-sm-12 col-md-4 col-md-offset-4" ng-controller="IndexController" >
+                    <form class="signin form-horizontal" ng-submit="signIn()">
+                      <p id="slogan">Sign in with</p>
+                      <div id="login-buttons">
+                        <a href="/auth/facebook"><i class="fa fa-facebook fa-3x"></i></a>
+                        <a href="/auth/github"><i class="fa fa-github fa-3x"></i></a>
+                        <a href="/auth/twitter"><i class="fa fa-twitter fa-3x"></i></a>
+                        <a href="/auth/google"><i class="fa fa-google fa-3x"></i></a>
+                      </div>
+                      <p id="slogan">Or log in below:</p>
+                      <div class="sign-error" ng-show="showMessage">
+                        {{showMessage}}
+                      </div>
+                      <div class="control-group">
+                        <label for="email" class="control-label"></label>
+                        <div class="controls">
+                          <input class="input-info form-control" id="email" type="text" name="email" ng-model="formData.email" placeholder="Email" required>
+                        </div>
+                      </div>
+                      <div class="control-group">
+                        <label for="password" class="control-label"></label>
+                        <div class="controls">
+                          <input class="input-info form-control" id="password" type="password" name="password" ng-model="formData.password" placeholder="Password" required>
+                        </div>
+                      </div>
+                      <div class="form-actions top-margin" id="btn-style">
+                        <button class="btn btn-lg" id="sign-up-btn-other" type='submit'>Sign In</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </ul>
+     </div>
+   </div>
+  </div>
+<!-- Landing End -->
+</div>

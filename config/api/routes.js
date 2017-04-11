@@ -50,9 +50,9 @@ module.exports = (app) => {
       }, (err, user) => {
         if (err) throw err;
         if (!user) {
-          res.json({
+          return res.json({
             success: false,
-            message: 'User does not exist'
+            message: 'Unable to Login. Invalid credentials'
           });
         }
         const isMatch = user.authenticate(req.body.password);
