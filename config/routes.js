@@ -67,8 +67,10 @@ module.exports = function(app, passport, auth) {
     });
 
     app.get('/api/games/history', (req, res) => {
+      const userName = req.query.name;
+
       gameRecord.find({ gamePlayers: { $elemMatch:
-          { $in: ['Mercy Oseni'] } } }, (error, result) => {
+          { $in: [userName] } } }, (error, result) => {
         res.send(result);
       });
     });
