@@ -143,7 +143,9 @@ color:rgba(51, 29, 29, 0.74) !important;
 }
 .donate-log:hover {
   background-color: transparent;
+  color: #213367 !important;
 }
+
 .stn {
   display: inline-block;
   margin-top: 5px;
@@ -191,6 +193,13 @@ color:rgba(51, 29, 29, 0.74) !important;
   background-position: 70% 0;
   z-index: -1;
 }
+.signup2{
+  background:url(../images/friends.png) no-repeat 0px 0px;
+  background-size:cover;
+  min-height:100%;
+  background-position: 70% 0;
+  z-index: -1;
+}
 .banner3{
   background:url(../images/non-profit.png) no-repeat 0px 0px;
   background-size:cover;
@@ -203,9 +212,14 @@ color:rgba(51, 29, 29, 0.74) !important;
   background-color: rgba(0, 0, 0, 0.7);
   min-height: 680px;
 }
-.slider::after {
-   
+
+.slider2{
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 750px;
 }
+
 .slider-inner {
   position: relative;
   background-color: #fff;
@@ -945,7 +959,7 @@ h3.ghj {
   left: 9%;
 }
 .caption {
-  margin-top: ;
+  margin-top: 0;
   min-height: 680px;
 }
 .caption p {
@@ -1529,7 +1543,7 @@ p.snglp,.blog-info p{
   width: 48%;
 }
 .banner-info {
-  top: 114px;
+  top: 54px;
 }
 .caption h3 {
   font-size: 1.7em;
@@ -1545,7 +1559,7 @@ p.snglp,.blog-info p{
 @media (max-width: 640px){
 .banner-info {
   width: 100%;
-  top: 116px;
+  top: 56px;
 }
 span.menu {
     display: block;   
@@ -1776,7 +1790,7 @@ a.list-group-item {
 @media(max-width:480px){
 .banner-info {
   width: 100%;
-  top: 102px;
+  top: 52px;
 }
 span.menu {
   margin-top: 5px;  

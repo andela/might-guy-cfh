@@ -34,6 +34,7 @@ angular.module('mean.system')
         return false;
       };
       $scope.signUp = () => {
+        $scope.showMessage = '';
         $http.post('/api/auth/signup', JSON.stringify($scope.formData))
       .success((data) => {
         if (data.success === true) {
@@ -41,13 +42,20 @@ angular.module('mean.system')
           $window.location.href = '/gametour';
         } else {
           $scope.showMessage = data.message;
+          document.getElementById('name').value = '';
+          document.getElementById('email').value = '';
+          document.getElementById('password').value = '';
         }
       }).error((error, status) => {
         $scope.showMessage = `${status} : ${error}`;
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('password').value = '';
       });
       };
 
       $scope.signIn = () => {
+        $scope.showMessage = '';
         $http.post('/api/auth/signin', JSON.stringify($scope.formData))
         .success((data) => {
           if (data.success === true) {
@@ -55,9 +63,13 @@ angular.module('mean.system')
             $window.location.href = '/';
           } else {
             $scope.showMessage = data.message;
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
           }
         }).error((error, status) => {
           $scope.showMessage = `${status} : ${error}`;
+          document.getElementById('email').value = '';
+          document.getElementById('password').value = '';
         });
       };
 

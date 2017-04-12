@@ -1,7 +1,5 @@
 angular.module('mean.system')
   .controller('GameTourController', ['$scope', '$window', function($scope, $window) {
-    // exit game tour when we navigate pages
-    // console.log(' tour file loaded');
     $scope.$on('$locationChangeSuccess', () => {
       if ($scope.gameTour) {
         $scope.gameTour.exit();
@@ -9,7 +7,6 @@ angular.module('mean.system')
     });
 
     $scope.gameTour = introJs();
-    //  $scope.expandChat = 'expand_more';
     $scope.playerCount = 1;
     $scope.playerScore = 0;
     $scope.awaitingPlayers = true;
@@ -56,17 +53,6 @@ angular.module('mean.system')
           know the next CZAR. As a Czar, you wait for all players to
           submit their answers after which you select your favorite answer`
         },
-        // {
-        //   element: '#notifications',
-        //   intro: `Your in-app notifications are shown here. Click to view
-        //  a dialog listing all your current game invites from your friends`,
-        //   position: 'bottom'
-        // },
-        // {
-        //   element: '#chat',
-        //   intro: 'While in a game, you can chat with other players.',
-        //   position: 'top'
-        // },
         {
           element: '#inner-text-container',
           intro: `After a game ends, you can join a new a game or return to Lobby`,
@@ -180,7 +166,6 @@ angular.module('mean.system')
               $scope.showQuestion = false;
               $scope.gameEnd = true;
               $scope.showChatBody = false;
-              // $scope.expandChat = 'expand_less';
             });
             break;
           }
@@ -188,7 +173,6 @@ angular.module('mean.system')
           {
             $scope.$apply(() => {
               $scope.showChatBody = true;
-              // $scope.expandChat = 'expand_more';
             });
             break;
           }
@@ -196,13 +180,12 @@ angular.module('mean.system')
           {
             $scope.$apply(() => {
               $scope.showChatBody = false;
-              // $scope.expandChat = 'expand_less';
             });
             break;
           }
         default:
           {
-            // we don't want to do anything on the default cases
+
           }
       }
     };

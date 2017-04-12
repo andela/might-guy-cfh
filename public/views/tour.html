@@ -20,7 +20,6 @@
           <span id="menu-button">Menu</span>
         </div>
         <div id="timer-container" ng-show="showTime">
-          <!--<timer></timer>-->
           <div id="inner-timer-container">
             <span id="timer-status-round"> Time Remaining</span>
             <div id="time">20</div>
@@ -28,11 +27,8 @@
         </div>
       </div>
       <div id="question-container-outer">
-        <!--<question></question>-->
         <div id="question-container-inner">
           <div class="card longBlack">
-            <!--<span ng-bind-html-unsafe="game.curQuestion.text" ng-hide="game.state === 'game ended' || game.state ==='game dissolved' || game.state === 'awaiting players'"></span>
-            <div id="notifications" ng-if="game.notification" ng-animate="{enter:'animated fadeInLeft', leave:'animated fadeOut'}">{{game.notification}}</div>-->
             <span id="question" ng-show="showQuestion" style="color:rgba(255, 187, 0, 0.8)">Can you guess who amongst this men is not the president of the world ?
                   </span>
 
@@ -51,16 +47,13 @@
                 </button>
               </div>
             </div>
-            <!-- Game Over Stuff -->
 
           </div>
         </div>
       </div>
     </div>
-    <!--<answers></answers>-->
     <div id="cards-container">
       <div id="social-bar-container" ng-show="showOtherPlayers">
-        <!--<player></player>-->
         <div id="player-container" style="background-color:antiquewhite">
           <div id="above-czar-container">
             <div id="avatar_">
@@ -90,7 +83,6 @@
           <div id="above-czar-container">
             <div id="avatar_">
               <span>
-        <!--<img ng-src="img/king.png" id="king">-->
       </span>
               <img src="../img/chosen/FB03.png" />
             </div>
@@ -106,16 +98,12 @@
               </div>
             </div>
           </div>
-          <!--<div id="czar-container">
-            <span id='the-czar'>CZAR</span>
-          </div>-->
         </div>
 
         <div id="player-container" style="background-color:antiquewhite">
           <div id="above-czar-container">
             <div id="avatar_">
               <span>
-        <!--<img ng-src="img/king.png" id="king">-->
       </span>
               <img src="../img/chosen/FH03.png" />
             </div>
@@ -131,16 +119,12 @@
               </div>
             </div>
           </div>
-          <!--<div id="czar-container">
-            <span id='the-czar'>CZAR</span>
-          </div>-->
         </div>
 
         <div id="player-container" style="background-color:antiquewhite">
           <div id="above-czar-container">
             <div id="avatar_">
               <span>
-        <!--<img ng-src="img/king.png" id="king">-->
       </span>
               <img src="../img/chosen/FE01.png" />
             </div>
@@ -156,24 +140,11 @@
               </div>
             </div>
           </div>
-          <!--<div id="czar-container">
-            <span id='the-czar'>CZAR</span>
-          </div>-->
         </div>
-
-        <!-- end of players -->
 
       </div>
       <div id="game-end-container">
         <div id="cards" class='hand' ng-show="showQuestion">
-          <!--<span ng-show="winnerPicked()"></span>-->
-
-          <!--<div ng-style="{'cursor':'pointer'}" class="card smallest" id='answers' ng-click="pickCard(card)" ng-hide="showTable || isCzar()" ng-repeat="card in game.players[game.playerIndex].hand" ng-animate="{enter:'animated fadeInUp', leave: 'animated fadeInOut'}">
-          <span ng-bind-html-unsafe="card.text"></span>
-          <span id='selection-number' ng-show="showFirst(card)"> 1 </span>
-          <span id='selection-number' ng-show="showSecond(card)"> 2 </span>
-        </div>-->
-
 
           <div ng-style="{'cursor':'pointer'}" class="col-md-25 card smallest ng-scope" id='answers'>
             <span>Anuoluwapo Onifade</span>
@@ -203,62 +174,11 @@
             <span id="selection-number">2</span>
           </div>
           <span ng-repeat="answer in game.table">
-        <!--<div class="card smallest" ng-style="pointerCursorStyle()" id='table' ng-click="pickWinning(answer)" ng-show="showTable || isCzar()"
-        ng-repeat="card in answer.card" ng-animate="{enter:'animated bounceInLeft'}" style="background-color:{{winningColor($parent.$index)}}">
-            <span ng-bind-html-unsafe="card.text"></span>
-          <span id='selection-number' ng-show="firstAnswer($index)"> 1 </span>
-          <span id='selection-number' ng-show="secondAnswer($index)"> 2 </span>
-        </div>-->
         </span>
 
       </div>
     </div>
   </div>
-  <!--<div id="game-end-container" ng-show="showQuestion">
-
-      <div ng-style="{'cursor':'pointer'}" class="col-md-15 card smallest" id='answers'>
-          <div class="the-card">
-            <div class="transbox">
-              <p>Banwo Victor</p>
-            </div>
-          </div>
-        </div>
-
-        <div ng-style="{'cursor':'pointer'}" class="col-md-15 card smallest" id='answers' >
-          <div class="the-card">
-            <div class="transbox">
-              <p>Akinrele Simisola</p>
-            </div>
-          </div>
-        </div>
-
-        <div ng-style="{'cursor':'pointer'}" class="col-md-15 card smallest" id='answers'>
-          <div class="the-card">
-            <div class="transbox">
-              <p>Rotimi Bababola</p>
-            </div>
-          </div>
-        </div>
-        <div ng-style="{'cursor':'pointer'}" class="col-md-15 card smallest" id='answers'>
-          <div class="the-card">
-            <div class="transbox">
-              <p>Chinazor Allen</p>
-            </div>
-          </div>
-        </div>
-
-        <div ng-style="{'cursor':'pointer'}" class="col-md-15 card smallest" id='answers'>
-          <div class="the-card">
-            <div class="transbox">
-              <p>Opara Febe</p>
-            </div>
-          </div>
-        </div>
-
-        
-
-    </div>-->
-
 
   <div id="game-end-container" ng-show="gameEnd">
     <div id="inner-info-exit">
@@ -282,12 +202,9 @@
     </div>
 
     <div id="charity-widget-container">
-      <!-- This is real -->
       <a href="http://www.crowdrise.com" id="crowdriseStaticLink-fundraiser-121142" title="Fundraising Websites on Crowdrise">Fundraising Websites - Crowdrise</a>
       <script type="text/javascript" src="https://www.crowdrise.com/widgets/donate/fundraiser/121142/?callback=userDonationCb"></script>
-      <!-- This is for testing -->
-      <!-- <a href="http://www.crowdrise.com" id="crowdriseStaticLink-project-36715" title="Fundraising Websites on Crowdrise">Fundraising Websites - Crowdrise</a> -->
-      <!-- <script type="text/javascript" src="https://apisandbox.crowdrise.com/widgets/donate/project/36715/?callback=userDonationCb"></script> -->
+      
     </div>
   </div>
 </div>
