@@ -144,12 +144,11 @@ body {
       #main-container #app-container #menu-container #abandon-game-button {
         display: inline-block;
         float: right;
-        text-shadow: 0 2px 3px black;
         border-radius: 8px;
         -moz-border-radius: 8px;
         -webkit-border-radius: 8px;
         font-size: 20px;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         font-weight: 400;
         text-align: center;
         color: white;
@@ -211,6 +210,7 @@ body {
         padding-bottom: 4%;
         min-height: 85px;
         background: #7CE4E8;
+        background: rgba(245, 166, 35, 0.5);
         margin: 0 4% 6% 6%;
         -webkit-border-radius: 8px;
         -moz-border-radius: 8px;
@@ -381,7 +381,7 @@ body {
           height: 100%;
           margin-right: 1%;
           margin-left: 1%;
-          background: rgba(255, 255, 255, 0.3); }
+          background: rgba(255, 255, 255, 0); }
           @media only screen and (min-width: 521px) and (max-width: 768px) {
             #main-container #app-container #gameplay-container #upper-gameplay-container #menu-timeremaining-container {
               width: 21%; } }
@@ -397,9 +397,9 @@ body {
             -webkit-border-radius: 8px;
             -moz-border-radius: 8px;
             border-radius: 8px;
-            -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
-            -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
-            box-shadow: inset 0px 1px 0px 0px #ffffff;
+            /* -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    box-shadow: inset 0px 1px 0px 0px #ffffff; */
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#f0f0f0');
             background-color: #D5D5D5;
             text-indent: 0;
@@ -417,8 +417,7 @@ body {
               left: 0;
               right: 0; }
           #main-container #app-container #gameplay-container #upper-gameplay-container #menu-timeremaining-container #timer-container {
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0); }
+            height: 100%; }
             #main-container #app-container #gameplay-container #upper-gameplay-container #menu-timeremaining-container #timer-container #inner-timer-container {
               text-align: center;
               text-align: center;
@@ -427,9 +426,9 @@ body {
               -webkit-border-radius: 8px;
               -moz-border-radius: 8px;
               border-radius: 8px;
-              -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
-              -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
-              box-shadow: inset 0px 1px 0px 0px #ffffff;
+              /* -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    box-shadow: inset 0px 1px 0px 0px #ffffff; */
               filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#f0f0f0');
               background-color: #D5D5D5;
               text-indent: 0;
@@ -598,7 +597,7 @@ body {
             margin-top: 10px;
             font-family: "Roboto", "helvetica neue", helvetica, sans-serif;
             text-align: left;
-            font-size: 17px; }
+            font-size: 15px; }
             #main-container #app-container #gameplay-container #info-container #inner-info ol li {
               list-style-type: decimal;
               margin-bottom: 5px; }
