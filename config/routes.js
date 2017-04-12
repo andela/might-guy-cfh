@@ -66,6 +66,31 @@ module.exports = function(app, passport, auth) {
       });
     });
 
+    app.get('/api/games/history', (req, res) => {
+      gameRecord.find({ gamePlayers: { $elemMatch:
+          { $in: ['Mercy Oseni'] } } }, (error, result) => {
+        res.send(result);
+      });
+    });
+
+    app.get('/api/leaderboard', (req, res) => {
+      User.find().sort({ gameWins: -1 }).exec((error, result) => {
+        res.send(result);
+      });
+    });
+
+    app.get('/api/donations', (req, res) => {
+      User.find({}, (error, result) => {
+        const allPlayersAndDonations = {};
+
+        result.forEach((user) => {
+          allPlayersAndDonations[user.name] = user.donations;
+        });
+
+        res.send(allPlayersAndDonations);
+      });
+    });
+
     app.post('/inviteusers', middleware.requiresLogin, (req, res) => {
       const url = req.body.url;
       const userEmail = req.body.invitee;
@@ -77,10 +102,10 @@ module.exports = function(app, passport, auth) {
 
     app.post('/api/games/:id/start', middleware.requiresLogin, (req, res) => {
       const gamePlayDate = req.body.gamePlayDate;
+      const gameID = req.params.id;
+      const gamePlayers = req.body.gamePlayers;
       const gameRounds = req.body.gameRounds;
       const winner = req.body.gameWinner;
-      const gamePlayers = req.body.gamePlayers;
-      const gameID = req.params.id;
 
       const record = new gameRecord(
         {
@@ -96,21 +121,19 @@ module.exports = function(app, passport, auth) {
         if (error) {
           console.log(error);
         }
-      }
-    );
-
-      gamePlayers.forEach((userName) => {
-        User.findOneAndUpdate({ name: userName },
-          {
-            $push: { gameRecord: gameID }
-          }, (error) => {
-            if (error) {
-              res.send('An error occured.');
-            } else {
-              res.send(`Game ${gameID} has been successfully recorded`);
-            }
-          });
       });
+
+      User.findOneAndUpdate({ name: winner },
+        {
+          $inc: { gameWins: 1 }
+        }, (error) => {
+          if (error) {
+            console.log(`An error occured while trying to
+              save win record for ${winner}`);
+          } else {
+            console.log(`Win record for ${winner} has been recorded`);
+          }
+        });
     });
 
     // Donation Routes
