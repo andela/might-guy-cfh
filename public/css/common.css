@@ -595,6 +595,7 @@ body {
                 font-size: 14px; } }
           #main-container #app-container #gameplay-container #info-container #inner-info ol {
             margin-top: 10px;
+            margin-left: 20px;
             font-family: "Roboto", "helvetica neue", helvetica, sans-serif;
             text-align: left;
             font-size: 15px; }
