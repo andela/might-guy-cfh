@@ -103,7 +103,12 @@ module.exports = function(app, passport, auth) {
     });
 
     app.post('/api/games/:id/start', middleware.requiresLogin, (req, res) => {
+      // prevent Node from performing post request every 2 minutes
+      // if no response is got from client to avoid multiple posts
+      res.connection.setTimeout(0);
+
       const gamePlayDate = req.body.gamePlayDate;
+      const gamePlayTime = req.body.gamePlayTime;
       const gameID = req.params.id;
       const gamePlayers = req.body.gamePlayers;
       const gameRounds = req.body.gameRounds;
@@ -112,6 +117,7 @@ module.exports = function(app, passport, auth) {
       const record = new gameRecord(
         {
           gamePlayDate,
+          gamePlayTime,
           gameID,
           gamePlayers,
           gameRounds,

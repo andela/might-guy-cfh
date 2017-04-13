@@ -1,6 +1,6 @@
 angular.module('mean.system')
-  .factory('game', ['socket', '$timeout', '$http',
-    (socket, $timeout, $http) => {
+  .factory('game', ['socket', '$timeout', '$http', '$window',
+    (socket, $timeout, $http, $window) => {
   var game = {
     id: null, // This player's socket ID, so we know who this player is
     gameID: null,
@@ -171,7 +171,9 @@ angular.module('mean.system')
       game.players[game.playerIndex].hand = [];
       game.time = 0;
 
-      const gamePlayDate = new Date();
+      const todayDate = new Date();
+      const gamePlayDate = todayDate.toLocaleDateString();
+      const gamePlayTime = todayDate.toLocaleTimeString();
       const gameRounds = game.round;
       const gameWinner = game.players[game.gameWinner].username;
       const gamePlayers = game.players.map(player => player.username);
@@ -179,12 +181,17 @@ angular.module('mean.system')
 
       const gameRecord = {
         gamePlayDate,
+        gamePlayTime,
         gameRounds,
         gameWinner,
         gamePlayers
       };
 
-      $http.post(`/api/games/${gameID}/start`, gameRecord);
+      // only perform the post from the browser of game owner
+      // to avoid multiple posts
+      if ($window.user.name === gamePlayers[0]) {
+        $http.post(`/api/games/${gameID}/start`, gameRecord);
+      }
     }
   });
 
