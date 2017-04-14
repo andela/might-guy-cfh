@@ -82,4 +82,58 @@ angular.module('mean.directives', [])
         }
       }
     };
-  });
+  })
+  .directive('leaderboard', ['$http', $http => ({
+    restrict: 'EA',
+    link: (scope) => {
+      $http.get('/api/leaderboard')
+        .success((response) => {
+          scope.leaderboard = response;
+        });
+    },
+    template:
+    `<tr ng-repeat="player in leaderboard track by $index">
+      <td>{{$index + 1}}</td>
+      <td>{{player.name}}</td>
+      <td>{{player.gameWins}}</td>
+     </tr>`,
+  })])
+  .directive('history', ['$http', '$window', ($http, $window) => ({
+    restrict: 'EA',
+    link: (scope) => {
+      const userName = $window.user.name;
+      $http.get('/api/games/history', { params: { name: userName } })
+        .success((response) => {
+          scope.gameHistory = response;
+        });
+    },
+    template:
+    `
+      <div ng-repeat="game in gameHistory" style="margin-bottom: 10px;
+        background: #4b525e; color: white">
+            <div style="font-size: 1.1em; margin: 0px 0px 10px 10px;">
+              {{game.gamePlayDate}} at {{game.gamePlayTime}}
+            </div>
+            <table class="table" style="background: #4b525e; color: white">
+              <thead>
+                <tr>
+                  <th>Game Rounds</th>
+                  <th>Game Players</th>
+                  <th>Game Winner</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td> {{game.gameRounds}} </td>
+                  <td>
+                    <p ng-repeat="player in game.gamePlayers track by $index">
+                      {{player}}
+                    </p>
+                  </td>
+                  <td> {{game.winner}} </td>
+                </tr>
+              </tbody>
+            </table>
+       </div>`,
+  })]);
