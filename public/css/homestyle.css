@@ -48,7 +48,7 @@ body a{
 }
 .row{
   margin:0;
-} 
+}
 a#toTop{
   margin-top: 0;
 }
@@ -144,6 +144,14 @@ color:rgba(51, 29, 29, 0.74) !important;
 .donate-log:hover {
   background-color: transparent;
   color: #213367 !important;
+}
+
+#dashboard-nav > li > a:hover,
+#dashboard-nav > li > a:link {
+  background-color: black;
+  border-radius: 0;
+  margin-bottom: 1px;
+  /*color: white;*/
 }
 
 .stn {
@@ -326,7 +334,7 @@ color:rgba(51, 29, 29, 0.74) !important;
 }
 .callbacks_tabs li{
   display:inline-block;
-  
+
 }
 ul.callbacks_tabs.callbacks1_tabs {
   position: absolute;
@@ -443,7 +451,7 @@ ul.callbacks_tabs.callbacks1_tabs {
   min-height:450px;
   position:relative;
 }
-.poster-info{ 
+.poster-info{
   width:60%;
   margin-top:5em;
   clear: both;
@@ -452,7 +460,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 .poster-right {
     width: 40%;
     margin-top: 5em;
-    
+
 }
 .sect {
   background-color: #f5f5f5;
@@ -466,19 +474,19 @@ ul.callbacks_tabs.callbacks1_tabs {
   margin-top: 100px;
   margin-bottom: 20px;
 }
-.count-title { 
+.count-title {
   font-size: 40px;
-  font-weight: normal; 
+  font-weight: normal;
   margin-top: 10px;
   margin-bottom: 0;
   text-align: center;
   }
-.count-text { 
+.count-text {
   font-size: 13px;
-  font-weight: normal; 
+  font-weight: normal;
   margin-top: 10px;
   margin-bottom: 0;
-  text-align: center; 
+  text-align: center;
 }
 .fa-2x { margin: 0 auto; float: none; display: table; color: #4ad1e5; }
 
@@ -676,7 +684,7 @@ font-size: 0.9em;
   font-size: 1.3em;
   margin:0.6em 0;
   text-align: center;
-  background-color: 
+  background-color:
 }
 /*--reviews--*/
 .review {
@@ -809,7 +817,7 @@ a.list-group-item:hover {
 .posts-right{
   float:right;
   width: 51%;
-} 
+}
 .posts-right lable {
   font-size: 14px;
   font-weight: 500;
@@ -822,8 +830,8 @@ a.list-group-item:hover {
   margin: 3px 0;
   line-height: 1.6em;
 }
-.posts-right h5 a:hover{  
-  color: #2f6818; 
+.posts-right h5 a:hover{
+  color: #2f6818;
 }
 .blog-info {
   margin-bottom: 2em;
@@ -1490,7 +1498,7 @@ p.snglp,.blog-info p{
   top: 56px;
 }
 span.menu {
-    display: block;   
+    display: block;
     cursor: pointer;
     color: #FFFFFF;
     font-size: 1.3em;
@@ -1502,7 +1510,7 @@ span.menu {
     background:url(../images/menu.png) no-repeat 0px 0px;
     margin-left: 70px;
 }
-.top-menu {   
+.top-menu {
     width:70%;
 }
 ul.nav1 {
@@ -1545,14 +1553,14 @@ ul.nav1 {
 }
 .top-menu ul li a.active {
     color: rgba(21, 132, 113, 0.65) !important;
-  } 
+  }
 .top-menu ul li a {
    padding: .5em 0;
     display:block;
     float: none;
     cursor: pointer;
     color: ;
-    
+
 }
 .rslides {
   z-index: 1;
@@ -1564,7 +1572,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 }
 .caption {
   margin-top:9em;
-} 
+}
 .headr-left {
   width: 46%;
 }
@@ -1721,7 +1729,7 @@ a.list-group-item {
   top: 52px;
 }
 span.menu {
-  margin-top: 5px;  
+  margin-top: 5px;
 }
 .top-menu ul {
   margin-top: 2em;
