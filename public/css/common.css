@@ -106,8 +106,8 @@ body {
 
 #main-container {
   height: 100%;
-  /* background:url(../images/blue.jpg) no-repeat 0px 0px; */
-  /* background-size:cover; */ }
+  background: url(../images/blue.jpg) no-repeat 0px 0px;
+  background-size: cover; }
   #main-container #app-container {
     height: 100%;
     max-width: 1200px;
@@ -132,7 +132,7 @@ body {
         display: inline-block;
         margin-left: 10px;
         font-size: 28px;
-        font-family: 'Roboto', cursive;
+        font-family: 'Roboto-BoldItalic', cursive;
         font-style: italic; }
         @media (max-width: 520px) {
           #main-container #app-container #menu-container #logo {
