@@ -105,15 +105,14 @@ body {
   width: 70%; }
 
 #main-container {
-  height: 100%;
-  background: url(../images/blue.jpg) no-repeat 0px 0px;
-  background-size: cover; }
+  height: 100%; }
   #main-container #app-container {
+    font-family: 'Roboto';
     height: 100%;
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-    /* background:url(../images/blue.jpg) no-repeat 0px 0px; */
+    background: url(../images/blue.jpg) no-repeat 0px 0px;
     background-size: cover; }
     #main-container #app-container #menu-container {
       width: 100%;
@@ -131,7 +130,7 @@ body {
       #main-container #app-container #menu-container #logo {
         display: inline-block;
         margin-left: 10px;
-        font-size: 28px;
+        font-size: 36px;
         font-family: 'Roboto-BoldItalic', cursive;
         font-style: italic; }
         @media (max-width: 520px) {
@@ -143,22 +142,48 @@ body {
           color: #ffffff; }
         #main-container #app-container #menu-container #logo #third-word {
           color: #ffffff; }
+      #main-container #app-container #menu-container #donate-now {
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        background-color: rgba(33, 51, 103, 0.9);
+        border-radius: 30px;
+        -moz-border-radius: 30px;
+        -webkit-border-radius: 30px;
+        color: white;
+        float: right;
+        border-radius: 20px;
+        -moz-border-radius: 20px;
+        -webkit-border-radius: 20px;
+        font-size: 1rem;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        margin-right: 5px;
+        padding: 0.65em 20px; }
+        @media (max-width: 520px) {
+          #main-container #app-container #menu-container #donate-now {
+            font-size: 0.7rem;
+            margin-top: 5px;
+            margin-right: 1px;
+            padding: 5px;
+            width: 60px; } }
+      #main-container #app-container #menu-container #donate-now:hover {
+        background-color: transparent; }
       #main-container #app-container #menu-container #abandon-game-button {
         display: inline-block;
         float: right;
-        border-radius: 8px;
-        -moz-border-radius: 8px;
-        -webkit-border-radius: 8px;
-        font-size: 20px;
-        font-size: 0.9rem;
+        border-radius: 20px;
+        -moz-border-radius: 20px;
+        -webkit-border-radius: 20px;
+        font-size: 1rem;
         font-weight: 400;
         text-align: center;
         color: white;
-        background: #C54141;
+        background: rgba(197, 65, 65, 0.9);
         margin-top: 3px;
         margin-bottom: 3px;
         margin-right: 10px;
-        padding: 0.65em 20px;
+        padding: 0.65em 10px;
         width: 140px;
         cursor: pointer; }
         @media (max-width: 520px) {
@@ -169,7 +194,7 @@ body {
             padding: 5px;
             width: 60px; } }
       #main-container #app-container #menu-container #abandon-game-button:hover {
-        background: red; }
+        background: none; }
       #main-container #app-container #menu-container #tweet-container {
         float: right;
         padding-top: 5px;
