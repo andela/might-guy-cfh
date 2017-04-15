@@ -1,6 +1,6 @@
 angular.module('mean.system')
-  .factory('game', ['socket', '$timeout', function (socket, $timeout) {
-
+  .factory('game', ['socket', '$timeout', '$http',
+    (socket, $timeout, $http) => {
   var game = {
     id: null, // This player's socket ID, so we know who this player is
     gameID: null,
@@ -170,6 +170,21 @@ angular.module('mean.system')
     } else if (data.state === 'game dissolved' || data.state === 'game ended') {
       game.players[game.playerIndex].hand = [];
       game.time = 0;
+
+      const gamePlayDate = new Date();
+      const gameRounds = game.round;
+      const gameWinner = game.players[game.gameWinner].username;
+      const gamePlayers = game.players.map(player => player.username);
+      const gameID = game.gameID;
+
+      const gameRecord = {
+        gamePlayDate,
+        gameRounds,
+        gameWinner,
+        gamePlayers
+      };
+
+      $http.post(`/api/games/${gameID}/start`, gameRecord);
     }
   });
 
