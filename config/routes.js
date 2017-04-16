@@ -66,7 +66,7 @@ module.exports = function(app, passport, auth) {
       });
     });
 
-    app.get('/api/games/history', (req, res) => {
+    app.get('/api/games/history', middleware.requiresLogin, (req, res) => {
       const userName = req.query.name;
 
       gameRecord.find({ gamePlayers: { $elemMatch:
@@ -75,21 +75,20 @@ module.exports = function(app, passport, auth) {
       });
     });
 
-    app.get('/api/leaderboard', (req, res) => {
+    app.get('/api/leaderboard', middleware.requiresLogin, (req, res) => {
       User.find().sort({ gameWins: -1 }).exec((error, result) => {
         res.send(result);
       });
     });
 
-    app.get('/api/donations', (req, res) => {
-      User.find({}, (error, result) => {
-        const allPlayersAndDonations = {};
+    app.get('/api/donations', middleware.requiresLogin, (req, res) => {
+      const userName = req.query.name;
 
-        result.forEach((user) => {
-          allPlayersAndDonations[user.name] = user.donations;
-        });
-
-        res.send(allPlayersAndDonations);
+      User.findOne({ name: userName }, (error, result) => {
+        if (error) {
+          console.log(error);
+        }
+        res.send(result.donations);
       });
     });
 
