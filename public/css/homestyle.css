@@ -57,6 +57,10 @@ a#toTop{
   text-align:left;
 }
 
+#glyph-home {
+  display: none;
+}
+
 /*-- header_top --*/
 .header{
   background:#213367;
@@ -89,7 +93,7 @@ a#toTop{
 }
 .top-menu{
   float:right;
-  margin-left: 130px;
+  /*margin-left: 130px;*/
 }
 .top-menu ul li{
   display:inline-block;
@@ -151,7 +155,6 @@ color:rgba(51, 29, 29, 0.74) !important;
   background-color: black;
   border-radius: 0;
   margin-bottom: 1px;
-  /*color: white;*/
 }
 
 .stn {
@@ -380,6 +383,10 @@ ul.callbacks_tabs.callbacks1_tabs {
         width: 19%;
         float: left;
     }
+
+  .logo > span {
+    font-size: 3px;
+  }
 }
 @media (min-width: 992px) {
     .col-md-15 {
@@ -401,7 +408,8 @@ ul.callbacks_tabs.callbacks1_tabs {
         float: left;
     }
     .top-menu {
-      margin-left: 180px;
+      position: relative;
+      left: 110px;
     }
 }
 .latest-top{
@@ -1281,6 +1289,19 @@ p.snglp,.blog-info p{
 .banner-info {
   left: 0%;
 }
+
+#logo {
+  display: none;
+}
+
+#glyph-home {
+  display: inline;
+}
+
+#nav-header {
+  display: none;
+}
+
 .nbs-flexisel-item {
   padding: 0px 12px;
   width: 246px!important;

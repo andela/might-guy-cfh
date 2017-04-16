@@ -3,14 +3,17 @@
     <div style="background: black; height: 200px; margin-bottom: 1px;">
       <nav class="navbar navbar-inverse" style="border-radius: 0; background: black;">
         <div class="container-fluid" style="margin-top: 15px;">
-          <div class="navbar-header">
+          <div class="navbar-header" id="logo">
             <a href="#!/" class="logo">
-              <span style="font-size: 28px; vertical-align: -15px; margin-left: 5px;">
-                Cards For Humanity
+              <span style="font-size: 30px; margin-left: 5px;">
+                Cards For Humanity <div class="glyphicon glyphicon-home"></div>
               </span>
             </a>
           </div>
-          <ul class="nav navbar-nav" style="float: right">
+
+          <a href="#!/"><div class="glyphicon glyphicon-home" id="glyph-home" style="font-size: 30px; margin-left: 5px; color: white; vertical-align: -20px;"></div></a>
+          <!-- <span class="menu"></span> -->
+          <ul class="nav navbar-nav" style="float: right; margin-right: 10px">
             <li ng-hide="showOptions" class="donate">
               <a href="https://www.crowdrise.com/fundraise-and-volunteer/donate-mobile/project/cfhio/cards4humanity?widget=true&redirect_to=http%3A%2F%2Fcfh.io%2F%23!%2F&stylesheet=&amounts=">Donate Now
               </a>
@@ -27,64 +30,28 @@
           Welcome to your dashboard, {{global.user.name}}.
       </h3>
     </div>
-       <!-- <div class="banner-info" style="background: black">
-          <div class="container">
-            <div class="logo">
-               <a href="#!/" class="logo"><span>Cards For Humanity</span></a>
-              <span class="menu"></span>
-           <div class="top-menu">
-              <ul class="nav1 pull-right">
-                 <li class="active"><a href="">Home</a></li>
-                 <li><a href="">How to Play?</a></li>
-                 <li><a href="">Charity</a></li>
-                 <li><a href="">About</a></li>
-                 <li ng-show="showOptions" class="donate-log"><a href="https://www.crowdrise.com/fundraise-and-volunteer/donate-mobile/project/cfhio/cards4humanity?widget=true&redirect_to=http%3A%2F%2Fcfh.io%2F%23!%2F&stylesheet=&amounts=">Donate Now</a></li>
-
-                 <li ng-hide="showOptions" class="donate"><a href="https://www.crowdrise.com/fundraise-and-volunteer/donate-mobile/project/cfhio/cards4humanity?widget=true&redirect_to=http%3A%2F%2Fcfh.io%2F%23!%2F&stylesheet=&amounts=">Donate Now</a></li>
-                 <li ng-show="showOptions" class="donate-log"><a href="#!/signin">Login</a></li>
-                 <li ng-hide="showOptions" class="donate"><a href="/signout">Sign Out</a></li>
-              </ul>
-           </div>
-           </div>
-
-           <div class="clearfix"></div>
-         </div>
-       </div> -->
-    <!-- banner -->
 
     <div class="tabs" style="background: black">
     <ul class="nav nav-tabs" id="dashboard-nav">
       <li class="dashboard-tab col-sm-4"><a style="color: #000;" href="javascript:void(0)#game-history" data-toggle="tab">Your Game History</a></li>
+      <li class="dashboard-tab col-sm-4"><a style="color: #000;" href="javascript:void(0)#your-donations" data-toggle="tab">Your Donations</a></li>
       <li class="dashboard-tab col-sm-4"><a style="color: #000;" href="javascript:void(0)#leaderboard" data-toggle="tab">Leaderboard</a></li>
-      <li class="dashboard-tab col-sm-4"><a style="color: #000;" href="javascript:void(0)#donations" data-toggle="tab">Donations</a></li>
     </ul>
     </div>
 
     <div class="tab-content">
-      <div class="tab-pane" id="leaderboard">
-        <h2 style="font-size: 1.5em; text-align: center; font-family: 'Times New Romans'">
-          <!-- The winners and the sore losers. -->
-        </h2>
-        <table class="table " style="background: #4b525e; color: white">
-          <thead>
-            <tr>
-              <th>Rank</th>
-              <th>Player</th>
-              <th>Number of Wins</th>
-            </tr>
-          </thead>
+      <div class="tab-pane" id="leaderboard" leaderboard>
+        <!-- <div style="height: 25px; background: black">
+        </div> -->
 
-          <tbody leaderboard>
-          </tbody>
-        </table>
       </div>
 
       <div class="tab-pane" id="game-history" history>
 
       </div>
 
-      <div class="tab-pane" id="donations">
-        <h1> We are the children! </h1>
+      <div class="tab-pane" id="your-donations" donations>
+        <!-- <h3> {{userDonations}} </h3> -->
       </div>
 
     </div>
