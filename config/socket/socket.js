@@ -3,10 +3,26 @@ var Player = require('./player');
 require("console-stamp")(console, "m/dd HH:MM:ss");
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+const config = require('../config');
+const firebase = require('firebase');
+
+const firebaseConfig = {
+  apiKey: config.firebase_apiKey,
+  authDomain: config.firebase_authDomain,
+  databaseURL: config.firebase_databaseUrl,
+  projectId: config.firebase_projectId,
+  storageBucket: config.firebase_storageBucket,
+  messagingSenderId: config.firebase_messagingSenderId
+};
+
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database(); // Unique chat database on firebase
 
 var avatars = require(__dirname + '/../../app/controllers/avatars.js').all();
 // Valid characters to use to generate random private game IDs
-var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
+
+let chatMessages = []; // Initialize chat messages to nothing
 
 module.exports = function(io) {
 
@@ -33,7 +49,8 @@ module.exports = function(io) {
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].pickWinning(data.card,socket.id);
       } else {
-        console.log('Received pickWinning from',socket.id, 'but game does not appear to exist!');
+        console.log('Received pickWinning from',
+          socket.id, 'but game does not appear to exist!');
       }
     });
 
