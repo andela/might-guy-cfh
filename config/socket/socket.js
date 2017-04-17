@@ -24,7 +24,7 @@ const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
 
 let chatMessages = []; // Initialize chat messages to nothing
 
-module.exports = function(io) {
+module.exports = function (io) {
 
   var game;
   var allGames = {};
@@ -33,6 +33,15 @@ module.exports = function(io) {
   var gameID = 0;
 
   io.sockets.on('connection', function (socket) {
+
+    socket.emit('initializeChat', chatMessages);
+
+    socket.on('chat message', (chat) => {
+      game.players.forEach(player => player.socket.emit('chat message', chat));
+      chatMessages.push(chat);
+      database.ref(`chat/${gameID}`).set(chatMessages);
+    });
+
     console.log(socket.id +  ' Connected');
     socket.emit('id', {id: socket.id});
 
@@ -41,7 +50,8 @@ module.exports = function(io) {
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].pickCards(data.cards,socket.id);
       } else {
-        console.log('Received pickCard from',socket.id, 'but game does not appear to exist!');
+        console.log(`Received pickCard from ${socket.id} 
+          but game does not appear to exist!`);
       }
     });
 
@@ -249,6 +259,7 @@ module.exports = function(io) {
         }
         game.killGame();
         delete allGames[socket.gameID];
+        chatMessages = [];
       }
     }
     socket.leave(socket.gameID);
