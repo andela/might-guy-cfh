@@ -1179,7 +1179,7 @@ body{
             #czar-blank-container{
                 color: white;
                 width: 100%;
-                background: #252525;
+                background: linear-gradient(rgba(25, 84, 123,0), rgba(71, 80, 86,0));
                 @include br;
                 text-align: center;
                 overflow: hidden;
@@ -1271,8 +1271,9 @@ body{
 
             #cards-container{
                 width: 100%;
-                background: #252525;
+                background: linear-gradient(rgba(25, 84, 123,0), rgba(71, 80, 86,0));
                 margin-top: 11px;
+                margin-bottom: 10px;
                 @include br;
 
                 @include mobile-only{

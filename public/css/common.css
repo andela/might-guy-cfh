@@ -765,7 +765,7 @@ body {
       #main-container #app-container #gameplay-container #czar-blank-container {
         color: white;
         width: 100%;
-        background: #252525;
+        background: linear-gradient(rgba(25, 84, 123, 0), rgba(71, 80, 86, 0));
         -webkit-border-radius: 8px;
         -moz-border-radius: 8px;
         border-radius: 8px;
@@ -837,8 +837,9 @@ body {
                 width: 53%; } }
       #main-container #app-container #gameplay-container #cards-container {
         width: 100%;
-        background: #252525;
+        background: linear-gradient(rgba(25, 84, 123, 0), rgba(71, 80, 86, 0));
         margin-top: 11px;
+        margin-bottom: 10px;
         -webkit-border-radius: 8px;
         -moz-border-radius: 8px;
         border-radius: 8px; }
