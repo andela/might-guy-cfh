@@ -190,7 +190,7 @@ Game.prototype.stateJudging = function(self) {
   self.state = "waiting for czar to decide";
   // console.log(self.gameID,self.state);
 
-  if (self.table.length <= 1) {
+  if (self.table.length === 1) {
     // Automatically select a card if only one card was submitted
     self.selectFirst();
   } else {
