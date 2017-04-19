@@ -581,14 +581,18 @@ body{
             position: absolute;
             right: 0;
             top: 60px;
+            z-index: 1;
+            overflow-y: scroll;
 
             @include mobile-only{
                 top: auto;
                 width: 100%;
                 height: 50px;
                 position: relative;
+                right: 0;
                 top: 0;
-                left: 0;
+                z-index: 1;
+                overflow-x: scroll;
            
             }
 
@@ -619,6 +623,7 @@ body{
 
                     @include mobile-only{
                         height: 100%;
+                        width: 100%;
                     }
 
                     #avatar_ {
@@ -790,7 +795,7 @@ body{
 
             @include mobile-only{
                 width: 100%;
-                height: 91%;
+                height: 80%;
             }
 
             #upper-gameplay-container {
@@ -1037,21 +1042,21 @@ body{
                 color: white;
                 @include br;
                 text-align: center;
-                padding: 12px;
+                padding: 10px;
                 height: 50%;
                 margin-top: 20px;
                 margin-left: 5px;
 
                 @include tablet-portrait-only{
                     padding-top: 5px;
-                    height: 40%;
+                    height: 50%;
                 }
 
                 @include mobile-only{
-                    margin-top: 25%;
+                    margin-top: 10%;
                     width: 100%;
                     padding: 1px;
-                    height: 40%;
+                    height: 50%;
                 }
 
                 #inner-info{
@@ -1307,7 +1312,7 @@ body{
                         -webkit-border-radius: 8px;
                         -moz-border-radius: 8px;
                         border-radius: 8px;
-                        max-height: 10%;
+                        max-height: 8%;
                     }
                 }
             }

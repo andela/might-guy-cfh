@@ -222,15 +222,19 @@ body {
       height: 63%;
       position: absolute;
       right: 0;
-      top: 60px; }
+      top: 60px;
+      z-index: 1;
+      overflow-y: scroll; }
       @media (max-width: 520px) {
         #main-container #app-container #social-bar-container {
           top: auto;
           width: 100%;
           height: 50px;
           position: relative;
+          right: 0;
           top: 0;
-          left: 0; } }
+          z-index: 1;
+          overflow-x: scroll; } }
       #main-container #app-container #social-bar-container #player-container {
         height: 13.166667%;
         position: relative;
@@ -257,7 +261,8 @@ body {
           width: 100%; }
           @media (max-width: 520px) {
             #main-container #app-container #social-bar-container #player-container #above-czar-container {
-              height: 100%; } }
+              height: 100%;
+              width: 100%; } }
           #main-container #app-container #social-bar-container #player-container #above-czar-container #avatar_ {
             height: 60%;
             width: 20%;
@@ -388,7 +393,7 @@ body {
       @media (max-width: 520px) {
         #main-container #app-container #gameplay-container {
           width: 100%;
-          height: 91%; } }
+          height: 80%; } }
       #main-container #app-container #gameplay-container #upper-gameplay-container {
         height: 28%;
         width: 100%;
@@ -598,20 +603,20 @@ body {
         -moz-border-radius: 8px;
         border-radius: 8px;
         text-align: center;
-        padding: 12px;
+        padding: 10px;
         height: 50%;
         margin-top: 20px;
         margin-left: 5px; }
         @media only screen and (min-width: 521px) and (max-width: 768px) {
           #main-container #app-container #gameplay-container #info-container {
             padding-top: 5px;
-            height: 40%; } }
+            height: 50%; } }
         @media (max-width: 520px) {
           #main-container #app-container #gameplay-container #info-container {
-            margin-top: 25%;
+            margin-top: 10%;
             width: 100%;
             padding: 1px;
-            height: 40%; } }
+            height: 50%; } }
         #main-container #app-container #gameplay-container #info-container #inner-info {
           width: 90%;
           margin: 0 2%;
@@ -871,7 +876,7 @@ body {
               -webkit-border-radius: 8px;
               -moz-border-radius: 8px;
               border-radius: 8px;
-              max-height: 10%; } }
+              max-height: 8%; } }
 
 @media only screen and (min-width: 521px) and (max-width: 768px) {
   #notifications {
