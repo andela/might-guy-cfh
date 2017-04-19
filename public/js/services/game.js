@@ -1,27 +1,63 @@
 angular.module('mean.system')
-  .factory('game', ['socket', '$timeout', '$http',
-    (socket, $timeout, $http) => {
-      var game = {
-        id: null, // This player's socket ID, so we know who this player is
-        gameID: null,
-        players: [],
-        playerIndex: 0,
-        winningCard: -1,
-        winningCardPlayer: -1,
-        gameWinner: -1,
-        table: [],
-        czar: null,
-        playerMinLimit: 3,
-        playerMaxLimit: 12,
-        pointLimit: null,
-        state: null,
-        round: 0,
-        time: 0,
-        curQuestion: null,
-        notification: null,
-        timeLimits: {},
-        joinOverride: false
-      };
+  .factory('game', ['socket', '$timeout', '$http', '$window',
+    (socket, $timeout, $http, $window) => {
+  var game = {
+    id: null, // This player's socket ID, so we know who this player is
+    gameID: null,
+    players: [],
+    playerIndex: 0,
+    winningCard: -1,
+    winningCardPlayer: -1,
+    gameWinner: -1,
+    table: [],
+    czar: null,
+    playerMinLimit: 3,
+    playerMaxLimit: 12,
+    pointLimit: null,
+    state: null,
+    round: 0,
+    time: 0,
+    curQuestion: null,
+    notification: null,
+    timeLimits: {},
+    joinOverride: false
+  };
+
+  var notificationQueue = [];
+  var timeout = false;
+  var self = this;
+  var joinOverrideTimeout = 0;
+
+  var addToNotificationQueue = function(msg) {
+    notificationQueue.push(msg);
+    if (!timeout) { // Start a cycle if there isn't one
+      setNotification();
+    }
+  };
+  var setNotification = function() {
+    if (notificationQueue.length === 0) { // If notificationQueue is empty, stop
+      clearInterval(timeout);
+      timeout = false;
+      game.notification = '';
+    } else {
+      game.notification = notificationQueue.shift(); // Show a notification and check again in a bit
+      timeout = $timeout(setNotification, 1300);
+    }
+  };
+
+  var timeSetViaUpdate = false;
+  var decrementTime = function() {
+    if (game.time > 0 && !timeSetViaUpdate) {
+      game.time--;
+    } else {
+      timeSetViaUpdate = false;
+    }
+    $timeout(decrementTime, 950);
+  };
+
+  socket.on('id', function(data) {
+    game.id = data.id;
+  });
 
       var notificationQueue = [];
       var timeout = false;
@@ -180,7 +216,9 @@ angular.module('mean.system')
       game.players[game.playerIndex].hand = [];
       game.time = 0;
 
-      const gamePlayDate = new Date();
+      const todayDate = new Date();
+      const gamePlayDate = todayDate.toLocaleDateString();
+      const gamePlayTime = todayDate.toLocaleTimeString();
       const gameRounds = game.round;
       const gameWinner = game.players[game.gameWinner].username;
       const gamePlayers = game.players.map(player => player.username);
@@ -188,12 +226,17 @@ angular.module('mean.system')
 
       const gameRecord = {
         gamePlayDate,
+        gamePlayTime,
         gameRounds,
         gameWinner,
         gamePlayers
       };
 
-      $http.post(`/api/games/${gameID}/start`, gameRecord);
+      // only perform the post from the browser of game owner
+      // to avoid multiple posts
+      if ($window.user.name === gamePlayers[0]) {
+        $http.post(`/api/games/${gameID}/start`, gameRecord);
+      }
     }
       });
 

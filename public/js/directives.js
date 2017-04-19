@@ -82,4 +82,111 @@ angular.module('mean.directives', [])
         }
       }
     };
-  });
+  })
+  .directive('leaderboard', ['$http', $http => ({
+    restrict: 'A',
+    link: (scope) => {
+      $http.get('/api/leaderboard')
+        .success((response) => {
+          scope.leaderboard = response;
+        });
+    },
+    template:
+    `
+    <div ng-show="leaderboard.length === 0" style="background: #213367;
+     color: white; height: 250px; text-align: center; padding-top: 110px;
+     font-size: 1.5em;">
+      There's no leaderboard yet. Looks like everyone's making Heaven.
+    </div>
+
+    <table class="table " style="background: #213367; color: white"
+      ng-show="leaderboard.length > 0">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Player</th>
+          <th>Number of Wins</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="player in leaderboard track by $index">
+          <td>{{$index + 1}}</td>
+          <td>{{player.name}}</td>
+          <td>{{player.gameWins}}</td>
+         </tr>
+      </tbody>
+    </table>
+
+    `,
+  })])
+  .directive('history', ['$http', '$window', ($http, $window) => ({
+    restrict: 'A',
+    link: (scope) => {
+      const userName = $window.user.name;
+      $http.get('/api/games/history', { params: { name: userName } })
+        .success((response) => {
+          scope.gameHistory = response;
+        });
+    },
+    template:
+    `
+    <div ng-show="gameHistory.length === 0" style="background: #213367;
+     color: white; height: 250px; text-align: center; padding-top: 110px;
+     font-size: 1.5em;">
+      You have not participated in any game yet.
+      You shouldn't lead a boring life, you know.
+    </div>
+
+      <div ng-repeat="game in gameHistory" style="margin-bottom: 10px;
+        background: #213367; color: white">
+            <div style="font-size: 1.1em; margin: 0px 0px 10px 10px;">
+              <strong style="padding:18px;">Date: {{game.gamePlayDate}}
+              &nbsp;&nbsp;&nbsp;&nbsp;Time: {{game.gamePlayTime}} </strong>
+            </div>
+            <table class="table" style="background: white; color: black;">
+              <thead>
+                <tr>
+                  <th>Game Rounds</th>
+                  <th>Game Players</th>
+                  <th>Game Winner</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td> {{game.gameRounds}} </td>
+                  <td>
+                    <p ng-repeat="player in game.gamePlayers track by $index">
+                      {{player}}
+                    </p>
+                  </td>
+                  <td> {{game.winner}} </td>
+                </tr>
+              </tbody>
+            </table>
+       </div>
+       `,
+  })])
+  .directive('donations', ['$http', '$window', ($http, $window) => ({
+    restrict: 'A',
+    link: (scope) => {
+      const userName = $window.user.name;
+      $http.get('/api/donations', { params: { name: userName } })
+        .success((response) => {
+          scope.userDonations = response;
+        });
+    },
+    template:
+    `
+    <div ng-show="userDonations.length === 0" style="background: #1a306f;
+     color: white; height: 250px; text-align: center; padding-top: 110px;
+     font-size: 1.5em; margin-top: 20px;">
+      You have no donations yet. Ain't you just miserly?
+    </div>
+
+    <div ng-repeat="donation in userDonations">
+      {{donation}}
+    </div>
+    `,
+  })]);
