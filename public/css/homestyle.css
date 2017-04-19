@@ -149,12 +149,33 @@ color:rgba(51, 29, 29, 0.74) !important;
   background-color: transparent;
   color: #213367 !important;
 }
-
-#dashboard-nav > li > a:hover,
+.navbar-nav a {
+  background-color: rgba(255, 187, 0, 0.8);;
+  color: #fff !important;
+  border-radius: 40px;
+}
+.navbar-nav a:hover {
+  background-color: transparent !important;
+  color: #fff !important;
+}
 #dashboard-nav > li > a:link {
-  background-color: black;
   border-radius: 0;
   margin-bottom: 1px;
+  color: black !important;
+}
+
+#dashboard-nav > li > a:hover {
+  background-color: #213367;
+  color: white !important;
+}
+
+#dashboard-nav > li > a:focus {
+  background-color: #213367;
+  color: white !important;
+}
+
+#dashboard-nav > li > a:active {
+  background-color: #4b525e !important;
 }
 
 .stn {
