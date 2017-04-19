@@ -7,7 +7,6 @@ const mongoose = require('mongoose'),
  * Question Schema
  */
 const NotificationSchema = new Schema({
-  _id: String,
   to: String,
   from: String,
   message: String,

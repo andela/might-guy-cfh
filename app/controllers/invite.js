@@ -2,52 +2,37 @@ const mongoose = require('mongoose'),
   User = mongoose.model('User'),
   Notification = mongoose.model('Notification');
 
-const getUserId = (email) => {
-  let result;
-  User.find(
-    { email },
-    (err, response) => {
-      if (!err) {
-        result = response[0]._id;
-      } else {
-        console.log(err);
-      }
-    });
-  return result;
-};
-
 exports.addFriend = (req, res) => {
-  const email = req.body.email,
+  const friendId = req.body.friendId,
     userId = req.body.user_id,
     button = req.body.checkButton;
   if (button === 'Addfriend') {
     User.findOneAndUpdate(
       { _id: userId },
-      { $push: { friends: email } },
+      { $push: { friends: friendId } },
       { safe: true, upsert: true },
-      (err, result) => {
-        if (!err) {
-          res.json(
-            {
-              succ: 'Successful',
-              action: 'addfriend',
-              email: req.body.email
-            });
-          const myId = getUserId(result.email);
-          console.log(myId);
-        }
-      });
-  } else {
-    User.update(
-      { _id: userId },
-      { $pullAll: { friends: [email] } },
       (err) => {
         if (!err) {
           res.json(
             {
               succ: 'Successful',
+              action: 'addfriend',
+              friendId: req.body.friendId
+            });
+        }
+      });
+  } else {
+    User.update(
+      { _id: userId },
+      { $pullAll: { friends: [friendId] } },
+      (err) => {
+        if (!err) {
+
+          res.json(
+            {
+              succ: 'Successful',
               action: 'unfriend',
-              email: req.body.email
+              friendId: req.body.friendId
             });
         }
       });
@@ -64,27 +49,67 @@ exports.getFriends = (req, res) => {
     });
 };
 
+exports.loadNotification = (req, res) => {
+  const userId = req.body.user_id;
+  Notification.find(
+    {
+      to: userId,
+      read: 0
+    },
+    (err, result) => {
+      res.send(result);
+    });
+};
+
+exports.readNotification = (req, res) => {
+  const userId = req.body.user_id;
+  const id = req.body.notifyId;
+  Notification.findOneAndUpdate(
+    {
+      _id: id },
+    { $set: { read: 1 } },
+    { new: true },
+    (err, result) => {
+      console.log(result);
+      res.json(
+        {
+          succ: 'Update Successfully'
+        });
+    });
+};
+
 exports.sendNotification = (req, res) => {
-  const friendId = req.body.friendId,
-    link = req.body.url,
-    userName = req.body.name,
+  const link = req.body.url,
+    userName = req.body.userName,
     message = `${userName} has just invited you to join a game`,
     friendList = req.body.friendList;
-  friendList.forEach((friend) => {
+  let count = 0;
+  friendList.forEach((friendId) => {
     const Notify = new Notification(
       {
-        to: friend,
+        to: friendId,
         from: userName,
         message,
         link,
         read: 0
       }
     );
-    Notify.save((err) => {
+    count += 1;
+    Notify.save((err, result) => {
       if (!err) {
-        console.log('Notified Successfully');
+        console.log(result);
+      } else {
+        console.log(err);
       }
     });
   });
+  if (count === friendList.length) {
+    res.json(
+      {
+        succ: 'Successful',
+        // action: 'addfriend',
+        // email: req.body.email
+      });
+  }
 };
 

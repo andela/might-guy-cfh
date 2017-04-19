@@ -143,20 +143,44 @@ angular.module('mean.system')
           );
       };
 
+      $scope.LoadNotifications = () => {
+        const userId = window.user._id;
+        $http.post('/api/notify', { user_id: userId })
+          .success((response) => {
+            $scope.allNotification = response;
+            $scope.count = $scope.allNotification.length;
+            console.log(response);
+          }, (error) => {
+            console.log(error);
+          }
+          );
+      };
+
+      $scope.readNotifications = (notifyId) => {
+        const userId = window.user._id;
+        $http.post('/api/read', { user_id: userId, notifyId })
+          .success((response) => {
+            if (response.succ) {
+              $scope.LoadNotifications();
+            }
+          }, (error) => {
+            console.log(error);
+          }
+          );
+      };
+      $scope.LoadNotifications();
       $scope.addFriend = (friend, button) => {
-        const friendEmail = friend.email;
         const friendId = friend._id;
         const userId = window.user._id;
         const url = button.target.baseURI;
         let checkButton;
-        if ($scope.userFriends.includes(friendEmail)) {
+        if ($scope.userFriends.includes(friendId)) {
           checkButton = 'Unfriend';
         } else {
           checkButton = 'Addfriend';
         }
         $http.post('/friends',
           {
-            email: friendEmail,
             user_id: userId,
             checkButton,
             friendId,
@@ -167,11 +191,11 @@ angular.module('mean.system')
               setTimeout(() => {
                 $scope.$apply(() => {
                   if (response.action === 'addfriend') {
-                    const email = response.email;
-                    $scope.userFriends.push(email);
+                    const resultId = response.friendId;
+                    $scope.userFriends.push(resultId);
                   } else {
-                    const email = response.email;
-                    const index = $scope.userFriends.indexOf(email);
+                    const resultId = response.friendId;
+                    const index = $scope.userFriends.indexOf(resultId);
                     if (index !== -1) {
                       $scope.userFriends.splice(index, 1);
                     }
@@ -183,12 +207,35 @@ angular.module('mean.system')
       };
       $scope.sendNotification = (button) => {
         const friendList = $scope.userFriends;
-        const gameLink = button.target.baseURI;
-        const userName = window.userName;
+        const url = button.target.baseURI;
+        const userName = window.user.name;
         console.log(friendList);
-        console.log(gameLink);
-        console.log(userName);
-      }
+        $http.post('/notify',
+          {
+            userName,
+            friendList,
+            url
+          })
+          .success((response) => {
+            if (response.succ) {
+              // $scope.$apply(() => {
+              // if (response.action === 'addfriend') {
+              //   const email = response.email;
+              //   $scope.userFriends.push(email);
+              // } else {
+              //   const email = response.email;
+              //   const index = $scope.userFriends.indexOf(email);
+              //   if (index !== -1) {
+              //     $scope.userFriends.splice(index, 1);
+              //   }
+              // }
+              // });
+            }
+          });
+        // console.log(friendList);
+        // console.log(gameLink);
+        // console.log(userName);
+      };
       $scope.invite = (user, button) => {
         $scope.invitedUsers = JSON.parse(sessionStorage.invitedUsers);
         if ($scope.invitedUsers.length === 10) {

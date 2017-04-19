@@ -67,6 +67,7 @@ module.exports = function (app, passport, auth) {
     });
   });
 
+
   app.post('/inviteusers', middleware.requiresLogin, (req, res) => {
     const url = req.body.url;
     const userEmail = req.body.invitee;
@@ -75,31 +76,6 @@ module.exports = function (app, passport, auth) {
     sendMail(userEmail, url, gameOwner);
     res.send(`Invite sent to ${userEmail}`);
   });
-
-  // app.post('/api/friends', (req, res) => {
-  //   var newFriend = new Friend();
-  //   Friend.findOne({ friend_email: req.body.email, user_id: req.body.user_id }, function (err, friends) {
-  //     if (friends) {
-  //       res.send({ success: false, message: 'Already a friend' });
-  //     } else {
-  //       User.findOne({ email: req.body.email }, function (err, friend) {
-  //         newFriend.friend_id = friend._id;
-  //         newFriend.friend_email = req.body.email;
-  //         newFriend.user_id = req.body.user_id;
-  //         newFriend.save(function (err) {
-  //           if (err) {
-  //             return res.render('/#!/signup?error=unknown', {
-  //               errors: err.errors,
-  //               // user
-  //             });
-  //           }
-  //         });
-  //       });
-  //       res.json({ succ: 'Successful', email: req.body.email });
-  //     }
-  //   });
-  // }
-  // );
   app.post('/api/games/:id/start', middleware.requiresLogin, (req, res) => {
     const gamePlayDate = req.body.gamePlayDate;
     const gameRounds = req.body.gameRounds;
@@ -141,7 +117,10 @@ module.exports = function (app, passport, auth) {
   // Donation Routes
   app.post('/donations', users.addDonation);
   app.post('/friends', invite.addFriend);
+  app.post('/notify', invite.sendNotification);
   app.post('/api/friends', invite.getFriends);
+  app.post('/api/notify', invite.loadNotification);
+  app.post('/api/read', invite.readNotification);
 
   app.post('/users/session', passport.authenticate('local', {
     failureRedirect: '/signin',

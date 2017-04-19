@@ -166,6 +166,16 @@ color:rgba(51, 29, 29, 0.74) !important;
   z-index: 4;
   position: relative;
 }
+.dropdown-menu > li > span > a {
+  color: #333 !important;
+  padding: 10px;
+  font-size: 1em;
+  font-weight: 300;
+  float: left;
+}
+.dropdown-menu {
+  width: 300px;
+}
 .mmtn {
   display: inline-block;
   margin-top: 5px;
@@ -2268,4 +2278,5 @@ ul.callbacks_tabs.callbacks1_tabs {
 }
 .blog-info p {
   margin-top: 0.5em;
+}
 }

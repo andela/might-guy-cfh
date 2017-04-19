@@ -348,7 +348,8 @@ body {
                 display: none; } }
     #main-container #app-container #gameplay-container {
       height: 100%;
-      width: 80%; }
+      width: 80%;
+      margin-top: 50px; }
       @media (max-width: 520px) {
         #main-container #app-container #gameplay-container {
           width: 100%;
@@ -872,3 +873,22 @@ body {
   text-transform: none !important; }
   .gradientButton .donateNow {
     border-top: 0px solid black !important; }
+
+.notification-container {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  left: 0;
+  color: #fff;
+  margin-right: 30px; }
+
+.notification-counter {
+  position: absolute;
+  top: 1px;
+  left: 28px;
+  background-color: #d4130d;
+  color: #fff;
+  border-radius: 3px;
+  padding: 1px 2px;
+  font: 9px Verdana; }
