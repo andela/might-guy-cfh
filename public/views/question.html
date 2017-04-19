@@ -53,22 +53,41 @@
       </div>
 
   <div id="message-modal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title" style="color: #800000">Be sure not to crash a spaceship.</h4>
-            </div>
-            <div class="modal-body">
-              <p>{{message}}</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #B22222; border:none;">Close</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="startGameChoice = true; startGame();">Join the Rough Ride</button>
-            </div>
-          </div>
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" style="color: #800000">Be sure not to crash a spaceship.</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{message}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #B22222; border:none;">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="startGameChoice = true; startGame();">Join the Rough Ride</button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div id="card-modal" class="modal fade" role="dialog" data-controls-modal="card-modal" data-backdrop="static">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" style="color: #800000">You are the Czar - Click card to pick the next question</h4>
+        </div>
+        <div class="modal-body" align="center">
+          <div ng-click="shuffleCards()" ng-style="{'cursor':'pointer'}" style='margin:auto;' class='animated flipInX' id='card'>
+            <div><img src='../img/card.jpg'></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="closeModal" data-dismiss="modal" style="display:none; ">Close</button>        
+        </div>
+      </div>
+    </div>
+  </div>
 
 <div id="question-container-inner">
   <div class="card longBlack">
@@ -76,6 +95,8 @@
     <span ng-bind-html-unsafe="game.curQuestion.text" ng-hide="game.state === 'game ended' || game.state ==='game dissolved' || game.state === 'awaiting players'"></span>
 
     <div id="notifications" ng-if="game.notification" ng-animate="{enter:'animated fadeInLeft', leave:'animated fadeOut'}">{{game.notification}}</div>
+    <br><p ng-show="!isCzar() && game.state !== 'awaiting players'"> <center> {{ czarHasDrawn }} </center></p>
+
 
     <div id="startGame" ng-show="game.state === 'awaiting players'">
       <div id="finding-players">Finding Players</div>
