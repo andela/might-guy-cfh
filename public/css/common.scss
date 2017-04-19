@@ -1,4 +1,5 @@
-$main-font: "helvetica neue", helvetica, sans-serif;
+
+$main-font: "Roboto", "helvetica neue", helvetica, sans-serif;
 
 $mq-mobile-portrait : 320px !default;
 $mq-mobile-landscape : 520px !default;
@@ -281,9 +282,9 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
     position: relative;
     font-weight: bold;
     @include br;
-    -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    /* -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
     -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
-    box-shadow: inset 0px 1px 0px 0px #ffffff;
+    box-shadow: inset 0px 1px 0px 0px #ffffff; */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#f0f0f0');
     background-color: #D5D5D5;
     text-indent: 0;
@@ -336,13 +337,14 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
     }
 
     &.longBlack {
-        background: #252525;
+        background: linear-gradient(rgba(25, 84, 123,0.2), rgba(71, 80, 86,0.2));
         border-color: white;
         color: white;
         height: 100%;
         width: 35.5em;
         padding-left: 2%;
         padding-right: 2%;
+        margin-left: 5px;
     }
 
     &.smallest {
@@ -431,18 +433,22 @@ body{
 
 #main-container{
     height: 100%;
+
     #app-container {
+        font-family: 'Roboto';
         height: 100%;
-        max-width: 1200px;
+        width: 100%;
+        display: inline-block;
         margin: 0 auto;
         position: relative;
-
+        background:url(../images/blue.jpg) no-repeat 0px 0px;
+        background-size:cover;
         #menu-container{
             width: 100%;
             -webkit-border-radius: 8px;
             -moz-border-radius: 8px;
             border-radius: 8px;
-            background: #252525;
+            background: linear-gradient(rgba(25, 84, 123,0), rgba(71, 80, 86,0));
             margin-bottom: 10px;
             margin-top: 5px;
             padding: 5px;
@@ -455,42 +461,73 @@ body{
             #logo{
                 display: inline-block;
                 margin-left: 10px;
-                font-size: 28px;
-                font-family: 'Lobster', cursive;
+                font-size: 36px;
+                font-family: 'Roboto-BoldItalic', cursive;
+                font-style: italic;
 
                 @include mobile-only{
-                    font-size: 20px;
+                    font-size: 15px;
                 }
 
                 #first-word{
-                    color: #7CE4E8;
+                    color: #ffffff;
                 }
 
                 #second-word{
-                    color: #FFFFA5;
+                    color: #ffffff;
                 }
 
                 #third-word{
-                    color: #FC575E;
+                    color: #ffffff;
                 }
+            }
+            #donate-now {
+                display: inline-block;
+                font-weight: 400;
+                text-align: center;
+                background-color: rgba(33, 51, 103, 0.9);
+                border-radius: 30px;
+                -moz-border-radius: 30px;
+                -webkit-border-radius: 30px;
+                color: white;
+                float: right;
+                border-radius: 20px;
+                -moz-border-radius: 20px;
+                -webkit-border-radius: 20px;
+                font-size: 1rem;
+                margin-top: 3px;
+                margin-bottom: 3px;
+                margin-right: 5px;
+                padding: 0.65em 20px;
+
+                @include mobile-only{
+                    font-size: 0.7rem;
+                    margin-top: 5px;
+                    margin-right: 1px;
+                    padding: 5px;
+                    width: 60px;
+                }
+            }
+
+            #donate-now:hover {
+                background-color: transparent;
             }
 
             #abandon-game-button{
                 display: inline-block;
                 float:right;
-                border-radius: 8px;
-                -moz-border-radius: 8px;
-                -webkit-border-radius: 8px;
-                font-size: 20px;
-                font-size: 0.8rem;
+                border-radius: 20px;
+                -moz-border-radius: 20px;
+                -webkit-border-radius: 20px;
+                font-size: 1rem;
                 font-weight: 400;
                 text-align: center;
                 color: white;
-                background: #C54141;
+                background: rgba(197,65,65,0.9);
                 margin-top: 3px;
                 margin-bottom: 3px;
                 margin-right: 10px;
-                padding: 0.65em 20px;
+                padding: 0.65em 10px;
                 width: 140px;
                 cursor: pointer;
 
@@ -504,21 +541,22 @@ body{
             }
 
             #abandon-game-button:hover{
-               background:#F34444;
+               background:none;
             }
 
             #tweet-container{
                 float: right;
-                padding-top: 10px;
-                width: 77px;
-                margin-right: 10px;
+                padding-top: 5px;
+                width: 70px;
+                margin-right: 5px;
+                margin-bottom: 10px;
 
                 @include mobile-only{
                     float: right;
                     padding-top: 6px;
-                    width: 55px;
+                    width: 40px;
                     overflow: hidden;
-                    margin-right: 11px;
+                    margin-right: 10px;
                 }
 
                 .hcount .count-o{
@@ -541,17 +579,22 @@ body{
             width: 20%;
             height: 63%;
             position: absolute;
+            margin-top: 20px;
             right: 0;
             top: 60px;
+            z-index: 1;
+            overflow-y: scroll;
 
             @include mobile-only{
                 top: auto;
                 width: 100%;
                 height: 50px;
                 position: relative;
+                right: 0;
                 top: 0;
-                left: 0;
-                // background: white;
+                z-index: 1;
+                overflow-x: scroll;
+           
             }
 
             #player-container{
@@ -561,7 +604,8 @@ body{
                 padding-bottom: 4%;
                 min-height: 85px;
                 background: #7CE4E8;
-                margin: 0 0 6% 8%;
+                background: rgba(245,166,35,0.2);
+                margin: 0 4% 6% 6%;
                 @include br;
 
                 @include mobile-only{
@@ -580,11 +624,12 @@ body{
 
                     @include mobile-only{
                         height: 100%;
+                        width: 100%;
                     }
 
                     #avatar_ {
-                        height: 100%;
-                        width: 38%;
+                        height: 60%;
+                        width: 20%;
                         float: left;
                         position: relative;
                         z-index: 999;
@@ -637,8 +682,8 @@ body{
                         position: relative;
                         bottom: 8px;
                         left: 2px;
-                        max-width: 62%;
-                        overflow: hidden;
+                        max-width: 70%;
+                        overflow: visible;
 
                         @include tablet-portrait-only{
                             left: 3px;
@@ -654,8 +699,10 @@ body{
                         #player-name{
 
                             h4{
-                                font-family: 'Lobster', cursive;
+                                font-family: 'Roboto', cursive;
                                 margin-bottom: 0px;
+                                font-style: italic;
+                                font-size: 0.9em;
                             }
                             h4{
 
@@ -664,7 +711,7 @@ body{
                                 }
 
                                 @include mobile-only{
-                                    font-family: 'Lobster', cursive;
+                                    font-family: 'Roboto', cursive;
                                     font-size: 10px;
                                     margin-top: 3px;
                                     margin-bottom: 5px;
@@ -677,23 +724,23 @@ body{
 
                             h2{
 
-                                font-size: 26px;
+                                font-size: 22px;
                                 margin-top: 0;
                                 margin-bottom: 0;
 
                                 @include tablet-portrait-only{
-                                    font-size: 21px;
+                                    font-size: 20px;
                                 }
 
                                 @include mobile-only{
-                                    font-size: 17px;
+                                    font-size: 15px;
                                     line-height: 40%;
                                 }
                             }
                         }
 
                         #player-star{
-                        float: left;
+                        float: right;
                         margin-top: 3px;
                         margin-left: 10px;
 
@@ -749,7 +796,7 @@ body{
 
             @include mobile-only{
                 width: 100%;
-                height: 91%;
+                height: 80%;
             }
 
             #upper-gameplay-container {
@@ -774,7 +821,9 @@ body{
                     float: left;
                     width: 19%;
                     height: 100%;
-                    margin-right: 2%;
+                    margin-right: 1%;
+                    margin-left: 1%;
+                    background: rgba(255,255,255,0);
 
                     @include tablet-portrait-only{
                         width: 21%;
@@ -807,14 +856,15 @@ body{
                         #inner-timer-container{
                             text-align: center;
                             @include soft-button;
-                            background: #FFF;
                             text-shadow: none;
                             cursor: default;
                             border: none;
                             min-width: 85px;
                             min-height: 85px;
                             height: 100%;
-                            color: #000;
+                            color: #fff;
+                            font-style: italic;
+                            background-color: rgba(255,255,255,0);
 
                             #timer-status-round, #timer-status-czar-choosing{
                                 position: absolute;
@@ -834,12 +884,14 @@ body{
                             }
 
                             #time{
-                                font-family: 'Lobster', cursive;
+                                font-style: italic;
+                                font-family: 'Roboto', cursive;
                                 font-size: 110px;
                                 position: absolute;
                                 bottom: 25%;
                                 left: 0;
                                 right: 0;
+
 
                                 @include tablet-landscape-and-below{
                                     font-size: 90px;
@@ -952,8 +1004,8 @@ body{
                                         }
 
                                         @include mobile-only{
-                                            padding: 0.65em 1px;
-                                            font-size: 1rem;
+                                            padding: 0.6em 1px;
+                                            font-size: 0.9rem;
                                         }
                                     }
 
@@ -987,44 +1039,58 @@ body{
             }
             #info-container{
                 width: 100%;
-                background: #252525;
+                background: linear-gradient(rgba(25, 84, 123,0.4), rgba(71, 80, 86,0.2));
                 color: white;
                 @include br;
                 text-align: center;
-                padding: 15px;
+                padding: 10px;
                 height: 50%;
-                margin-top: 10px;
+                margin-top: 20px;
+                margin-left: 5px;
 
                 @include tablet-portrait-only{
                     padding-top: 5px;
-                    height: auto;
+                    height: 50%;
                 }
 
                 @include mobile-only{
+                    margin-top: 10%;
                     width: 100%;
                     padding: 1px;
-                    margin: 0 auto;
-                    height: 72%;
+                    height: 50%;
                 }
 
                 #inner-info{
                     width: 90%;
-                    margin: 0 5%;
+                    margin: 0 2%;
+                    font-family: 'Roboto';
+
 
                     #lobby-how-to-play{
-                        font-size: 18px;
+                        font-size: 1.6rem;
                         margin-top: 10px;
+                        font-weight: bold;
 
                         @include tablet-portrait-only{
                             font-size: 14px;
+                        }
+
+                        @include mobile-only {
+                            font-size: 15px;
+                            font-weight: bold;
+                            width: 80%;
+                            padding: 1px;
+                            margin: 0 auto;
+                            margin-top: 2%;
                         }
                     }
 
                     ol{
                         margin-top: 10px;
+                        margin-left: 20px;
                         font-family: $main-font;
                         text-align: left;
-                        font-size: 17px;
+                        font-size: 1.3rem;
 
                         li{
                             list-style-type: decimal;
@@ -1032,8 +1098,10 @@ body{
                         }
 
                         @include mobile-only{
-                            font-size: 13px;
-                            padding: 0px 10px 10px 10px;
+                            height: 60%;
+                            margin-left: 10px;
+                            font-size: 12px;
+                            padding: 0px 10px 5px 10px;
                         }
                     }
                 }
@@ -1041,7 +1109,7 @@ body{
 
             #game-end-container{
                 width: 100%;
-                background: #252525;
+                background: linear-gradient(rgba(25, 84, 123,0.4), rgba(71, 80, 86,0.6));
                 @include br;
                 text-align: center;
                 overflow: hidden;
@@ -1132,7 +1200,7 @@ body{
             #czar-blank-container{
                 color: white;
                 width: 100%;
-                background: #252525;
+                background: linear-gradient(rgba(25, 84, 123,0), rgba(71, 80, 86,0));
                 @include br;
                 text-align: center;
                 overflow: hidden;
@@ -1224,8 +1292,9 @@ body{
 
             #cards-container{
                 width: 100%;
-                background: #252525;
+                background: linear-gradient(rgba(25, 84, 123,0), rgba(71, 80, 86,0));
                 margin-top: 11px;
+                margin-bottom: 10px;
                 @include br;
 
                 @include mobile-only{
@@ -1240,11 +1309,11 @@ body{
                     padding-left: 5px;
 
                     @include mobile-only{
-                        background: #252525;
+                        background: linear-gradient(rgba(25, 84, 123,0), rgba(71, 80, 86,0));
                         -webkit-border-radius: 8px;
                         -moz-border-radius: 8px;
                         border-radius: 8px;
-                        max-height: 245px;
+                        max-height: 8%;
                     }
                 }
             }
@@ -1325,5 +1394,3 @@ body{
         border-top: 0px solid black !important;
     }
 }
-
-
