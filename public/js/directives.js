@@ -141,7 +141,8 @@ angular.module('mean.directives', [])
       <div ng-repeat="game in gameHistory" style="margin-bottom: 10px;
         background: #213367; color: white">
             <div style="font-size: 1.1em; margin: 0px 0px 10px 10px;">
-              <strong style="padding:20px;">Date: {{game.gamePlayDate}} &nbsp;&nbsp;&nbsp;&nbsp;Time: {{game.gamePlayTime}} </strong>
+              <strong style="padding:18px;">Date: {{game.gamePlayDate}}
+              &nbsp;&nbsp;&nbsp;&nbsp;Time: {{game.gamePlayTime}} </strong>
             </div>
             <table class="table" style="background: white; color: black;">
               <thead>
@@ -180,7 +181,7 @@ angular.module('mean.directives', [])
     `
     <div ng-show="userDonations.length === 0" style="background: #1a306f;
      color: white; height: 250px; text-align: center; padding-top: 110px;
-     font-size: 1.5em;">
+     font-size: 1.5em; margin-top: 20px;">
       You have no donations yet. Ain't you just miserly?
     </div>
 

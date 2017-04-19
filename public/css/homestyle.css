@@ -158,7 +158,8 @@ color:rgba(51, 29, 29, 0.74) !important;
   background-color: transparent !important;
   color: #fff !important;
 }
-#dashboard-nav > li > a:link {
+
+.nav-tabs > li > a {
   border-radius: 0;
   margin-bottom: 1px;
   color: black !important;
@@ -174,8 +175,9 @@ color:rgba(51, 29, 29, 0.74) !important;
   color: white !important;
 }
 
-#dashboard-nav > li > a:active {
-  background-color: #4b525e !important;
+.nav-tabs > li.active > a {
+  background-color: #213367;
+  color: white !important;
 }
 
 .stn {
@@ -552,8 +554,9 @@ ul.callbacks_tabs.callbacks1_tabs {
 }
 
 .copywrite {
-  padding:2em 0;
+  padding: 2em 0;
   background: rgb(68, 64, 55);
+  width: 100%;
 }
 .copywrite p {
   color: #FFF;
