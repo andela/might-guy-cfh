@@ -93,13 +93,13 @@ angular.module('mean.directives', [])
     },
     template:
     `
-    <div ng-show="leaderboard.length === 0" style="background: #4b525e;
+    <div ng-show="leaderboard.length === 0" style="background: #213367;
      color: white; height: 250px; text-align: center; padding-top: 110px;
      font-size: 1.5em;">
       There's no leaderboard yet. Looks like everyone's making Heaven.
     </div>
 
-    <table class="table " style="background: #4b525e; color: white"
+    <table class="table " style="background: #213367; color: white"
       ng-show="leaderboard.length > 0">
       <thead>
         <tr>
@@ -131,7 +131,7 @@ angular.module('mean.directives', [])
     },
     template:
     `
-    <div ng-show="gameHistory.length === 0" style="background: #4b525e;
+    <div ng-show="gameHistory.length === 0" style="background: #213367;
      color: white; height: 250px; text-align: center; padding-top: 110px;
      font-size: 1.5em;">
       You have not participated in any game yet.
@@ -139,11 +139,11 @@ angular.module('mean.directives', [])
     </div>
 
       <div ng-repeat="game in gameHistory" style="margin-bottom: 10px;
-        background: #4b525e; color: white">
+        background: #213367; color: white">
             <div style="font-size: 1.1em; margin: 0px 0px 10px 10px;">
-              <strong> {{game.gamePlayDate}} at {{game.gamePlayTime}} </strong>
+              <strong style="padding:20px;">Date: {{game.gamePlayDate}} &nbsp;&nbsp;&nbsp;&nbsp;Time: {{game.gamePlayTime}} </strong>
             </div>
-            <table class="table" style="background: #4b525e; color: white">
+            <table class="table" style="background: white; color: black;">
               <thead>
                 <tr>
                   <th>Game Rounds</th>
@@ -178,7 +178,7 @@ angular.module('mean.directives', [])
     },
     template:
     `
-    <div ng-show="userDonations.length === 0" style="background: #4b525e;
+    <div ng-show="userDonations.length === 0" style="background: #1a306f;
      color: white; height: 250px; text-align: center; padding-top: 110px;
      font-size: 1.5em;">
       You have no donations yet. Ain't you just miserly?
