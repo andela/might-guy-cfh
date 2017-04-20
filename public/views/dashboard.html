@@ -1,5 +1,6 @@
 <div ng-controller="IndexController">
-  <div style="background: #444037; height: 200px; margin-bottom: 1px;">
+  <div id="dashboardPage">
+    <div class="dashboard">
     <nav class="navbar" style="border-radius: 0;">
       <div class="container-fluid" style="margin-top: 15px;">
         <div class="navbar-header" id="logo">
@@ -11,16 +12,15 @@
         </div>
 
         <a href="#!/">
-          <div class="glyphicon glyphicon-home" id="glyph-home" style="font-size: 30px; margin-left: 5px; color: white; vertical-align: -20px;">
-          </div>
+          <div class="glyphicon glyphicon-home" id="glyph-home"></div>
         </a>
-        <!-- <span class="menu"></span> -->
-        <ul class="nav navbar-nav" style="float: right; margin-right: 10px">
-          <li ng-hide="showOptions">
+
+        <ul class="nav navbar-nav">
+          <li ng-hide="showOptions" id="donation">
             <a href="https://www.crowdrise.com/fundraise-and-volunteer/donate-mobile/project/cfhio/cards4humanity?widget=true&redirect_to=http%3A%2F%2Fcfh.io%2F%23!%2F&stylesheet=&amounts=">Donate Now
             </a>
           </li>
-          <li ng-hide="showOptions" style="margin: 0px 5px 0px 10px;"><a href="/signout">Sign Out</a></li>
+          <li ng-hide="showOptions" id="signout"><a href="/signout">Sign Out</a></li>
         </ul>
       </div>
     </nav>
@@ -29,13 +29,11 @@
       <span class="glyphicon glyphicon-dashboard"
         style="font-size: 40px; vertical-align: -10px; margin-right: 15px;">
       </span>
-        Welcome to your dashboard, {{global.user.name}}.
+        <span class="welcome-message">Welcome to your dashboard, {{global.user.name}}.</span>
     </h3>
-  </div>
-
        <br>
        <br>
-       <div class="tabs" style="background: white; max-width:90%; margin: 0 auto;">
+       <div class="tabs">
          <ul class="nav nav-tabs" id="dashboard-nav">
            <li class="dashboard-tab col-sm-4 active" style="padding-left: 0;">
              <a href="#game-history" data-toggle="tab">
@@ -57,26 +55,21 @@
          </ul>
        </div>
 
-       <div style="position:relative; padding:50px; margin: 0 auto;
-        max-width:90%; max-height: 1000px; min-height: calc(50vh);
-         overflow: auto;">
+       <div id="tab-wrapper">
          <div class="tab-content">
            <div class="tab-pane" id="leaderboard" leaderboard>
-             <!-- <div style="height: 25px; background: black">
-             </div> -->
-
            </div>
 
            <div class="tab-pane active" id="game-history" history>
-
            </div>
 
            <div class="tab-pane" id="your-donations" donations>
-             <!-- <h3> {{userDonations}} </h3> -->
            </div>
 
          </div>
        </div>
+         </div>
+  </div>
 
   <!-- Footer Start -->
   <div class="copywrite">
