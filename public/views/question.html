@@ -60,7 +60,11 @@
           <h4 class="modal-title" style="color: #800000">Be sure not to crash a spaceship.</h4>
         </div>
         <div class="modal-body">
-          <p>{{message}}</p>
+          <p>{{message}}</p><br>
+          <p style="margin-bottom:8px;">Kindly select your region: &nbsp;&nbsp;</p>
+          <div class="styled-select blue semi-square" >
+            <select id="selectedCountry" style="text-align:center; color:white; outline:0;" ng-model="selectedCountry" ng-options="region.country for region in countries" ng-change="selectCountry();"></select>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #B22222; border:none;">Close</button>
@@ -69,7 +73,6 @@
       </div>
     </div>
   </div>
-
   <div id="card-modal" class="modal fade" role="dialog" data-controls-modal="card-modal" data-backdrop="static">
     <div class="modal-dialog">
       <!-- Modal content-->
@@ -83,7 +86,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" id="closeModal" data-dismiss="modal" style="display:none; ">Close</button>        
+          <button type="button" class="btn btn-primary" id="closeModal" data-dismiss="modal" style="display:none; ">Close</button>
         </div>
       </div>
     </div>
@@ -107,13 +110,12 @@
       <div id="loading-container">
         <div id="loading-gif"><img ng-src="../img/loader.gif"/></div>
       </div>
-      <div id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride)">
+      <div id="start-game-container" ng-click="startGame(); selectCountry('58f4de8ef08434413b6aec50');" ng-show="(game.playerIndex === 0 || game.joinOverride)">
         <div id='start-game-button'>
           Start Game
         </div>
       </div>
       <div id="card-deck-container">
-        
       </div>
     </div>
     <!-- Game Over Stuff -->
@@ -132,3 +134,13 @@
     </div>
   </div>
 </div>
+
+<script>
+$(document).ready(function(){
+  $('.dropdown a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+</script>
