@@ -61,9 +61,10 @@
         </div>
         <div class="modal-body">
           <p>{{message}}</p><br>
-          <p>Kindly select a region&nbsp;&nbsp;
-          <select id="selectedCountry" style="text-align:center;" ng-model="selectedCountry" ng-options="region.country for region in countries" ng-change="selectCountry();"></select>
-          </p>
+          <p style="margin-bottom:8px;">Kindly select your region: &nbsp;&nbsp;</p>
+          <div class="styled-select blue semi-square" >
+            <select id="selectedCountry" style="text-align:center; color:white; outline:0;" ng-model="selectedCountry" ng-options="region.country for region in countries" ng-change="selectCountry();"></select>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #B22222; border:none;">Close</button>
@@ -72,7 +73,6 @@
       </div>
     </div>
   </div>
-
   <div id="card-modal" class="modal fade" role="dialog" data-controls-modal="card-modal" data-backdrop="static">
     <div class="modal-dialog">
       <!-- Modal content-->
@@ -134,3 +134,13 @@
     </div>
   </div>
 </div>
+
+<script>
+$(document).ready(function(){
+  $('.dropdown a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+</script>

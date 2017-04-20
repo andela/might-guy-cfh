@@ -338,11 +338,11 @@ angular.module('mean.system')
         regionId: '58ed620175ebcefb68f1976b'
       },
       {
-        country: 'Sweden',
+        country: 'China',
         regionId: '58ed620175ebcefb68f1976c'
       },
       {
-        country: 'Denmark',
+        country: 'India',
         regionId: '58ed620175ebcefb68f1976d'
       },
       {
@@ -356,6 +356,14 @@ angular.module('mean.system')
       {
         country: 'Mexico',
         regionId: '58f53908f08434413b6aec52'
+      },
+      {
+        country: 'Canada',
+        regionId: '58f8990ef08434413b6aed4e'
+      },
+      {
+        country: 'Brazil',
+        regionId: '58f89970f08434413b6aed4f'
       }
     ];
 
