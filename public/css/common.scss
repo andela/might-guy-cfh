@@ -130,18 +130,18 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
 }
 
 @mixin br{
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
 @mixin br-bottom {
-    -webkit-border-bottom-right-radius: 8px;
-    -webkit-border-bottom-left-radius: 8px;
-    -moz-border-radius-bottomright: 8px;
-    -moz-border-radius-bottomleft: 8px;
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 @mixin button {
@@ -304,7 +304,7 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
 
     background-color: #fff;
 
-    border-radius: 8px;
+    border-radius: 3px;
 
     color: #252525;
     font-family: Arial;
@@ -337,7 +337,7 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
     }
 
     &.longBlack {
-        background: linear-gradient(rgba(25, 84, 123,0.2), rgba(71, 80, 86,0.2));
+        background:rgba(39, 101, 134,0.9);
         border-color: white;
         color: white;
         height: 100%;
@@ -389,13 +389,6 @@ html, body, .main-container, .cont, #first-section, #inner-container{
 }
 
 html{
-    // margin: 20px;
-    // margin-top: 5px;
-    // background: url(/img/minimal-wallpaper.jpg) no-repeat center center fixed;
-    // -webkit-background-size: cover;
-    // -moz-background-size: cover;
-    // -o-background-size: cover;
-    // background-size: cover;
     @include gradient-bg;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -441,7 +434,7 @@ body{
         display: inline-block;
         margin: 0 auto;
         position: relative;
-        background:url(../images/blue.jpg) no-repeat 0px 0px;
+        background:url(../images/people.png) no-repeat 0px 0px;
         background-size:cover;
         #menu-container{
             width: 100%;
@@ -456,6 +449,11 @@ body{
             @include mobile-only{
                 margin-bottom: 1px;
                 margin-top: 0px;
+            }
+
+            #dropdown {
+                margin-top: 2%;
+                padding-right: 10px;
             }
 
             #logo{
@@ -485,19 +483,14 @@ body{
                 display: inline-block;
                 font-weight: 400;
                 text-align: center;
-                background-color: rgba(33, 51, 103, 0.9);
-                border-radius: 30px;
-                -moz-border-radius: 30px;
-                -webkit-border-radius: 30px;
+                background-color: rgba(0, 119, 190, 0.9);
                 color: white;
                 float: right;
                 border-radius: 20px;
                 -moz-border-radius: 20px;
                 -webkit-border-radius: 20px;
                 font-size: 1rem;
-                margin-top: 3px;
-                margin-bottom: 3px;
-                margin-right: 5px;
+                margin: 5px 3px;
                 padding: 0.65em 20px;
 
                 @include mobile-only{
@@ -523,7 +516,7 @@ body{
                 font-weight: 400;
                 text-align: center;
                 color: white;
-                background: rgba(197,65,65,0.9);
+                background: rgba(203, 109, 81,0.9);
                 margin-top: 3px;
                 margin-bottom: 3px;
                 margin-right: 10px;
@@ -604,7 +597,7 @@ body{
                 padding-bottom: 4%;
                 min-height: 85px;
                 background: #7CE4E8;
-                background: rgba(245,166,35,0.2);
+                background: rgb(39, 101, 134);
                 margin: 0 4% 6% 6%;
                 @include br;
 
@@ -1039,14 +1032,15 @@ body{
             }
             #info-container{
                 width: 100%;
-                background: linear-gradient(rgba(25, 84, 123,0.4), rgba(71, 80, 86,0.2));
+                background: rgba(39, 101, 134,0.9);
                 color: white;
                 @include br;
                 text-align: center;
                 padding: 10px;
                 height: 50%;
-                margin-top: 20px;
-                margin-left: 5px;
+                margin-top: 2%;
+                margin-left: 2%;
+                margin-right:5%;
 
                 @include tablet-portrait-only{
                     padding-top: 5px;
@@ -1061,9 +1055,12 @@ body{
                 }
 
                 #inner-info{
-                    width: 90%;
+                    width: 80%;
                     margin: 0 2%;
+                    margin-left: 60px;
                     font-family: 'Roboto';
+                    font-size: 1rem;
+
 
 
                     #lobby-how-to-play{
@@ -1109,12 +1106,13 @@ body{
 
             #game-end-container{
                 width: 100%;
-                background: linear-gradient(rgba(25, 84, 123,0.4), rgba(71, 80, 86,0.6));
+                background: rgba(39, 101, 134,0.9);
                 @include br;
                 text-align: center;
                 overflow: hidden;
                 height: 50%;
-                margin-top: 10px;
+                margin-left: 2%;
+                margin-top: 2%;
 
                 @include mobile-only{
                     height: 65%;
