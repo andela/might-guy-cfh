@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 const gameRecordSchema = new Schema({
   gamePlayDate: String,
+  gamePlayTime: String,
   gameID: String,
   gamePlayers: [],
   gameRounds: Number,
