@@ -1,8 +1,8 @@
 angular.module('mean.system')
 .controller('GameController', ['$scope', 'game',
-  '$timeout', '$location', 'MakeAWishFactsService', '$dialog', '$http',
+  '$timeout', '$location', 'MakeAWishFactsService', '$dialog', '$http', 'socket',
   ($scope, game, $timeout, $location,
-    MakeAWishFactsService, $dialog, $http) => {
+    MakeAWishFactsService, $dialog, $http, socket) => {
     $scope.hasPickedCards = false;
     $scope.winningCardPicked = false;
     $scope.showTable = false;
@@ -216,6 +216,22 @@ angular.module('mean.system')
       $location.path('/');
     };
 
+    $scope.shuffleCards = () => {
+      const card = $('#card');
+      card.addClass('animated flipOutX');
+      $timeout(() => {
+        $scope.startNextRound();
+        card.removeClass('animated flipOutX');
+        $('#closeModal').click();
+      }, 2000);
+    };
+
+    $scope.startNextRound = () => {
+      if ($scope.isCzar()) {
+        game.startNextRound();
+      }
+    };
+
     // Catches changes to round to update when no players pick card
     // (because game.state remains the same)
     $scope.$watch('game.round', function() {
@@ -230,9 +246,25 @@ angular.module('mean.system')
     });
 
     // In case player doesn't pick a card in time, show the table
-    $scope.$watch('game.state', function() {
-      if (game.state === 'waiting for czar to decide' && $scope.showTable === false) {
+    $scope.$watch('game.state', () => {
+      if (game.state === 'waiting for czar to decide'
+        && $scope.showTable === false) {
         $scope.showTable = true;
+      }
+      if ($scope.isCzar() && game.state === 'pick black card'
+        && game.state !== 'game dissolved'
+        && game.state !== 'awaiting players' && game.table.length === 0) {
+        displayMessage('', '#card-modal');
+      }
+      if ($scope.isCzar() === false && game.state === 'pick black card'
+        && game.state !== 'game dissolved'
+        && game.state !== 'awaiting players' && game.table.length === 0) {
+        $scope.czarHasDrawn = 'Wait! Czar is drawing Card';
+      }
+      if (game.state !== 'pick black card'
+        && game.state !== 'awaiting players'
+        && game.state !== 'game dissolve') {
+        $scope.czarHasDrawn = '';
       }
     });
 
@@ -243,15 +275,19 @@ angular.module('mean.system')
           // reset the URL so they don't think they're in the requested room.
           $location.search({});
         } else if ($scope.isCustomGame() && !$location.search().game) {
-          // Once the game ID is set, update the URL if this is a game with friends,
+          // Once the game ID is set,
+          // update the URL if this is a game with friends,
           // where the link is meant to be shared.
           $location.search({game: game.gameID});
           if(!$scope.modalShown){
             setTimeout(function(){
               var link = document.URL;
-              var txt = 'Give the following link to your friends so they can join your game: ';
+              var txt = `Give the following link to your
+                friends so they can join your game: `;
               $('#lobby-how-to-play').text(txt);
-              $('#oh-el').css({'text-align': 'center', 'font-size':'22px', 'background': 'white', 'color': 'black'}).text(link);
+              $('#oh-el').css(
+                { 'text-align': 'center', 'font-size': '22px',
+                  'background': 'white', 'color': 'black' }).text(link);
             }, 20);
             $scope.modalShown = true;
           }
@@ -259,13 +295,91 @@ angular.module('mean.system')
       }
     });
 
+    $scope.countries =
+    [
+      {
+        country: 'General',
+        regionId: '58f4de8ef08434413b6aec50'
+      },
+      {
+        country: 'Nigeria',
+        regionId: '58ed5fbe75ebcefb68f19750'
+      },
+      {
+        country: 'USA',
+        regionId: '58f531a4f08434413b6aec51'
+      },
+      {
+        country: 'South Africa',
+        regionId: '58ed60a875ebcefb68f19751'
+      },
+      {
+        country: 'Kenya',
+        regionId: '58ed60a875ebcefb68f19752'
+      },
+      {
+        country: 'Uganda',
+        regionId: '58ed60a875ebcefb68f19753'
+      },
+      {
+        country: 'Ghana',
+        regionId: '58ed60a875ebcefb68f19754'
+      },
+      {
+        country: 'England',
+        regionId: '58ed620175ebcefb68f19769'
+      },
+      {
+        country: 'Spain',
+        regionId: '58ed620175ebcefb68f1976a'
+      },
+      {
+        country: 'Germany',
+        regionId: '58ed620175ebcefb68f1976b'
+      },
+      {
+        country: 'Sweden',
+        regionId: '58ed620175ebcefb68f1976c'
+      },
+      {
+        country: 'Denmark',
+        regionId: '58ed620175ebcefb68f1976d'
+      },
+      {
+        country: 'Italy',
+        regionId: '58ed620175ebcefb68f1976e'
+      },
+      {
+        country: 'France',
+        regionId: '58ed620175ebcefb68f1976f'
+      },
+      {
+        country: 'Mexico',
+        regionId: '58f53908f08434413b6aec52'
+      }
+    ];
+
+    $scope.selectedCountry = $scope.countries[0];
+
+    $scope.selectCountry = (region) => {
+      if (region) {
+        $http.post('/api/selected-region',
+        { regionId: '58f4de8ef08434413b6aec50' });
+      } else {
+        const chosenCountry = angular.element(document
+         .querySelector('#selectedCountry')).val();
+      $scope.selectedCountryId = $scope.countries[chosenCountry].regionId;
+      $http.post('/api/selected-region',
+        { regionId: $scope.selectedCountryId });
+      }
+    };
+
     if ($location.search().game && !(/^\d+$/).test($location.search().game)) {
       console.log('joining custom game');
-      game.joinGame('joinGame',$location.search().game);
+      game.joinGame('joinGame', $location.search().game);
     } else if ($location.search().custom) {
-      game.joinGame('joinGame',null,true);
+      game.joinGame('joinGame', null, true);
     } else {
       game.joinGame();
     }
-
-}]);
+  }]);

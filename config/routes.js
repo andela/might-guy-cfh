@@ -2,6 +2,7 @@ var async = require('async');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const gameRecord = require('../app/models/gameRecord');
+const question = require('../app/controllers/questions');
 
 const sg = require('sendgrid')(`SG.SsgxbJ1IRiSImn2gI1qAkA.
   VdN9m18YcsrOoc6-kpg_C3h4B207Ftxc_znG3dHE5qk`);
@@ -56,6 +57,11 @@ module.exports = function(app, passport, auth) {
 
     const middleware = require('./middlewares/authorization.js');
 
+    app.post('/api/selected-region', (req, res) => {
+      const gameRegion = req.body.regionId;
+      question.setRegion(gameRegion);
+    });
+
     app.get('/api/search/users', middleware.requiresLogin, (req, res) => {
       User.find({}, (error, result) => {
         if (!(error)) {
@@ -63,6 +69,32 @@ module.exports = function(app, passport, auth) {
         } else {
           res.send(error);
         }
+      });
+    });
+
+    app.get('/api/games/history', middleware.requiresLogin, (req, res) => {
+      const userName = req.query.name;
+
+      gameRecord.find({ gamePlayers: { $elemMatch:
+          { $in: [userName] } } }, (error, result) => {
+        res.send(result);
+      });
+    });
+
+    app.get('/api/leaderboard', middleware.requiresLogin, (req, res) => {
+      User.find().sort({ gameWins: -1 }).exec((error, result) => {
+        res.send(result);
+      });
+    });
+
+    app.get('/api/donations', middleware.requiresLogin, (req, res) => {
+      const userName = req.query.name;
+
+      User.findOne({ name: userName }, (error, result) => {
+        if (error) {
+          console.log(error);
+        }
+        res.send(result.donations);
       });
     });
 
@@ -76,15 +108,21 @@ module.exports = function(app, passport, auth) {
     });
 
     app.post('/api/games/:id/start', middleware.requiresLogin, (req, res) => {
+      // prevent Node from performing post request every 2 minutes
+      // if no response is got from client to avoid multiple posts
+      res.connection.setTimeout(0);
+
       const gamePlayDate = req.body.gamePlayDate;
+      const gamePlayTime = req.body.gamePlayTime;
+      const gameID = req.params.id;
+      const gamePlayers = req.body.gamePlayers;
       const gameRounds = req.body.gameRounds;
       const winner = req.body.gameWinner;
-      const gamePlayers = req.body.gamePlayers;
-      const gameID = req.params.id;
 
       const record = new gameRecord(
         {
           gamePlayDate,
+          gamePlayTime,
           gameID,
           gamePlayers,
           gameRounds,
@@ -96,21 +134,19 @@ module.exports = function(app, passport, auth) {
         if (error) {
           console.log(error);
         }
-      }
-    );
-
-      gamePlayers.forEach((userName) => {
-        User.findOneAndUpdate({ name: userName },
-          {
-            $push: { gameRecord: gameID }
-          }, (error) => {
-            if (error) {
-              res.send('An error occured.');
-            } else {
-              res.send(`Game ${gameID} has been successfully recorded`);
-            }
-          });
       });
+
+      User.findOneAndUpdate({ name: winner },
+        {
+          $inc: { gameWins: 1 }
+        }, (error) => {
+          if (error) {
+            console.log(`An error occured while trying to
+              save win record for ${winner}`);
+          } else {
+            console.log(`Win record for ${winner} has been recorded`);
+          }
+        });
     });
 
     // Donation Routes
