@@ -172,9 +172,19 @@ color:rgba(51, 29, 29, 0.74) !important;
   font-size: 1em;
   font-weight: 300;
   float: left;
+  border-bottom: #d8d8d8 2px solid;
+  cursor: pointer;
+}
+.dropdown-menu > li > span > a:hover {
+  color: #213367 !important;
+  padding: 10px;
+  font-size: 1em;
+  font-weight: 300;
+  float: left;
+  text-decoration: underline;
 }
 .dropdown-menu {
-  width: 300px;
+  width: 280px;
 }
 .mmtn {
   display: inline-block;
@@ -196,6 +206,7 @@ color:rgba(51, 29, 29, 0.74) !important;
   z-index: 4;
   position: relative;
 }
+.
 .banner2{
   background:url(../images/friends.png) no-repeat 0px 0px;
   background-size:cover;

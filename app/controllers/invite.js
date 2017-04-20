@@ -95,20 +95,13 @@ exports.sendNotification = (req, res) => {
       }
     );
     count += 1;
-    Notify.save((err, result) => {
-      if (!err) {
-        console.log(result);
-      } else {
-        console.log(err);
-      }
-    });
+    Notify.save();
   });
   if (count === friendList.length) {
+    console.log('Done');
     res.json(
       {
-        succ: 'Successful',
-        // action: 'addfriend',
-        // email: req.body.email
+        succ: 'Successful'
       });
   }
 };

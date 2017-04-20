@@ -218,23 +218,9 @@ angular.module('mean.system')
           })
           .success((response) => {
             if (response.succ) {
-              // $scope.$apply(() => {
-              // if (response.action === 'addfriend') {
-              //   const email = response.email;
-              //   $scope.userFriends.push(email);
-              // } else {
-              //   const email = response.email;
-              //   const index = $scope.userFriends.indexOf(email);
-              //   if (index !== -1) {
-              //     $scope.userFriends.splice(index, 1);
-              //   }
-              // }
-              // });
+              response.send('Notification sent Successfully');
             }
           });
-        // console.log(friendList);
-        // console.log(gameLink);
-        // console.log(userName);
       };
       $scope.invite = (user, button) => {
         $scope.invitedUsers = JSON.parse(sessionStorage.invitedUsers);
