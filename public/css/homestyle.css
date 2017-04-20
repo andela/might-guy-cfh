@@ -4,6 +4,162 @@ Author URL: http://github.com/andela-ksolomon
 License: Andela
 License URL: http://andela.com
 */
+
+/* dashboard start */
+
+#dashboardPage {
+  background: url('../images/people.png');
+  height: 900px;
+  margin-bottom: 1px;
+  background-position: center;
+  background-size: cover;
+}
+
+#glyph-home {
+  display: none;
+}
+
+.dashboard {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100%;
+}
+
+#signout {
+  margin: 0px 5px 0px 5px;
+}
+
+.glyphicon-dashboard {
+  font-size: 40px;
+  vertical-align: -10px;
+  margin-right: 15px;
+}
+
+.navbar-nav {
+  float: right;
+  margin-right: 10px;
+}
+
+.navbar-nav a {
+  background-color: rgba(255, 187, 0, 0.8);;
+  color: #fff !important;
+  border-radius: 40px;
+}
+.navbar-nav a:hover {
+  background-color: transparent !important;
+  color: #fff !important;
+}
+
+.no-data {
+  background: rgb(39, 101, 134);
+  color: white;
+  height: 250px;
+  text-align: center;
+  padding-top: 110px;
+  font-size: 1.5em;
+  margin-top: 20px;
+}
+
+#tab-wrapper {
+  position:relative;
+  padding:50px;
+  margin: 0 auto;
+  max-width:90%;
+  max-height: 685px;
+  min-height: calc(50vh);
+  overflow: auto;
+}
+
+.tabs {
+  background: white;
+  max-width:90%;
+  margin: 0 auto;
+}
+
+.nav-tabs > li > a {
+  border-radius: 0;
+  margin-bottom: 1px;
+  color: black !important;
+}
+
+#dashboard-nav > li > a:hover {
+  background-color: rgb(39, 101, 134);
+  color: white !important;
+}
+
+#dashboard-nav > li > a:focus {
+  background-color: rgb(39, 101, 134);
+  color: white !important;
+}
+
+.col-sm-4 {
+  padding: 0;
+}
+
+.nav-tabs > li.active > a {
+  background-color: rgb(39, 101, 134);
+  color: white !important;
+}
+.table > thead > tr > th, .table > tbody > tr > th,
+.table > tfoot > tr > th, .table > thead > tr > td,
+.table > tbody > tr > td, .table > tfoot > tr > td {
+  width: 33.3%;
+}
+
+.dashboard-table {
+  background: #fff;
+}
+
+.dashboard-table th {
+  background: rgb(39, 101, 134);
+  color: #fff;
+}
+
+.dashboard-table th.bordered {
+  border-left: 1px solid #fff;
+}
+
+.game-history {
+  margin-bottom: 10px;
+  background: rgb(39, 101, 134);
+}
+
+#game-rounds {
+  margin-left: 60px;
+  margin-bottom: 20px;
+}
+
+#game-date {
+  font-size: 13px;
+  color: #383131;
+}
+
+@media (max-width: 800px){
+  #glyph-home {
+    display: inline;
+    font-size: 30px;
+    margin-left: 5px;
+    vertical-align: -20px;
+  }
+
+  #donation, #signout {
+    display: inline-block;
+  }
+
+  .glyphicon-dashboard {
+    font-size: 25px;
+    vertical-align: -10px;
+    margin-right: 15px;
+  }
+
+  .welcome-message {
+    font-size: 0.9em;
+  }
+}
+
+/* dashboard end */
+
 h4, h5, h6,
 h1, h2, h3 {margin: 0;}
 ul, ol {margin: 0; padding:0;}
@@ -57,13 +213,9 @@ a#toTop{
   text-align:left;
 }
 
-#glyph-home {
-  display: none;
-}
-
 /*-- header_top --*/
 .header{
-  background:#213367;
+  background:rgb(39, 101, 134);
   padding:1em 0;
 }
 .header-log{
@@ -134,50 +286,19 @@ color:rgba(51, 29, 29, 0.74) !important;
   background-color: rgba(255, 187, 0, 0.8);
   color: #fff !important;
   border-radius: 40px;
-
 }
 .donate:hover {
   background-color: transparent;
 }
 .donate-log {
-  background-color: #213367;
+  background-color: rgb(39, 101, 134);
   color: #fff !important;
   border-radius: 40px;
 
 }
 .donate-log:hover {
   background-color: transparent;
-  color: #213367 !important;
-}
-.navbar-nav a {
-  background-color: rgba(255, 187, 0, 0.8);;
-  color: #fff !important;
-  border-radius: 40px;
-}
-.navbar-nav a:hover {
-  background-color: transparent !important;
-  color: #fff !important;
-}
-
-.nav-tabs > li > a {
-  border-radius: 0;
-  margin-bottom: 1px;
-  color: black !important;
-}
-
-#dashboard-nav > li > a:hover {
-  background-color: #213367;
-  color: white !important;
-}
-
-#dashboard-nav > li > a:focus {
-  background-color: #213367;
-  color: white !important;
-}
-
-.nav-tabs > li.active > a {
-  background-color: #213367;
-  color: white !important;
+  color: rgb(39, 101, 134) !important;
 }
 
 .stn {
@@ -215,7 +336,7 @@ color:rgba(51, 29, 29, 0.74) !important;
   line-height: 1.42857143;
   border-radius: 40px;
   font-family: 'Roboto-Regular';
-  background-color: #213367;
+  background-color: rgb(39, 101, 134);
   border-radius: 40px;
   z-index: 4;
   position: relative;
@@ -244,7 +365,7 @@ color:rgba(51, 29, 29, 0.74) !important;
   position: relative;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.7);
-  min-height: 680px;
+  height: 100%;
 }
 
 .slider2{
@@ -1316,10 +1437,6 @@ p.snglp,.blog-info p{
 
 #logo {
   display: none;
-}
-
-#glyph-home {
-  display: inline;
 }
 
 #nav-header {

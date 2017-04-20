@@ -93,27 +93,24 @@ angular.module('mean.directives', [])
     },
     template:
     `
-    <div ng-show="leaderboard.length === 0" style="background: #213367;
-     color: white; height: 250px; text-align: center; padding-top: 110px;
-     font-size: 1.5em;">
+    <div class="no-data" ng-show="leaderboard.length === 0">
       There's no leaderboard yet. Looks like everyone's making Heaven.
     </div>
 
-    <table class="table " style="background: #213367; color: white"
-      ng-show="leaderboard.length > 0">
+    <table class="table dashboard-table" ng-show="leaderboard.length > 0">
       <thead>
         <tr>
-          <th>Rank</th>
-          <th>Player</th>
-          <th>Number of Wins</th>
+          <th> Rank </th>
+          <th class="bordered"> Player </th>
+          <th class="bordered"> Number of Wins </th>
         </tr>
       </thead>
 
       <tbody>
         <tr ng-repeat="player in leaderboard track by $index">
-          <td>{{$index + 1}}</td>
-          <td>{{player.name}}</td>
-          <td>{{player.gameWins}}</td>
+          <td> {{$index + 1}} </td>
+          <td> {{player.name}} </td>
+          <td> {{player.gameWins}} </td>
          </tr>
       </tbody>
     </table>
@@ -131,31 +128,32 @@ angular.module('mean.directives', [])
     },
     template:
     `
-    <div ng-show="gameHistory.length === 0" style="background: #213367;
-     color: white; height: 250px; text-align: center; padding-top: 110px;
-     font-size: 1.5em;">
+    <div class="no-data" ng-show="gameHistory.length === 0">
       You have not participated in any game yet.
       You shouldn't lead a boring life, you know.
     </div>
 
-      <div ng-repeat="game in gameHistory" style="margin-bottom: 10px;
-        background: #213367; color: white">
-            <div style="font-size: 1.1em; margin: 0px 0px 10px 10px;">
-              <strong style="padding:18px;">Date: {{game.gamePlayDate}}
-              &nbsp;&nbsp;&nbsp;&nbsp;Time: {{game.gamePlayTime}} </strong>
-            </div>
-            <table class="table" style="background: white; color: black;">
+      <div class="game-history" ng-repeat="game in gameHistory">
+            <table class="table dashboard-table">
               <thead>
                 <tr>
-                  <th>Game Rounds</th>
-                  <th>Game Players</th>
-                  <th>Game Winner</th>
+                  <th> Game Rounds </th>
+                  <th class="bordered"> Game Players </th>
+                  <th class="bordered"> Game Winner </th>
                 </tr>
               </thead>
 
               <tbody>
                 <tr>
-                  <td> {{game.gameRounds}} </td>
+                  <td>
+                  <p id="game-rounds"> {{game.gameRounds}} </p>
+                  <p id="game-date">
+                  <i class="fa fa-clock-o"></i>
+                  {{game.gamePlayTime}}
+                  <i class="fa fa-calendar"></i>
+                  {{game.gamePlayDate}}
+                  </p>
+                  </td>
                   <td>
                     <p ng-repeat="player in game.gamePlayers track by $index">
                       {{player}}
@@ -179,14 +177,28 @@ angular.module('mean.directives', [])
     },
     template:
     `
-    <div ng-show="userDonations.length === 0" style="background: #1a306f;
-     color: white; height: 250px; text-align: center; padding-top: 110px;
-     font-size: 1.5em; margin-top: 20px;">
+    <div class="no-data" ng-show="userDonations.length === 0">
       You have no donations yet. Ain't you just miserly?
     </div>
 
-    <div ng-repeat="donation in userDonations">
-      {{donation}}
-    </div>
+    <table class="table dashboard-table" ng-show="userDonations.length > 0">
+      <thead>
+        <tr>
+          <th>
+            Donation ID
+          </th>
+          <th class="bordered">
+            Amount
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="donation in userDonations">
+          <td>{{donation.crowdrise_donation_id}}</td>
+          <td>{{donation.amount}}</td>
+         </tr>
+      </tbody>
+    </table>
     `,
   })]);
