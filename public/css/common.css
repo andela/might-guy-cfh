@@ -341,7 +341,8 @@ body {
             @media only screen and (min-width: 521px) and (max-width: 768px) {
               #main-container #app-container #social-bar-container #player-container #above-czar-container #player-container-inner #player-name h4 {
                 font-size: 14px;
-                margin-top: 3px; } }
+                margin-top: 3px;
+                margin-left: 3px; } }
             @media (max-width: 520px) {
               #main-container #app-container #social-bar-container #player-container #above-czar-container #player-container-inner #player-name h4 {
                 font-family: 'Roboto', cursive;
@@ -885,6 +886,7 @@ body {
         background: linear-gradient(rgba(25, 84, 123, 0), rgba(71, 80, 86, 0));
         margin-top: 11px;
         margin-bottom: 10px;
+        margin-left: 200px;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
         border-radius: 5px; }

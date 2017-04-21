@@ -582,7 +582,7 @@ body{
             width: 20%;
             height: 63%;
             position: absolute;
-            margin-top: 20px;
+            margin-top: 37px;
             margin-left: 10px;
             margin-right: 5px;
             right: 0;
@@ -1320,6 +1320,7 @@ body{
                 background: linear-gradient(rgba(25, 84, 123,0), rgba(71, 80, 86,0));
                 margin-top: 11px;
                 margin-bottom: 10px;
+                margin-left: 200px;
                 @include br;
 
                 @include mobile-only{
