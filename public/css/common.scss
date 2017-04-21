@@ -480,10 +480,11 @@ body{
                 }
             }
             #donate-now {
+                word-wrap: break-word;
                 display: inline-block;
                 font-weight: 400;
                 text-align: center;
-                background-color: rgba(0, 119, 190, 0.9);
+                background-color: rgba(39, 101, 134, 0.9);
                 color: white;
                 float: right;
                 border-radius: 20px;
@@ -573,6 +574,7 @@ body{
             height: 63%;
             position: absolute;
             margin-top: 20px;
+            margin-left: 30px;
             right: 0;
             top: 60px;
             z-index: 1;
@@ -696,6 +698,8 @@ body{
                                 margin-bottom: 0px;
                                 font-style: italic;
                                 font-size: 0.9em;
+                                padding-top: 5px;
+
                             }
                             h4{
 
@@ -714,6 +718,8 @@ body{
 
                         #player-score{
                             float: left;
+                            margin-left: 7px;
+                            font-style: italic;
 
                             h2{
 
@@ -986,14 +992,14 @@ body{
                                         font-weight: 400;
                                         color: white;
                                         background: #1F959C;
-                                        padding: 0.65em 20px;
+                                        padding: 0.6em 10px;
                                         margin: 10px;
                                         width: 65%;
                                         cursor: pointer;
 
                                         @include tablet-portrait-only{
-                                            padding: 0.65em 2px;
-                                            font-size: 1.1rem;
+                                            padding: 0.6em 2px;
+                                            font-size: 1rem;
                                         }
 
                                         @include mobile-only{
@@ -1037,6 +1043,7 @@ body{
                 @include br;
                 text-align: center;
                 padding: 10px;
+                padding-left:5px;
                 height: 50%;
                 margin-top: 2%;
                 margin-left: 2%;
@@ -1064,12 +1071,16 @@ body{
 
 
                     #lobby-how-to-play{
-                        font-size: 1.6rem;
+                        font-size: 1.4rem;
                         margin-top: 10px;
                         font-weight: bold;
+                        z-index: 1;
+                        overflow-y: scroll;
 
                         @include tablet-portrait-only{
                             font-size: 14px;
+                            z-index: 1;
+                            overflow-y: scroll;
                         }
 
                         @include mobile-only {
@@ -1079,6 +1090,8 @@ body{
                             padding: 1px;
                             margin: 0 auto;
                             margin-top: 2%;
+                            z-index: 1;
+                            overflow-y: scroll;
                         }
                     }
 

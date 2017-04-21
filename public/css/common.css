@@ -147,10 +147,11 @@ body {
         #main-container #app-container #menu-container #logo #third-word {
           color: #ffffff; }
       #main-container #app-container #menu-container #donate-now {
+        word-wrap: break-word;
         display: inline-block;
         font-weight: 400;
         text-align: center;
-        background-color: rgba(0, 119, 190, 0.9);
+        background-color: rgba(39, 101, 134, 0.9);
         color: white;
         float: right;
         border-radius: 20px;
@@ -220,6 +221,7 @@ body {
       height: 63%;
       position: absolute;
       margin-top: 20px;
+      margin-left: 30px;
       right: 0;
       top: 60px;
       z-index: 1;
@@ -324,7 +326,8 @@ body {
               font-family: 'Roboto', cursive;
               margin-bottom: 0px;
               font-style: italic;
-              font-size: 0.9em; }
+              font-size: 0.9em;
+              padding-top: 5px; }
             @media only screen and (min-width: 521px) and (max-width: 768px) {
               #main-container #app-container #social-bar-container #player-container #above-czar-container #player-container-inner #player-name h4 {
                 font-size: 14px; } }
@@ -335,7 +338,9 @@ body {
                 margin-top: 3px;
                 margin-bottom: 5px; } }
             #main-container #app-container #social-bar-container #player-container #above-czar-container #player-container-inner #player-score {
-              float: left; }
+              float: left;
+              margin-left: 7px;
+              font-style: italic; }
               #main-container #app-container #social-bar-container #player-container #above-czar-container #player-container-inner #player-score h2 {
                 font-size: 22px;
                 margin-top: 0;
@@ -568,14 +573,14 @@ body {
                     font-weight: 400;
                     color: white;
                     background: #1F959C;
-                    padding: 0.65em 20px;
+                    padding: 0.6em 10px;
                     margin: 10px;
                     width: 65%;
                     cursor: pointer; }
                     @media only screen and (min-width: 521px) and (max-width: 768px) {
                       #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #startGame #start-game-container #start-game-button {
-                        padding: 0.65em 2px;
-                        font-size: 1.1rem; } }
+                        padding: 0.6em 2px;
+                        font-size: 1rem; } }
                     @media (max-width: 520px) {
                       #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #startGame #start-game-container #start-game-button {
                         padding: 0.6em 1px;
@@ -603,6 +608,7 @@ body {
         border-radius: 5px;
         text-align: center;
         padding: 10px;
+        padding-left: 5px;
         height: 50%;
         margin-top: 2%;
         margin-left: 2%;
@@ -624,12 +630,16 @@ body {
           font-family: 'Roboto';
           font-size: 1rem; }
           #main-container #app-container #gameplay-container #info-container #inner-info #lobby-how-to-play {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             margin-top: 10px;
-            font-weight: bold; }
+            font-weight: bold;
+            z-index: 1;
+            overflow-y: scroll; }
             @media only screen and (min-width: 521px) and (max-width: 768px) {
               #main-container #app-container #gameplay-container #info-container #inner-info #lobby-how-to-play {
-                font-size: 14px; } }
+                font-size: 14px;
+                z-index: 1;
+                overflow-y: scroll; } }
             @media (max-width: 520px) {
               #main-container #app-container #gameplay-container #info-container #inner-info #lobby-how-to-play {
                 font-size: 15px;
@@ -637,7 +647,9 @@ body {
                 width: 80%;
                 padding: 1px;
                 margin: 0 auto;
-                margin-top: 2%; } }
+                margin-top: 2%;
+                z-index: 1;
+                overflow-y: scroll; } }
           #main-container #app-container #gameplay-container #info-container #inner-info ol {
             margin-top: 10px;
             margin-left: 20px;
