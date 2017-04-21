@@ -56,7 +56,7 @@ $(document).ready(function() {
            <div class="slid banner2 slider2">
               <div class="caption">
                 <div class="row">
-                  <div class="form-container col-sm-12 col-md-4 col-md-offset-4" ng-controller="IndexController" >
+                  <div class="form-container col-sm-12 col-md-4 col-md-offset-4" ng-controller="IndexController">
                     <form class="signin form-horizontal" ng-submit="signIn()">
                       <p id="slogan">Sign in with</p>
                       <div id="login-buttons">
@@ -66,19 +66,19 @@ $(document).ready(function() {
                         <a href="/auth/google"><i class="fa fa-google fa-3x"></i></a>
                       </div>
                       <p id="slogan">Or log in below:</p>
-                      <div class="sign-error" ng-show="showMessage">
-                        {{showMessage}}
+                      <div class="sign-error" ng-show="showError() === 'invalid'">
+                        Please check your username/password and try again.
                       </div>
                       <div class="control-group">
                         <label for="email" class="control-label"></label>
                         <div class="controls">
-                          <input class="input-info form-control" id="email" type="text" name="email" ng-model="formData.email" placeholder="Email" required>
+                          <input class="input-info form-control" id="email" type="text" name="email" ng-model="formData.email" placeholder="Email" required novalidate />
                         </div>
                       </div>
                       <div class="control-group">
                         <label for="password" class="control-label"></label>
                         <div class="controls">
-                          <input class="input-info form-control" id="password" type="password" name="password" ng-model="formData.password" placeholder="Password" required>
+                          <input class="input-info form-control" id="password" type="password" name="password" ng-model="formData.password" placeholder="Password" required novalidate />
                         </div>
                       </div>
                       <div class="form-actions top-margin" id="btn-style">
