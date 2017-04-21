@@ -5,6 +5,48 @@ License: Andela
 License URL: http://andela.com
 */
 
+.stn {
+  display: inline-block;
+  margin-top: 5px;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 5px 20px;
+  font-size: 22px;
+  line-height: 1.42857143;
+  border-radius: 40px;
+  font-family: 'Roboto-Regular';
+  background-color: rgb(41, 97, 127);
+  border-radius: 40px;
+  z-index: 4;
+  position: relative;
+}
+
+.mmtn {
+  display: inline-block;
+  margin-top: 5px;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 5px 20px;
+  font-size: 22px;
+  line-height: 1.42857143;
+  border-radius: 40px;
+  font-family: 'Roboto-Regular';
+  background-color: rgb(39, 101, 134);
+  border-radius: 40px;
+  z-index: 4;
+  position: relative;
+}
+
 /* dashboard start */
 
 #dashboardPage {
@@ -36,17 +78,22 @@ License URL: http://andela.com
   margin-right: 15px;
 }
 
-.navbar-nav {
+.dashboard-nav {
   float: right;
   margin-right: 10px;
 }
 
-.navbar-nav a {
-  background-color: rgba(255, 187, 0, 0.8);;
+.dashboard-nav a {
+  padding: 0.5em 1em;
+  background-color: rgb(41, 97, 127);
   color: #fff !important;
   border-radius: 40px;
 }
-.navbar-nav a:hover {
+
+.dashboard-nav a.signout {
+  background-color: rgba(203, 109, 81, 0.9);
+}
+.dashboard-nav a:hover {
   background-color: transparent !important;
   color: #fff !important;
 }
@@ -159,6 +206,33 @@ License URL: http://andela.com
 }
 
 /* dashboard end */
+
+.styled-select {
+   background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+   height: 29px;
+   overflow: hidden;
+   width: 240px;
+}
+
+.blue {
+  background-color: #69d2e8;
+  }
+
+.semi-square {
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+}
+
+.styled-select select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px; /* If you add too much padding here, the options won't show in IE */
+   width: 268px;
+}
+
 
 h4, h5, h6,
 h1, h2, h3 {margin: 0;}
@@ -283,7 +357,7 @@ color:rgba(51, 29, 29, 0.74) !important;
 
 }
 .donate {
-  background-color: rgba(255, 187, 0, 0.8);
+  background-color: rgba(203, 109, 81, 0.9);
   color: #fff !important;
   border-radius: 40px;
 }
@@ -300,27 +374,8 @@ color:rgba(51, 29, 29, 0.74) !important;
   background-color: transparent;
   color: rgb(39, 101, 134) !important;
 }
-
-.stn {
-  display: inline-block;
-  margin-top: 5px;
-  font-weight: 400;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
-  white-space: nowrap;
-  padding: 5px 20px;
-  font-size: 22px;
-  line-height: 1.42857143;
-  border-radius: 40px;
-  font-family: 'Roboto-Regular';
-  background-color: rgba(255, 187, 0, 0.8);
-  border-radius: 40px;
-  z-index: 4;
-  position: relative;
 }
+
 .mmtn {
   display: inline-block;
   margin-top: 5px;
@@ -344,7 +399,7 @@ color:rgba(51, 29, 29, 0.74) !important;
 .banner2{
   background:url(../images/friends.png) no-repeat 0px 0px;
   background-size:cover;
-  min-height:680px;
+  height:100%;
   background-position: 70% 0;
   z-index: -1;
 }
@@ -358,7 +413,7 @@ color:rgba(51, 29, 29, 0.74) !important;
 .banner3{
   background:url(../images/non-profit.png) no-repeat 0px 0px;
   background-size:cover;
-  min-height:680px;
+  height:100%;
   z-index: -1;
 }
 .slider {

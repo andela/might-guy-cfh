@@ -65,6 +65,12 @@ module.exports = function(io) {
       }
     });
 
+    // socket.on('regionId', (countryId) => {
+    //   if (allGames[socket.gameID]) {
+    //     allGames[socket.gameID].regionId = countryId;
+    //   }
+    // });
+
     socket.on('leaveGame', function() {
       exitGame(socket);
     });

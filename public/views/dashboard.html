@@ -15,12 +15,12 @@
           <div class="glyphicon glyphicon-home" id="glyph-home"></div>
         </a>
 
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav dashboard-nav">
           <li ng-hide="showOptions" id="donation">
             <a href="https://www.crowdrise.com/fundraise-and-volunteer/donate-mobile/project/cfhio/cards4humanity?widget=true&redirect_to=http%3A%2F%2Fcfh.io%2F%23!%2F&stylesheet=&amounts=">Donate Now
             </a>
           </li>
-          <li ng-hide="showOptions" id="signout"><a href="/signout">Sign Out</a></li>
+          <li ng-hide="showOptions" id="signout"><a href="/signout" class="signout">Sign Out</a></li>
         </ul>
       </div>
     </nav>
@@ -29,7 +29,7 @@
       <span class="glyphicon glyphicon-dashboard"
         style="font-size: 40px; vertical-align: -10px; margin-right: 15px;">
       </span>
-      <span class="welcome-message">Welcome to your dashboard, {{userName}}.</span>
+      <span class="welcome-message">Welcome to your dashboard, {{global.user.name}}.</span>
     </h3>
        <br>
        <br>

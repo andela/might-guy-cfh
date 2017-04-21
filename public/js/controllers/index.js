@@ -42,15 +42,15 @@ angular.module('mean.system')
           $window.location.href = '/';
         } else {
           $scope.showMessage = data.message;
-          document.getElementById('name').value = '';
-          document.getElementById('email').value = '';
-          document.getElementById('password').value = '';
+          angular.element(document.querySelector('#name')).val('');
+          angular.element(document.querySelector('#email')).val('');
+          angular.element(document.querySelector('#password')).val('');
         }
       }).error((error, status) => {
         $scope.showMessage = `${status} : ${error}`;
-        document.getElementById('name').value = '';
-        document.getElementById('email').value = '';
-        document.getElementById('password').value = '';
+        angular.element(document.querySelector('#name')).val('');
+        angular.element(document.querySelector('#email')).val('');
+        angular.element(document.querySelector('#password')).val('');
       });
       };
 
@@ -63,13 +63,13 @@ angular.module('mean.system')
             $window.location.href = '/';
           } else {
             $scope.showMessage = data.message;
-            document.getElementById('email').value = '';
-            document.getElementById('password').value = '';
+            angular.element(document.querySelector('#email')).val('');
+            angular.element(document.querySelector('#password')).val('');
           }
         }).error((error, status) => {
           $scope.showMessage = `${status} : ${error}`;
-          document.getElementById('email').value = '';
-          document.getElementById('password').value = '';
+          angular.element(document.querySelector('#email')).val('');
+          angular.element(document.querySelector('#password')).val('');
         });
       };
 
