@@ -190,7 +190,6 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
     color: #4e4e4e;
 }
 
-
 @mixin button-smaller {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#f0f0f0');
     background-color: white;
@@ -337,7 +336,7 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
     }
 
     &.longBlack {
-        background:rgba(39, 101, 134,0.9);
+        background: rgba(39, 101, 134,0.7);
         border-color: white;
         color: white;
         height: 100%;
@@ -345,6 +344,11 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
         padding-left: 2%;
         padding-right: 2%;
         margin-left: 5px;
+
+        @include mobile-only {
+            width: 100%;
+            margin-bottom: 10px;
+        }
     }
 
     &.smallest {
@@ -441,7 +445,7 @@ body{
             -webkit-border-radius: 8px;
             -moz-border-radius: 8px;
             border-radius: 8px;
-            background: linear-gradient(rgba(25, 84, 123,0), rgba(71, 80, 86,0));
+            background: rgba(33, 51, 103, 0);
             margin-bottom: 10px;
             margin-top: 5px;
             padding: 5px;
@@ -452,8 +456,8 @@ body{
             }
 
             #dropdown {
-                margin-top: 2%;
                 padding-right: 10px;
+                font-size: 1.6em;
             }
 
             #logo{
@@ -480,18 +484,24 @@ body{
                 }
             }
             #donate-now {
+                word-wrap: break-word;
                 display: inline-block;
                 font-weight: 400;
                 text-align: center;
-                background-color: rgba(0, 119, 190, 0.9);
+                background-color: rgba(39, 101, 134, 0.7);
+                border-radius: 30px;
+                -moz-border-radius: 30px;
+                -webkit-border-radius: 30px;
                 color: white;
                 float: right;
                 border-radius: 20px;
                 -moz-border-radius: 20px;
                 -webkit-border-radius: 20px;
                 font-size: 1rem;
-                margin: 5px 3px;
-                padding: 0.65em 20px;
+                margin-top: 3px;
+                margin-bottom: 3px;
+                margin-right: 5px;
+                padding: 0.6em 20px;
 
                 @include mobile-only{
                     font-size: 0.7rem;
@@ -516,7 +526,7 @@ body{
                 font-weight: 400;
                 text-align: center;
                 color: white;
-                background: rgba(203, 109, 81,0.9);
+                background: rgba(203, 109, 81,0.8);
                 margin-top: 3px;
                 margin-bottom: 3px;
                 margin-right: 10px;
@@ -573,6 +583,8 @@ body{
             height: 63%;
             position: absolute;
             margin-top: 20px;
+            margin-left: 10px;
+            margin-right: 5px;
             right: 0;
             top: 60px;
             z-index: 1;
@@ -583,6 +595,7 @@ body{
                 width: 100%;
                 height: 50px;
                 position: relative;
+                margin-top: 10px;
                 right: 0;
                 top: 0;
                 z-index: 1;
@@ -597,7 +610,7 @@ body{
                 padding-bottom: 4%;
                 min-height: 85px;
                 background: #7CE4E8;
-                background: rgb(39, 101, 134);
+                background: rgba(39, 101, 134, 0.7);
                 margin: 0 4% 6% 6%;
                 @include br;
 
@@ -696,11 +709,15 @@ body{
                                 margin-bottom: 0px;
                                 font-style: italic;
                                 font-size: 0.9em;
+            
+
                             }
                             h4{
 
                                 @include tablet-portrait-only{
                                     font-size: 14px;
+                                    margin-top: 3px;
+                                    margin-left: 3px;
                                 }
 
                                 @include mobile-only{
@@ -931,9 +948,9 @@ body{
 
                             #startGame{
                                 width: 100%;
-                                overflow: hidden;
+                               /*  overflow: hidden; */
                                 height: 100%;
-                                position: absolute;
+                                position: relative;
                                 right: 1%;
 
                                 #finding-players {
@@ -978,22 +995,22 @@ body{
                                     color: #333;
 
                                     #start-game-button{
-                                        border-radius: 8px;
-                                        -moz-border-radius: 5px;
-                                        -webkit-border-radius: 5px;
+                                        border-radius: 30px;
+                                        -moz-border-radius: 30px;
+                                        -webkit-border-radius: 30px;
                                         font-size: 20px;
                                         font-size: 1.25rem;
                                         font-weight: 400;
                                         color: white;
                                         background: #1F959C;
-                                        padding: 0.65em 20px;
+                                        padding: 6px 10px;
                                         margin: 10px;
                                         width: 65%;
                                         cursor: pointer;
 
                                         @include tablet-portrait-only{
-                                            padding: 0.65em 2px;
-                                            font-size: 1.1rem;
+                                            padding: 0.6em 2px;
+                                            font-size: 1rem;
                                         }
 
                                         @include mobile-only{
@@ -1032,15 +1049,18 @@ body{
             }
             #info-container{
                 width: 100%;
-                background: rgba(39, 101, 134,0.9);
+                background: rgba(39, 101, 134,0.7);
                 color: white;
+                float: left;
                 @include br;
                 text-align: center;
                 padding: 10px;
                 height: 50%;
                 margin-top: 2%;
-                margin-left: 2%;
-                margin-right:5%;
+                margin-left: 5px;
+                margin-right: 5%;
+                position: relative;
+                overflow: scroll;
 
                 @include tablet-portrait-only{
                     padding-top: 5px;
@@ -1055,21 +1075,23 @@ body{
                 }
 
                 #inner-info{
-                    width: 80%;
+                    width: 90%;
                     margin: 0 2%;
-                    margin-left: 60px;
+                    margin-left: 30px;
                     font-family: 'Roboto';
-                    font-size: 1rem;
-
 
 
                     #lobby-how-to-play{
                         font-size: 1.6rem;
                         margin-top: 10px;
                         font-weight: bold;
+                        z-index: 1;
+                        overflow-y: scroll;
 
                         @include tablet-portrait-only{
                             font-size: 14px;
+                            z-index: 1;
+                            overflow-y: scroll;
                         }
 
                         @include mobile-only {
@@ -1079,6 +1101,8 @@ body{
                             padding: 1px;
                             margin: 0 auto;
                             margin-top: 2%;
+                            z-index: 1;
+                            overflow-y: scroll;
                         }
                     }
 
@@ -1088,6 +1112,7 @@ body{
                         font-family: $main-font;
                         text-align: left;
                         font-size: 1.3rem;
+                        font-style: italic;
 
                         li{
                             list-style-type: decimal;
@@ -1106,7 +1131,8 @@ body{
 
             #game-end-container{
                 width: 100%;
-                background: rgba(39, 101, 134,0.9);
+                background: rgba(39, 101, 134,0.7);
+
                 @include br;
                 text-align: center;
                 overflow: hidden;
@@ -1154,7 +1180,7 @@ body{
                     }
 
                     #inner-text-container{
-                        overflow: hidden;
+                        overflow: scroll;
                         height: 100%;
 
                         @include mobile-only{
@@ -1198,13 +1224,14 @@ body{
             #czar-blank-container{
                 color: white;
                 width: 100%;
-                background: linear-gradient(rgba(25, 84, 123,0), rgba(71, 80, 86,0));
+                background: rgba(39, 101, 134,0.7);
                 @include br;
                 text-align: center;
                 overflow: hidden;
                 height: 50%;
                 position: relative;
                 margin-top: 10px;
+                margin-left: 5px;
                 font-size: 30px;
 
                 @include mobile-only{
@@ -1301,7 +1328,7 @@ body{
                 }
 
                 #cards {
-                    width: 100%;
+                    width: 80%;
                     height: 100%;
                     font-size: 18px;
                     padding-left: 5px;

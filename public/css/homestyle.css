@@ -4,6 +4,33 @@ Author URL: http://github.com/andela-ksolomon
 License: Andela
 License URL: http://andela.com
 */
+
+.styled-select {
+   background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+   height: 29px;
+   overflow: hidden;
+   width: 240px;
+}
+
+.blue {
+  background-color: #69d2e8; 
+  }
+
+.semi-square {
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+}
+
+.styled-select select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px; /* If you add too much padding here, the options won't show in IE */
+   width: 268px;
+}
+
 h4, h5, h6,
 h1, h2, h3 {margin: 0;}
 ul, ol {margin: 0; padding:0;}
@@ -149,6 +176,9 @@ color:rgba(51, 29, 29, 0.74) !important;
   background-color: transparent;
   color: #213367 !important;
 }
+.navbar {
+  top: 0;
+}
 .navbar-nav a {
   color: #fff !important;
   border-radius: 40px;
@@ -241,7 +271,7 @@ color:rgba(51, 29, 29, 0.74) !important;
 }
 .slider {
   position: relative;
-  overflow: hidden;
+  overflow: scroll;
   background-color: rgba(0, 0, 0, 0.7);
   height: 100%;
 }
@@ -872,10 +902,14 @@ background:transparent;
 color:#4dc47d;
 border-color: #4dc47d;
 }
+.icon-bar {
+  border: 1.5px solid #fff;
+}
 .btn-primary {
-  background:#69d2e8;
-  border-color: #69d2e8;
+  background:#1F959C;
+  border-color: #1F959c;
   color: #fff;
+  border-radius: 30px;
 }
 .comments h4{
   margin: 0 0 18px 0;

@@ -1,6 +1,7 @@
 var async = require('async');
 var _ = require('underscore');
 var questions = require(__dirname + '/../../app/controllers/questions.js');
+const regionId = questions.regionIde;
 var answers = require(__dirname + '/../../app/controllers/answers.js');
 var guestNames = [
   "Disco Potato",
@@ -34,6 +35,7 @@ function Game(gameID, io) {
   this.questions = null;
   this.answers = null;
   this.curQuestion = null;
+  this.regionId = null;
   this.timeLimits = {
     stateChoosing: 21,
     stateJudging: 16,
@@ -117,6 +119,7 @@ Game.prototype.prepareGame = function() {
     });
 
   var self = this;
+  // const gameRegion = self.regionId;
   async.parallel([
     this.getQuestions,
     this.getAnswers
@@ -134,6 +137,7 @@ Game.prototype.prepareGame = function() {
 
 Game.prototype.startGame = function() {
   console.log(this.gameID,this.state);
+  // console.log(this.regionId);
   this.shuffleCards(this.questions);
   this.shuffleCards(this.answers);
   // this.stateChoosing(this);

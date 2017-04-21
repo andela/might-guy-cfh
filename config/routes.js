@@ -2,6 +2,7 @@ var async = require('async');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const gameRecord = require('../app/models/gameRecord');
+const question = require('../app/controllers/questions');
 
 const sg = require('sendgrid')(`SG.SsgxbJ1IRiSImn2gI1qAkA.
   VdN9m18YcsrOoc6-kpg_C3h4B207Ftxc_znG3dHE5qk`);
@@ -55,6 +56,11 @@ module.exports = function(app, passport, auth) {
     app.post('/users/avatars', users.avatars);
 
     const middleware = require('./middlewares/authorization.js');
+
+    app.post('/api/selected-region', (req, res) => {
+      const gameRegion = req.body.regionId;
+      question.setRegion(gameRegion);
+    });
 
     app.get('/api/search/users', middleware.requiresLogin, (req, res) => {
       User.find({}, (error, result) => {
