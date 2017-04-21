@@ -7,7 +7,7 @@
   padding: 1%;
   margin: 1%;
   background-color: #fff;
-  border-radius: 3px;
+  border-radius: 8px;
   color: #252525;
   font-family: Arial;
   font-size: 20px;
@@ -117,7 +117,7 @@ body {
     display: inline-block;
     margin: 0 auto;
     position: relative;
-    background: url(../images/people.png) no-repeat 0px 0px;
+    background: url(../images/blue.jpg) no-repeat 0px 0px;
     background-size: cover; }
     #main-container #app-container #menu-container {
       width: 100%;
@@ -155,6 +155,7 @@ body {
         display: inline-block;
         font-weight: 400;
         text-align: center;
+
         background-color: rgba(39, 101, 134, 0.7);
         border-radius: 30px;
         -moz-border-radius: 30px;
@@ -256,9 +257,9 @@ body {
         background: #7CE4E8;
         background: rgba(39, 101, 134, 0.7);
         margin: 0 4% 6% 6%;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px; }
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px; }
         @media (max-width: 520px) {
           #main-container #app-container #social-bar-container #player-container {
             min-height: 0;
@@ -300,9 +301,9 @@ body {
               width: 100%;
               height: 140%;
               float: left;
-              -webkit-border-radius: 5px;
-              -moz-border-radius: 5px;
-              border-radius: 5px;
+              -webkit-border-radius: 8px;
+              -moz-border-radius: 8px;
+              border-radius: 8px;
               min-width: 40px;
               min-height: 40px; }
               @media only screen and (min-width: 521px) and (max-width: 768px) {
@@ -383,12 +384,12 @@ body {
           bottom: 0;
           text-align: center;
           width: 100%;
-          -webkit-border-bottom-right-radius: 5px;
-          -webkit-border-bottom-left-radius: 5px;
-          -moz-border-radius-bottomright: 5px;
-          -moz-border-radius-bottomleft: 5px;
-          border-bottom-right-radius: 5px;
-          border-bottom-left-radius: 5px;
+          -webkit-border-bottom-right-radius: 8px;
+          -webkit-border-bottom-left-radius: 8px;
+          -moz-border-radius-bottomright: 8px;
+          -moz-border-radius-bottomleft: 8px;
+          border-bottom-right-radius: 8px;
+          border-bottom-left-radius: 8px;
           background: black;
           opacity: 0.4; }
           @media (max-width: 520px) {
@@ -441,9 +442,9 @@ body {
             text-align: center;
             position: relative;
             font-weight: bold;
-            -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            border-radius: 5px;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            border-radius: 8px;
             /* -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
     -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
     box-shadow: inset 0px 1px 0px 0px #ffffff; */
@@ -455,9 +456,9 @@ body {
             height: 20%;
             margin-bottom: 16px;
             line-height: 20%;
-            -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            border-radius: 5px; }
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            border-radius: 8px; }
             #main-container #app-container #gameplay-container #upper-gameplay-container #menu-timeremaining-container #menu-container #menu-button {
               position: absolute;
               top: 50%;
@@ -470,9 +471,9 @@ body {
               text-align: center;
               position: relative;
               font-weight: bold;
-              -webkit-border-radius: 5px;
-              -moz-border-radius: 5px;
-              border-radius: 5px;
+              -webkit-border-radius: 8px;
+              -moz-border-radius: 8px;
+              border-radius: 8px;
               /* -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
     -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
     box-shadow: inset 0px 1px 0px 0px #ffffff; */
@@ -639,6 +640,7 @@ body {
           width: 90%;
           margin: 0 2%;
           margin-left: 30px;
+
           font-family: 'Roboto'; }
           #main-container #app-container #gameplay-container #info-container #inner-info #lobby-how-to-play {
             font-size: 1.6rem;
@@ -686,8 +688,7 @@ body {
         text-align: center;
         overflow: hidden;
         height: 50%;
-        margin-left: 2%;
-        margin-top: 2%; }
+        margin-top: 10px; }
         @media (max-width: 520px) {
           #main-container #app-container #gameplay-container #game-end-container {
             height: 65%; } }
@@ -836,9 +837,9 @@ body {
           #main-container #app-container #gameplay-container #czar-blank-container #czar-blank-inner #smaller-text {
             font-size: 18px; }
         #main-container #app-container #gameplay-container #czar-blank-container #charity-fact-container {
-          -webkit-border-radius: 5px;
-          -moz-border-radius: 5px;
-          border-radius: 5px;
+          -webkit-border-radius: 8px;
+          -moz-border-radius: 8px;
+          border-radius: 8px;
           background-color: #fff;
           color: black;
           position: absolute;
