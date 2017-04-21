@@ -260,6 +260,19 @@ color:rgba(51, 29, 29, 0.74) !important;
   z-index: -2;
 }
 
+.introjs-nextbutton {
+  color: #fff !important;
+}
+.introjs-button {
+ text-shadow: 0px;
+ background-color: rgba(255, 187, 0, 0.8) !important;
+ background-image: -webkit-linear-gradient(#9c8516, #c7b24d) !important;
+ background-image: -moz-linear-gradient(#9c8516, #c7b24d) !important;
+ background-image: -o-linear-gradient(#9c8516, #c7b24d) !important;
+ background-image: linear-gradient(#9c8516, #c7b24d) !important;
+ text-shadow: black 0em 0em 0em !important;
+}
+
 .banner-info{
   position: absolute;
   z-index: 400;
