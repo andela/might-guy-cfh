@@ -7,8 +7,8 @@
     "jquery": "~1.9.1",
     "underscore": "~1.5.2",
     "ResponsiveSlides": "*",
-    "emojionearea": "^3.0.0",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "emojionearea": "^2.1.0"
   },
   "exportsOverride": {
     "bootstrap": {
@@ -19,5 +19,8 @@
     "angular-ui-utils": {
       "modules": "modules/route/route.js"
     }
+  },
+  "resolutions": {
+    "emojionearea": "^2.1.4"
   }
 }
