@@ -177,7 +177,6 @@ color:rgba(51, 29, 29, 0.74) !important;
   color: #213367 !important;
 }
 .navbar-nav a {
-  background-color: rgba(255, 187, 0, 0.8);;
   color: #fff !important;
   border-radius: 40px;
 }
@@ -250,7 +249,7 @@ color:rgba(51, 29, 29, 0.74) !important;
 .banner2{
   background:url(../images/friends.png) no-repeat 0px 0px;
   background-size:cover;
-  min-height:680px;
+  height:100%;
   background-position: 70% 0;
   z-index: -1;
 }
@@ -264,14 +263,14 @@ color:rgba(51, 29, 29, 0.74) !important;
 .banner3{
   background:url(../images/non-profit.png) no-repeat 0px 0px;
   background-size:cover;
-  min-height:680px;
+  height:100%;
   z-index: -1;
 }
 .slider {
   position: relative;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.7);
-  min-height: 680px;
+  height: 100%;
 }
 
 .slider2{

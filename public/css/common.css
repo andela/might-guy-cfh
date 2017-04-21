@@ -7,7 +7,7 @@
   padding: 1%;
   margin: 1%;
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 3px;
   color: #252525;
   font-family: Arial;
   font-size: 20px;
@@ -30,7 +30,7 @@
     border-color: white;
     color: white; }
   .card.longBlack {
-    background: linear-gradient(rgba(25, 84, 123, 0.2), rgba(71, 80, 86, 0.2));
+    background: rgba(39, 101, 134, 0.9);
     border-color: white;
     color: white;
     height: 100%;
@@ -113,7 +113,7 @@ body {
     display: inline-block;
     margin: 0 auto;
     position: relative;
-    background: url(../images/blue.jpg) no-repeat 0px 0px;
+    background: url(../images/people.png) no-repeat 0px 0px;
     background-size: cover; }
     #main-container #app-container #menu-container {
       width: 100%;
@@ -128,6 +128,9 @@ body {
         #main-container #app-container #menu-container {
           margin-bottom: 1px;
           margin-top: 0px; } }
+      #main-container #app-container #menu-container #dropdown {
+        margin-top: 2%;
+        padding-right: 10px; }
       #main-container #app-container #menu-container #logo {
         display: inline-block;
         margin-left: 10px;
@@ -144,22 +147,18 @@ body {
         #main-container #app-container #menu-container #logo #third-word {
           color: #ffffff; }
       #main-container #app-container #menu-container #donate-now {
+        word-wrap: break-word;
         display: inline-block;
         font-weight: 400;
         text-align: center;
-        background-color: rgba(33, 51, 103, 0.9);
-        border-radius: 30px;
-        -moz-border-radius: 30px;
-        -webkit-border-radius: 30px;
+        background-color: rgba(39, 101, 134, 0.9);
         color: white;
         float: right;
         border-radius: 20px;
         -moz-border-radius: 20px;
         -webkit-border-radius: 20px;
         font-size: 1rem;
-        margin-top: 3px;
-        margin-bottom: 3px;
-        margin-right: 5px;
+        margin: 5px 3px;
         padding: 0.65em 20px; }
         @media (max-width: 520px) {
           #main-container #app-container #menu-container #donate-now {
@@ -180,7 +179,7 @@ body {
         font-weight: 400;
         text-align: center;
         color: white;
-        background: rgba(197, 65, 65, 0.9);
+        background: rgba(203, 109, 81, 0.9);
         margin-top: 3px;
         margin-bottom: 3px;
         margin-right: 10px;
@@ -222,6 +221,7 @@ body {
       height: 63%;
       position: absolute;
       margin-top: 20px;
+      margin-left: 30px;
       right: 0;
       top: 60px;
       z-index: 1;
@@ -243,11 +243,11 @@ body {
         padding-bottom: 4%;
         min-height: 85px;
         background: #7CE4E8;
-        background: rgba(245, 166, 35, 0.2);
+        background: #276586;
         margin: 0 4% 6% 6%;
-        -webkit-border-radius: 8px;
-        -moz-border-radius: 8px;
-        border-radius: 8px; }
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px; }
         @media (max-width: 520px) {
           #main-container #app-container #social-bar-container #player-container {
             min-height: 0;
@@ -289,9 +289,9 @@ body {
               width: 100%;
               height: 140%;
               float: left;
-              -webkit-border-radius: 8px;
-              -moz-border-radius: 8px;
-              border-radius: 8px;
+              -webkit-border-radius: 5px;
+              -moz-border-radius: 5px;
+              border-radius: 5px;
               min-width: 40px;
               min-height: 40px; }
               @media only screen and (min-width: 521px) and (max-width: 768px) {
@@ -326,7 +326,8 @@ body {
               font-family: 'Roboto', cursive;
               margin-bottom: 0px;
               font-style: italic;
-              font-size: 0.9em; }
+              font-size: 0.9em;
+              padding-top: 5px; }
             @media only screen and (min-width: 521px) and (max-width: 768px) {
               #main-container #app-container #social-bar-container #player-container #above-czar-container #player-container-inner #player-name h4 {
                 font-size: 14px; } }
@@ -337,7 +338,9 @@ body {
                 margin-top: 3px;
                 margin-bottom: 5px; } }
             #main-container #app-container #social-bar-container #player-container #above-czar-container #player-container-inner #player-score {
-              float: left; }
+              float: left;
+              margin-left: 7px;
+              font-style: italic; }
               #main-container #app-container #social-bar-container #player-container #above-czar-container #player-container-inner #player-score h2 {
                 font-size: 22px;
                 margin-top: 0;
@@ -370,12 +373,12 @@ body {
           bottom: 0;
           text-align: center;
           width: 100%;
-          -webkit-border-bottom-right-radius: 8px;
-          -webkit-border-bottom-left-radius: 8px;
-          -moz-border-radius-bottomright: 8px;
-          -moz-border-radius-bottomleft: 8px;
-          border-bottom-right-radius: 8px;
-          border-bottom-left-radius: 8px;
+          -webkit-border-bottom-right-radius: 5px;
+          -webkit-border-bottom-left-radius: 5px;
+          -moz-border-radius-bottomright: 5px;
+          -moz-border-radius-bottomleft: 5px;
+          border-bottom-right-radius: 5px;
+          border-bottom-left-radius: 5px;
           background: black;
           opacity: 0.4; }
           @media (max-width: 520px) {
@@ -428,9 +431,9 @@ body {
             text-align: center;
             position: relative;
             font-weight: bold;
-            -webkit-border-radius: 8px;
-            -moz-border-radius: 8px;
-            border-radius: 8px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
             /* -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
     -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
     box-shadow: inset 0px 1px 0px 0px #ffffff; */
@@ -442,9 +445,9 @@ body {
             height: 20%;
             margin-bottom: 16px;
             line-height: 20%;
-            -webkit-border-radius: 8px;
-            -moz-border-radius: 8px;
-            border-radius: 8px; }
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px; }
             #main-container #app-container #gameplay-container #upper-gameplay-container #menu-timeremaining-container #menu-container #menu-button {
               position: absolute;
               top: 50%;
@@ -457,9 +460,9 @@ body {
               text-align: center;
               position: relative;
               font-weight: bold;
-              -webkit-border-radius: 8px;
-              -moz-border-radius: 8px;
-              border-radius: 8px;
+              -webkit-border-radius: 5px;
+              -moz-border-radius: 5px;
+              border-radius: 5px;
               /* -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
     -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
     box-shadow: inset 0px 1px 0px 0px #ffffff; */
@@ -570,14 +573,14 @@ body {
                     font-weight: 400;
                     color: white;
                     background: #1F959C;
-                    padding: 0.65em 20px;
+                    padding: 0.6em 10px;
                     margin: 10px;
                     width: 65%;
                     cursor: pointer; }
                     @media only screen and (min-width: 521px) and (max-width: 768px) {
                       #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #startGame #start-game-container #start-game-button {
-                        padding: 0.65em 2px;
-                        font-size: 1.1rem; } }
+                        padding: 0.6em 2px;
+                        font-size: 1rem; } }
                     @media (max-width: 520px) {
                       #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #startGame #start-game-container #start-game-button {
                         padding: 0.6em 1px;
@@ -598,16 +601,18 @@ body {
                       font-size: 18px; } }
       #main-container #app-container #gameplay-container #info-container {
         width: 100%;
-        background: linear-gradient(rgba(25, 84, 123, 0.4), rgba(71, 80, 86, 0.2));
+        background: rgba(39, 101, 134, 0.9);
         color: white;
-        -webkit-border-radius: 8px;
-        -moz-border-radius: 8px;
-        border-radius: 8px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
         text-align: center;
         padding: 10px;
+        padding-left: 5px;
         height: 50%;
-        margin-top: 20px;
-        margin-left: 5px; }
+        margin-top: 2%;
+        margin-left: 2%;
+        margin-right: 5%; }
         @media only screen and (min-width: 521px) and (max-width: 768px) {
           #main-container #app-container #gameplay-container #info-container {
             padding-top: 5px;
@@ -619,16 +624,22 @@ body {
             padding: 1px;
             height: 50%; } }
         #main-container #app-container #gameplay-container #info-container #inner-info {
-          width: 90%;
+          width: 80%;
           margin: 0 2%;
-          font-family: 'Roboto'; }
+          margin-left: 60px;
+          font-family: 'Roboto';
+          font-size: 1rem; }
           #main-container #app-container #gameplay-container #info-container #inner-info #lobby-how-to-play {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             margin-top: 10px;
-            font-weight: bold; }
+            font-weight: bold;
+            z-index: 1;
+            overflow-y: scroll; }
             @media only screen and (min-width: 521px) and (max-width: 768px) {
               #main-container #app-container #gameplay-container #info-container #inner-info #lobby-how-to-play {
-                font-size: 14px; } }
+                font-size: 14px;
+                z-index: 1;
+                overflow-y: scroll; } }
             @media (max-width: 520px) {
               #main-container #app-container #gameplay-container #info-container #inner-info #lobby-how-to-play {
                 font-size: 15px;
@@ -636,7 +647,9 @@ body {
                 width: 80%;
                 padding: 1px;
                 margin: 0 auto;
-                margin-top: 2%; } }
+                margin-top: 2%;
+                z-index: 1;
+                overflow-y: scroll; } }
           #main-container #app-container #gameplay-container #info-container #inner-info ol {
             margin-top: 10px;
             margin-left: 20px;
@@ -654,14 +667,15 @@ body {
                 padding: 0px 10px 5px 10px; } }
       #main-container #app-container #gameplay-container #game-end-container {
         width: 100%;
-        background: linear-gradient(rgba(25, 84, 123, 0.4), rgba(71, 80, 86, 0.6));
-        -webkit-border-radius: 8px;
-        -moz-border-radius: 8px;
-        border-radius: 8px;
+        background: rgba(39, 101, 134, 0.9);
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
         text-align: center;
         overflow: hidden;
         height: 50%;
-        margin-top: 10px; }
+        margin-left: 2%;
+        margin-top: 2%; }
         @media (max-width: 520px) {
           #main-container #app-container #gameplay-container #game-end-container {
             height: 65%; } }
@@ -785,9 +799,9 @@ body {
         color: white;
         width: 100%;
         background: linear-gradient(rgba(25, 84, 123, 0), rgba(71, 80, 86, 0));
-        -webkit-border-radius: 8px;
-        -moz-border-radius: 8px;
-        border-radius: 8px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
         text-align: center;
         overflow: hidden;
         height: 50%;
@@ -809,9 +823,9 @@ body {
           #main-container #app-container #gameplay-container #czar-blank-container #czar-blank-inner #smaller-text {
             font-size: 18px; }
         #main-container #app-container #gameplay-container #czar-blank-container #charity-fact-container {
-          -webkit-border-radius: 8px;
-          -moz-border-radius: 8px;
-          border-radius: 8px;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          border-radius: 5px;
           background-color: #fff;
           color: black;
           position: absolute;
@@ -859,9 +873,9 @@ body {
         background: linear-gradient(rgba(25, 84, 123, 0), rgba(71, 80, 86, 0));
         margin-top: 11px;
         margin-bottom: 10px;
-        -webkit-border-radius: 8px;
-        -moz-border-radius: 8px;
-        border-radius: 8px; }
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px; }
         @media (max-width: 520px) {
           #main-container #app-container #gameplay-container #cards-container {
             background: transparent;
