@@ -175,7 +175,7 @@ angular.module('mean.directives', [])
         // Send chat message
       scope.sendChatMessage = () => {
         const chat = {};
-        chat.message = $('.emojionearea-editor').html();
+        chat.message = $('#chatInput').val();
         if (!chat.message) return;
         chat.date = new Date().toString();
         chat.avatar = window.localStorage.getItem('avatar');
@@ -246,6 +246,7 @@ angular.module('mean.directives', [])
         // Submit the chat when the 'enter' key is pressed
       $('body').on('keyup', '.emojionearea-editor', (event) => {
         if (event.which === 13) {
+          $('.emojionearea-editor').trigger('blur');
           scope.sendChatMessage();
         }
       });
