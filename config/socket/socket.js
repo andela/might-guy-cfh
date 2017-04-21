@@ -3,44 +3,20 @@ var Player = require('./player');
 require("console-stamp")(console, "m/dd HH:MM:ss");
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
-const config = require('../config');
-const firebase = require('firebase');
-
-const firebaseConfig = {
-  apiKey: config.firebase_apiKey,
-  authDomain: config.firebase_authDomain,
-  databaseURL: config.firebase_databaseUrl,
-  projectId: config.firebase_projectId,
-  storageBucket: config.firebase_storageBucket,
-  messagingSenderId: config.firebase_messagingSenderId
-};
-
-
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database(); // Unique chat database on firebase
 
 var avatars = require(__dirname + '/../../app/controllers/avatars.js').all();
 // Valid characters to use to generate random private game IDs
-const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
+var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
 
-let chatMessages = []; // Initialize chat messages to nothing
+module.exports = function(io) {
 
-module.exports = function (io) {
-  let game;
-  const allGames = {};
-  const allPlayers = {};
-  const gamesNeedingPlayers = [];
-  let gameID = 0;
+  var game;
+  var allGames = {};
+  var allPlayers = {};
+  var gamesNeedingPlayers = [];
+  var gameID = 0;
 
   io.sockets.on('connection', function (socket) {
-    socket.emit('initializeChat', chatMessages);
-    socket.on('chat message', (chat) => {
-      game.players
-        .forEach(player => player.socket.emit('chat message', chat));
-      chatMessages.push(chat);
-      database.ref(`chat/${gameID}`).set(chatMessages);
-    });
-
     console.log(socket.id +  ' Connected');
     socket.emit('id', {id: socket.id});
 
@@ -49,8 +25,7 @@ module.exports = function (io) {
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].pickCards(data.cards,socket.id);
       } else {
-        console.log(`Received pickCard from ${socket.id} 
-          but game does not appear to exist!`);
+        console.log('Received pickCard from',socket.id, 'but game does not appear to exist!');
       }
     });
 
@@ -58,8 +33,7 @@ module.exports = function (io) {
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].pickWinning(data.card,socket.id);
       } else {
-        console.log('Received pickWinning from',
-          socket.id, 'but game does not appear to exist!');
+        console.log('Received pickWinning from',socket.id, 'but game does not appear to exist!');
       }
     });
 
@@ -157,9 +131,9 @@ module.exports = function (io) {
       if (game.state === 'awaiting players' && (!game.players.length ||
         game.players[0].socket.id !== socket.id)) {
         // Put player into the requested game
+        console.log('Allowing player to join',requestedGameId);
         allPlayers[socket.id] = true;
         game.players.push(player);
-        console.log('This is the number of players: ', game.players);
         socket.join(game.gameID);
         socket.gameID = game.gameID;
         game.assignPlayerColors();
@@ -190,7 +164,7 @@ module.exports = function (io) {
   };
 
   var fireGame = function(player,socket) {
-    // var game;
+    var game;
     if (gamesNeedingPlayers.length <= 0) {
       gameID += 1;
       var gameIDStr = gameID.toString();
@@ -264,7 +238,6 @@ module.exports = function (io) {
         }
         game.killGame();
         delete allGames[socket.gameID];
-        chatMessages = [];
       }
     }
     socket.leave(socket.gameID);
