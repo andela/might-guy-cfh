@@ -4,10 +4,10 @@ const User = mongoose.model('User');
 const gameRecord = require('../app/models/gameRecord');
 const question = require('../app/controllers/questions');
 
-const sg = require('sendgrid')(`SG.SsgxbJ1IRiSImn2gI1qAkA.
-  VdN9m18YcsrOoc6-kpg_C3h4B207Ftxc_znG3dHE5qk`);
+const sg = require('sendgrid')('SG.SsgxbJ1IRiSImn2gI1qAkA.' +
+  'VdN9m18YcsrOoc6-kpg_C3h4B207Ftxc_znG3dHE5qk');
 
-const sendMail = (to, gameLink, gameOwner) => {
+const sendMail = (inviteeMail, gameLink, gameOwner) => {
   const request = sg.emptyRequest({
     method: 'POST',
     path: '/v3/mail/send',
@@ -16,7 +16,7 @@ const sendMail = (to, gameLink, gameOwner) => {
         {
           to: [
             {
-              email: `${to}`,
+              email: `${inviteeMail}`,
             },
           ],
           subject: 'Cards For Humanity',
@@ -27,19 +27,49 @@ const sendMail = (to, gameLink, gameOwner) => {
       },
       content: [
         {
-          type: 'text/plain',
-          value: `Cards For Humanity player, *${gameOwner}*, would like to
-          invite you to game their game: ${gameLink}.
-          \nClick on the link to join them in a rough ride.`,
+          type: 'text/html',
+          value: `
+          <a href="http://might-guy-cfh-staging.herokuapp.com/#!/">
+            <img style="display: block; margin: auto;"
+              src="http://i.imgur.com/FuXN2R2.jpg"/>
+          </a>
+          <h2 style="margin-top: 40px; text-align: center">
+          Cards For Humanity player,
+          <span style="color: rgba(203, 109, 81, 0.9)">${gameOwner}</span>,
+           has invited you to their game. <br><br>
+
+             <a href="${gameLink}">
+               <div style="text-align: center">
+                  <button style="background-color: rgb(41, 97, 127);
+                   border: none; color: white; padding: 15px 32px;
+                   text-align: center;
+                   text-decoration: none;
+                   display: inline-block;
+                   font-size: 16px;">
+                   CLICK HERE TO JOIN THE ROUGH RIDE
+                  </button>
+                </div>
+            </a> <br>
+          </h2>
+          <h3 style="text-align: center">
+            Alternatively, you can copy the link below and paste in your
+            browser window. <br>
+            <span style="display: block; margin-top: 4px;
+             background-color: #bec5ce; height: 30px; padding-top: 6px;
+             text-align: center;">
+              ${gameLink}
+            </span>
+          </h3>
+          `
         },
       ],
     },
   });
 
   sg.API(request)
-    .then(response => response)
+    .then(response => console.log(`Mail to ${inviteeMail} successfully sent.`))
     .catch(error =>
-      `${error} There was a problem sending the invites. Please try again.`
+      console.log (error)
     );
 };
 
@@ -98,13 +128,12 @@ module.exports = function(app, passport, auth) {
       });
     });
 
-    app.post('/inviteusers', middleware.requiresLogin, (req, res) => {
+    app.post('/inviteusers', middleware.requiresLogin, (req) => {
       const url = req.body.url;
       const userEmail = req.body.invitee;
       const gameOwner = req.body.gameOwner;
 
       sendMail(userEmail, url, gameOwner);
-      res.send(`Invite sent to ${userEmail}`);
     });
 
     app.post('/api/games/:id/start', middleware.requiresLogin, (req, res) => {
