@@ -68,22 +68,25 @@ $(document).ready(function() {
                       </div>
                       <p id="slogan">OR</p>
                       <p id="slogan">Create an Account</p>
+                      <div class="sign-error" ng-show="showMessage">
+                        {{showMessage}}
+                      </div>
                         <div class="control-group">
                           <label for="name" class="control-label" id="slogan"></label>
                           <div class="controls">
-                            <input class="input-info form-control" id="name" type="text" name="name" ng-model="formData.name" placeholder="Full name" required novalidate />
+                            <input class="input-info form-control" id="name" type="text" name="name" ng-model="formData.name" placeholder="Full name" required>
                           </div>
                         </div>
                         <div class="control-group">
                           <label for="email" class="control-label" id="slogan"></label>
                           <div class="controls">
-                            <input class="input-info form-control" id="email" type="email" name="email" placeholder="Email" ng-model="formData.email" required novalidate />
+                            <input class="input-info form-control" id="email" type="email" name="email" placeholder="Email" ng-model="formData.email" required>
                           </div>
                         </div>
                         <div class="control-group">
                           <label for="password" class="control-label" id="slogan"></label>
                           <div class="controls">
-                            <input class="input-info form-control" id="password" type="password" name="password" ng-model="formData.password" placeholder="Password" required novalidate />
+                            <input class="input-info form-control" id="password" type="password" name="password" ng-model="formData.password" placeholder="Password" required>
                           </div>
                         </div>
                       <br>

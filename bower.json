@@ -2,13 +2,12 @@
   "name": "mean",
   "version": "1.0.0",
   "dependencies": {
+    "bootstrap": "~3.0.0",
     "angular-bootstrap": "~0.4.0",
     "angular-ui-utils": "0.0.4",
     "jquery": "~1.9.1",
     "underscore": "~1.5.2",
-    "ResponsiveSlides": "*",
-    "bootstrap": "^3.3.7",
-    "emojionearea": "^2.1.0"
+    "ResponsiveSlides": "*"
   },
   "exportsOverride": {
     "bootstrap": {
@@ -19,8 +18,5 @@
     "angular-ui-utils": {
       "modules": "modules/route/route.js"
     }
-  },
-  "resolutions": {
-    "emojionearea": "^2.1.4"
   }
 }
