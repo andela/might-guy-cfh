@@ -27,10 +27,18 @@ $(document).ready(function() {
        <div class="top-menu">
           <ul class="nav1 pull-right">
              <li><a href="#!/dashboard" ng-hide="showOptions">Dashboard</a></li>
-             <li class="active"><a onClick="scroll(0,0)" href="">Home</a></li>
              <li><a onClick="scroll(0,742);" href="">How to Play?</a></li>
              <li><a onClick="scroll(0,1411);" href="">Charity</a></li>
              <li><a onClick="scroll(0,2021);" href="">About</a></li>
+             <li class="dropdown" id="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-bell"></i>
+                    <span ng-show="allNotification.length" class="label label-danger">{{ count }}</span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <span ng-hide="allNotification.length" style="text-align: center; padding: 10px;">You have no new notification</span>
+                    <li ng-click="readNotifications(item._id)" ng-repeat="item in allNotification"><span><a target="_blank" href="{{ item.link }}">{{ item.message }}</a></span></li>
+                  </ul>
+                </li>
              <li ng-show="showOptions" class="donate-log"><a href="https://www.crowdrise.com/fundraise-and-volunteer/donate-mobile/project/cfhio/cards4humanity?widget=true&redirect_to=http%3A%2F%2Fcfh.io%2F%23!%2F&stylesheet=&amounts=">Donate Now</a></li>
              <li ng-show="showOptions" class="donate-log"><a href="#!/signin">Login</a></li>
              <li ng-hide="showOptions" class="donate"><a href="/signout">Sign Out</a></li>
@@ -198,7 +206,7 @@ $(document).ready(function() {
         <hr>
           <h2 class="count-title count-number"> $681 </h2>
           <p class="count-text ">Amount raised</p>
-          <center><button href="https://www.crowdrise.com/fundraise-and-volunteer/donate-mobile/project/cfhio/cards4humanity?widget=true&redirect_to=http%3A%2F%2Fcfh.io%2F%23!%2F&stylesheet=&amounts=" class="stn"> Donate Now</button>
+          <center><button href="https://www.crowdrise.com/fundraise-and-volunteer/donate-mobile/project/cfhio/cards4humanity?widget=true&redirect_to=http%3A%2F%2Fcfh.io%2F%23!%2F&stylesheet=&amounts=" class="stn" style="color: #fff;"> Donate Now</button>
             <img src="images/cr-logo.png" class="img-responsive" alt=""/>
           </center>
    </div>

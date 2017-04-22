@@ -401,6 +401,12 @@ color:rgba(51, 29, 29, 0.74) !important;
   background-color: rgba(0, 0, 0, 0.7);
   height: 100%;
 }
+.app-container-bg {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100%;
+  overflow: scroll;
+}
 
 .slider2{
   position: relative;
@@ -627,7 +633,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 .trailer-text span {
   padding: 0.5em;
   font-size:1.4em;
-  color: #213367;
+  color: rgb(41, 97, 127);
   font-family: 'Roboto-Regular';
   line-height: 1em;
   text-decoration:none;
@@ -638,7 +644,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 .sub-text p {
   font-size: 1.0em;
   line-height: 1.8em;
-  color: #213367;
+  color: rgb(41, 97, 127);
   font-weight: 400;
   margin-top: 0.5em;
   font-family: 'Roboto-Regular';
@@ -709,7 +715,7 @@ ul.callbacks_tabs.callbacks1_tabs {
   color:#fff;
   margin-top:1em;
   display:inline-block;
-  background: #435ead;
+  background: rgb(41, 97, 127);
   padding:0.75em 1.3em;
   text-decoration:none;
   font-size:0.9em;
@@ -728,7 +734,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 
 .copywrite {
   padding: 2em 0;
-  background: rgb(68, 64, 55);
+  background: rgb(41, 97, 127);
   width: 100%;
 }
 .copywrite p {
@@ -747,7 +753,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 .about h2,.review h2,h2.top,.gallery h2,.contact h2{
   font-family: 'Roboto-Bold';
   font-size: 2.5em;
-  color: #213367;
+  color: rgb(41, 97, 127);
   text-align:center;
 }
 .about-info-grids{
@@ -784,7 +790,7 @@ ul.callbacks_tabs.callbacks1_tabs {
   margin-top:4em;
 }
 .team a{
-  color: #8c6610 !important;
+  color: rgb(41, 97, 127) !important;
   text-decoration: bold;
 }
 .team img{
@@ -793,7 +799,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 .testimonals h3,.team h3{
   font-family: 'Roboto-Bold';
   font-size: 1.8em;
-  color: #435ead;
+  color: rgb(41, 97, 127);
   margin-bottom:0.7em;
 }
 .testimonal-grid:first-child {
@@ -821,7 +827,7 @@ ul.callbacks_tabs.callbacks1_tabs {
   margin-top:15px;
 }
 .testi-info a{
-  color:#213367;
+  color:rgb(41, 97, 127);
   text-decoration:none;
   font-size: 0.75em;
   font-weight:600;
@@ -945,13 +951,13 @@ p.snglp{
 .recent-posts h4,.category h4,.coment-form h4,.response h4{
   font-family: 'Roboto-Regular';
   font-size: 1.6em;
-  color: #213367;
+  color: rgb(41, 97, 127);
   margin-bottom: 0.7em;
 }
 .posts-right label {
   margin: 0 0 0px 0;
   font-size: 1em;
-  color:#213367;
+  color:rgb(41, 97, 127);
   line-height: 1.6em;
 }
 .blog-img img{
@@ -1745,14 +1751,14 @@ ul.nav1 {
   cursor: pointer;
 }
 .top-menu ul.nav1 li.active{
-  background:#213367;
+  background:rgb(41, 97, 127);
   color:#fff;
 }
 .top-menu ul li.active a, .top-menu ul li a:hover {
   color: #FFFFFF;
 }
 .top-menu ul.nav1 li:hover{
-  background:#213367;
+  background:rgb(41, 97, 127);
   color:#fff;
   transition:0.5s all;
   -webkit-transition:0.5s all;
