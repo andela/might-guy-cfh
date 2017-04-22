@@ -1,5 +1,8 @@
 angular.module('mean.system')
-.controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', function ($scope, game, $timeout, $location, MakeAWishFactsService, $dialog) {
+.controller('GameController', ['$scope', 'game',
+  '$timeout', '$location', 'MakeAWishFactsService', '$dialog', '$http', 'socket',
+  ($scope, game, $timeout, $location,
+    MakeAWishFactsService, $dialog, $http, socket) => {
     $scope.hasPickedCards = false;
     $scope.winningCardPicked = false;
     $scope.showTable = false;
@@ -120,13 +123,113 @@ angular.module('mean.system')
       return game.winningCard !== -1;
     };
 
-    $scope.startGame = function() {
-      game.startGame();
+    const displayMessage = (message, modalID) => {
+      $scope.message = message;
+      $(modalID).modal();
+    };
+
+    $scope.joinName = name => name.split(' ').join('');
+
+    $scope.invite = (user, button) => {
+      $scope.invitedUsers = JSON.parse(sessionStorage.invitedUsers);
+      if ($scope.invitedUsers.length === 10) {
+        $('[data-toggle="popover"]').popover();
+      }
+
+      if ($scope.invitedUsers.length <= 10) {
+        const inviteButton = document.getElementById(`${button.target.id}`);
+        inviteButton.disabled = true;
+        if ($scope.invitedUsers.indexOf(user.name) === -1) {
+          $scope.invitedUsers.push(user.name);
+          sessionStorage.invitedUsers = JSON.stringify($scope.invitedUsers);
+        }
+      }
+
+      const url = button.target.baseURI;
+      const obj = {
+        url,
+        invitee: user.email,
+        gameOwner: game.players[0].username
+      };
+
+      $http.post('/inviteusers', obj);
+    };
+
+    $scope.getUsers = () => {
+      $http.get('/api/search/users')
+        .success((response) => {
+          $scope.currentUsers = response;
+          displayMessage('', '#users-modal');
+        }, error => error
+        );
+    };
+
+    $scope.searchUsers = () => {
+      if (!sessionStorage.invitedUsers) {
+        sessionStorage.invitedUsers = JSON.stringify([]);
+      }
+
+      $scope.userMatches = [];
+      $scope.currentUsers.forEach((user) => {
+        const userName = user.name.toLowerCase();
+        const userEmail = user.email.toLowerCase();
+
+        if (userName.indexOf($scope.searchString.toLowerCase()) !== -1) {
+          $scope.userMatches.push(user);
+        } else if (userEmail === $scope.searchString.toLowerCase()) {
+          $scope.userMatches.push(user);
+        }
+      });
+
+      $scope.userMatches.forEach((user) => {
+        $scope.invitedUsers = JSON.parse(sessionStorage.invitedUsers);
+        user.disabled = $scope.invitedUsers.includes(user.name);
+      });
+
+      return $scope.userMatches;
+    };
+
+    $scope.startGameChoice = false;
+
+    $scope.startGame = () => {
+      if (game.players.length >= game.playerMinLimit
+              && game.players.length < game.playerMaxLimit) {
+        displayMessage('You are about to start a new game. ' +
+         'Do you want to continue?', '#message-modal');
+
+        if ($scope.startGameChoice) {
+          game.startGame();
+          $scope.showInviteButton = false;
+        }
+      } else {
+        const minNumberOfPlayersLeft =
+            game.playerMinLimit - game.players.length;
+        displayMessage(`You need at least ${minNumberOfPlayersLeft}
+          more player${minNumberOfPlayersLeft > 1 ? 's' : ''}
+            to be able to start. `, '#error-modal');
+      }
     };
 
     $scope.abandonGame = function() {
+      sessionStorage.invitedUsers = JSON.stringify([]);
       game.leaveGame();
       $location.path('/');
+    };
+
+    $scope.shuffleCards = () => {
+      const card = $('#card');
+      card.addClass('animated flipOutX');
+      $timeout(() => {
+        $scope.startNextRound();
+        card.removeClass('animated flipOutX');
+        $('#closeModal').click();
+      }, 2000);
+    };
+
+    $scope.startNextRound = () => {
+      if ($scope.isCzar()) {
+        game.startNextRound();
+      }
     };
 
     // Catches changes to round to update when no players pick card
@@ -143,9 +246,25 @@ angular.module('mean.system')
     });
 
     // In case player doesn't pick a card in time, show the table
-    $scope.$watch('game.state', function() {
-      if (game.state === 'waiting for czar to decide' && $scope.showTable === false) {
+    $scope.$watch('game.state', () => {
+      if (game.state === 'waiting for czar to decide'
+        && $scope.showTable === false) {
         $scope.showTable = true;
+      }
+      if ($scope.isCzar() && game.state === 'pick black card'
+        && game.state !== 'game dissolved'
+        && game.state !== 'awaiting players' && game.table.length === 0) {
+        displayMessage('', '#card-modal');
+      }
+      if ($scope.isCzar() === false && game.state === 'pick black card'
+        && game.state !== 'game dissolved'
+        && game.state !== 'awaiting players' && game.table.length === 0) {
+        $scope.czarHasDrawn = 'Wait! Czar is drawing Card';
+      }
+      if (game.state !== 'pick black card'
+        && game.state !== 'awaiting players'
+        && game.state !== 'game dissolve') {
+        $scope.czarHasDrawn = '';
       }
     });
 
@@ -156,29 +275,119 @@ angular.module('mean.system')
           // reset the URL so they don't think they're in the requested room.
           $location.search({});
         } else if ($scope.isCustomGame() && !$location.search().game) {
-          // Once the game ID is set, update the URL if this is a game with friends,
+          // Once the game ID is set,
+          // update the URL if this is a game with friends,
           // where the link is meant to be shared.
           $location.search({game: game.gameID});
           if(!$scope.modalShown){
             setTimeout(function(){
               var link = document.URL;
-              var txt = 'Give the following link to your friends so they can join your game: ';
+              var txt = `Give the following link to your
+                friends so they can join your game: `;
               $('#lobby-how-to-play').text(txt);
-              $('#oh-el').css({'text-align': 'center', 'font-size':'22px', 'background': 'white', 'color': 'black'}).text(link);
-            }, 200);
+              $('#oh-el').css(
+                { 'text-align': 'center', 'font-size': '22px',
+                  'background': 'white', 'color': 'black' }).text(link);
+            }, 20);
             $scope.modalShown = true;
           }
         }
       }
     });
 
+    $scope.countries =
+    [
+      {
+        country: 'General',
+        regionId: '58f4de8ef08434413b6aec50'
+      },
+      {
+        country: 'Nigeria',
+        regionId: '58ed5fbe75ebcefb68f19750'
+      },
+      {
+        country: 'USA',
+        regionId: '58f531a4f08434413b6aec51'
+      },
+      {
+        country: 'South Africa',
+        regionId: '58ed60a875ebcefb68f19751'
+      },
+      {
+        country: 'Kenya',
+        regionId: '58ed60a875ebcefb68f19752'
+      },
+      {
+        country: 'Uganda',
+        regionId: '58ed60a875ebcefb68f19753'
+      },
+      {
+        country: 'Ghana',
+        regionId: '58ed60a875ebcefb68f19754'
+      },
+      {
+        country: 'England',
+        regionId: '58ed620175ebcefb68f19769'
+      },
+      {
+        country: 'Spain',
+        regionId: '58ed620175ebcefb68f1976a'
+      },
+      {
+        country: 'Germany',
+        regionId: '58ed620175ebcefb68f1976b'
+      },
+      {
+        country: 'China',
+        regionId: '58ed620175ebcefb68f1976c'
+      },
+      {
+        country: 'India',
+        regionId: '58ed620175ebcefb68f1976d'
+      },
+      {
+        country: 'Italy',
+        regionId: '58ed620175ebcefb68f1976e'
+      },
+      {
+        country: 'France',
+        regionId: '58ed620175ebcefb68f1976f'
+      },
+      {
+        country: 'Mexico',
+        regionId: '58f53908f08434413b6aec52'
+      },
+      {
+        country: 'Canada',
+        regionId: '58f8990ef08434413b6aed4e'
+      },
+      {
+        country: 'Brazil',
+        regionId: '58f89970f08434413b6aed4f'
+      }
+    ];
+
+    $scope.selectedCountry = $scope.countries[0];
+
+    $scope.selectCountry = (region) => {
+      if (region) {
+        $http.post('/api/selected-region',
+        { regionId: '58f4de8ef08434413b6aec50' });
+      } else {
+        const chosenCountry = angular.element(document
+         .querySelector('#selectedCountry')).val();
+      $scope.selectedCountryId = $scope.countries[chosenCountry].regionId;
+      $http.post('/api/selected-region',
+        { regionId: $scope.selectedCountryId });
+      }
+    };
+
     if ($location.search().game && !(/^\d+$/).test($location.search().game)) {
       console.log('joining custom game');
-      game.joinGame('joinGame',$location.search().game);
+      game.joinGame('joinGame', $location.search().game);
     } else if ($location.search().custom) {
-      game.joinGame('joinGame',null,true);
+      game.joinGame('joinGame', null, true);
     } else {
       game.joinGame();
     }
-
-}]);
+  }]);

@@ -18,7 +18,7 @@ $(document).ready(function() {
 
 <!-- header -->
 <div class="top-banner" ng-controller="IndexController">
-   <!--banner-info--> 
+   <!--banner-info-->
    <div class="banner-info">
       <div class="container">
         <div class="logo">
@@ -26,17 +26,16 @@ $(document).ready(function() {
           <span class="menu"></span>
        <div class="top-menu">
           <ul class="nav1 pull-right">
+             <li><a href="#!/dashboard" ng-hide="showOptions">Dashboard</a></li>
              <li class="active"><a onClick="scroll(0,0)" href="">Home</a></li>
              <li><a onClick="scroll(0,742);" href="">How to Play?</a></li>
              <li><a onClick="scroll(0,1411);" href="">Charity</a></li>
              <li><a onClick="scroll(0,2021);" href="">About</a></li>
              <li ng-show="showOptions" class="donate-log"><a href="https://www.crowdrise.com/fundraise-and-volunteer/donate-mobile/project/cfhio/cards4humanity?widget=true&redirect_to=http%3A%2F%2Fcfh.io%2F%23!%2F&stylesheet=&amounts=">Donate Now</a></li>
-
-             <li ng-hide="showOptions" class="donate"><a href="https://www.crowdrise.com/fundraise-and-volunteer/donate-mobile/project/cfhio/cards4humanity?widget=true&redirect_to=http%3A%2F%2Fcfh.io%2F%23!%2F&stylesheet=&amounts=">Donate Now</a></li>
              <li ng-show="showOptions" class="donate-log"><a href="#!/signin">Login</a></li>
              <li ng-hide="showOptions" class="donate"><a href="/signout">Sign Out</a></li>
           </ul>
-       </div> 
+       </div>
        </div>
    <!-- script-for-menu -->
             <script>
@@ -47,7 +46,7 @@ $(document).ready(function() {
                 });
             </script>
           <!-- /script-for-menu -->
-       
+
        <div class="clearfix"></div>
      </div>
    </div>
@@ -68,7 +67,7 @@ $(document).ready(function() {
    <div class="slider">
       <div class="callbacks_container">
         <ul class="rslides" id="slider">
-        
+
           <div class="slid banner1">
               <div class="caption">
                   <h3>Cards for Humanity</h3>
@@ -82,9 +81,9 @@ $(document).ready(function() {
                 </p>
               </div>
           </div>
-        
-        
-           <div class="slid banner2"> 
+
+
+           <div class="slid banner2">
               <div class="caption">
                 <h3>Play with Friends</h3>
                 <h2>You are not alone, Send Invites to all your Friends</h2>
@@ -96,8 +95,8 @@ $(document).ready(function() {
                 </p>
               </div>
               </div>
-        
-          <div class="slid banner3">  
+
+          <div class="slid banner3">
             <div class="caption">
               <h3>Give to Charity</h3>
               <h2>Gives you the opportunity to donate to children in need</h2>
@@ -109,7 +108,7 @@ $(document).ready(function() {
                 </p>
             </div>
           </div>
-        
+
         </ul>
      </div>
    </div>
@@ -125,7 +124,7 @@ $(document).ready(function() {
      <div class="howto-play">
        <center><u><h3>How to Play?</h3></u></center>
       </div>
-     <div class="latest-top">       
+     <div class="latest-top">
         <div class="col-md-5 trailer-text">
            <div class="sub-trailer">
            <div class="col-md-19 sub-img">
@@ -165,14 +164,6 @@ $(document).ready(function() {
            </div>
            <span> Share with friends</span>
           <center>
-            <a href="#" onclick="
-                  window.open(
-                    'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
-                    'facebook-share-dialog',
-                    'width=626,height=436');
-                  return false;">
-                <img width="150px" height="50px" src="../images/fb_share.png">
-              </a>
                <a href="http://twitter.com/intent/tweet?status=Cards for Humanity: A Game for Horrible People Desperately Trying to do Good+http://cfh.io">
               <img width="250px" height="60px" src="../images/tw_share.png"> </a>
           </center>
@@ -181,9 +172,6 @@ $(document).ready(function() {
         <h3>Watch a Live ScreenCast on How to Play!!!</h3>
         </br>
         <iframe width="640" height="360" src="https://www.youtube.com/embed/pIjGCSVNwYE" frameborder="0" allowfullscreen></iframe>
-         
-             
-
 
         </div>
          <div class="clearfix"> </div>
@@ -222,7 +210,7 @@ $(document).ready(function() {
 <!-- About Us Start -->
 <div class="latest">
 <div class="team">
-        <center><h3>The Team</h3></center>    
+        <center><h3>The Team</h3></center>
         <div class="col-md-15 col-sm-4 col-xs-12">
         <div class="team-grid">
           <div class="team-grid_1">
@@ -236,29 +224,29 @@ $(document).ready(function() {
           </div>
                <h4><a href="https://github.com/andela-ksolomon">Solomon Kingsley</a></h4>
             </div>
-        </div>     
-        <div class="col-md-15 col-sm-4 col-xs-12">         
+        </div>
+        <div class="col-md-15 col-sm-4 col-xs-12">
             <div class="team-grid">
             <div class="team-grid_3">
             </div>
                <h4><a href="https://github.com/andela-tadedotun">Adedotun Taiwo</a></h4>
-            </div>            
+            </div>
        </div>
-       <div class="col-md-15 col-sm-4 col-xs-12">        
+       <div class="col-md-15 col-sm-4 col-xs-12">
             <div class="team-grid">
             <div class="team-grid_4">
             </div>
                <h4><a href="https://github.com/andela-oakinwa">Oluwafemi Akinwa</a></h4>
-            </div>            
+            </div>
        </div>
-       <div class="col-md-15 col-sm-4 col-xs-12">        
+       <div class="col-md-15 col-sm-4 col-xs-12">
             <div class="team-grid">
             <div class="team-grid_5">
             </div>
                <h4><a href="https://github.com/andela-moseni">Mercy Oseni</a></h4>
-            </div>            
+            </div>
        </div>
-       <div class="clearfix"></div> 
+       <div class="clearfix"></div>
       </div>
    </div>
 </div>

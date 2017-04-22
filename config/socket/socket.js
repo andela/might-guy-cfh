@@ -51,7 +51,7 @@ module.exports = function(io) {
     socket.on('startGame', function() {
       if (allGames[socket.gameID]) {
         var thisGame = allGames[socket.gameID];
-        console.log('comparing',thisGame.players[0].socket.id,'with',socket.id);
+        console.log('comparing', thisGame.players[0].socket.id, 'with', socket.id);
         if (thisGame.players.length >= thisGame.playerMinLimit) {
           // Remove this game from gamesNeedingPlayers so new players can't join it.
           gamesNeedingPlayers.forEach(function(game,index) {
@@ -65,6 +65,12 @@ module.exports = function(io) {
       }
     });
 
+    // socket.on('regionId', (countryId) => {
+    //   if (allGames[socket.gameID]) {
+    //     allGames[socket.gameID].regionId = countryId;
+    //   }
+    // });
+
     socket.on('leaveGame', function() {
       exitGame(socket);
     });
@@ -72,6 +78,10 @@ module.exports = function(io) {
     socket.on('disconnect', function(){
       console.log('Rooms on Disconnect ', io.sockets.manager.rooms);
       exitGame(socket);
+    });
+
+    socket.on('selectBlackCard', () => {
+      allGames[socket.gameID].startNextRound(allGames[socket.gameID]);
     });
   });
 
@@ -135,7 +145,11 @@ module.exports = function(io) {
           game.prepareGame();
         }
       } else {
-        // TODO: Send an error message back to this user saying the game has already started
+        /* TODO: Send an error message back
+         * to this user saying the game has already started
+        */
+        exitGame(socket);
+        socket.emit('gameBegun');
       }
     } else {
       // Put players into the general queue
@@ -189,7 +203,7 @@ module.exports = function(io) {
     // Generate a random 6-character game ID
     while (!isUniqueRoom) {
       uniqueRoom = '';
-      for (var i = 0; i < 6; i++) {
+      for (var i = 0; i < 12; i++) {
         uniqueRoom += chars[Math.floor(Math.random()*chars.length)];
       }
       if (!allGames[uniqueRoom] && !(/^\d+$/).test(uniqueRoom)) {

@@ -7,6 +7,12 @@
     "mocha": true,
     "commonjs": true
   },
+  "globals": {
+    "sessionStorage": false,
+    "angular": false,
+    "document": false,
+    "$": false
+  },
   "rules": {
     "max-len": ["error", 80, 4],
     "one-var": 0,

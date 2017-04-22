@@ -1,22 +1,121 @@
+<div id="error-modal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" style="color: #800000">Well, you've got to wait.</h4>
+          </div>
+          <div class="modal-body">
+            <p>{{message}}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary pull-right" data-dismiss="modal" style="background-color: #B22222; border:none;">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+<div id="users-modal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <span>
+              <h4 class="modal-title" style="color: #008080; display:inline">Send Invites</h4>
+           </span>
+          </div>
+          <div class="modal-body">
+            <div id="searchbox" style="display:inline-block">
+              <span class="glyphicon glyphicon-search"></span>
+              <input type="search" id="search" placeholder="Search for users..." ng-model="searchString" ng-keyup="searchUsers()"/>
+          </div>
+
+          <div class="dropdown pull-right" ng-show="invitedUsers.length > 0">
+            <button id="dropdown" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Invited Users <span class="caret"></span> </button>
+            <ul class="dropdown-menu">
+              <li ng-repeat="user in invitedUsers" style="display: block; margin-left: 13px;"> {{user}} </li>
+            </ul>
+        </div>
+
+          <h2 ng-show="userMatches.length"> Search Result: </h2>
+          <div style="margin-top: 10px;">
+            <pre ng-repeat="user in userMatches">{{user.name}}<span style="float: right"><button id={{joinName(user.name)}} ng-click="invite(user, $event)" ng-disabled={{user.disabled}} data-toggle="popover" data-content="Don't invite a country! You can only invite 11 players." data-placement="bottom" data-trigger="focus" title="Hey Emperor!"> Invite! </button></span></pre>
+          </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary pull-right" data-dismiss="modal" style="background-color: #B22222; border:none;">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+  <div id="message-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" style="color: #800000">Be sure not to crash a spaceship.</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{message}}</p><br>
+          <p style="margin-bottom:8px;">Kindly select your region: &nbsp;&nbsp;</p>
+          <div class="styled-select blue semi-square" >
+            <select id="selectedCountry" style="text-align:center; color:white; outline:0;" ng-model="selectedCountry" ng-options="region.country for region in countries" ng-change="selectCountry();"></select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #B22222; border:none;">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="startGameChoice = true; startGame();">Join the Rough Ride</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="card-modal" class="modal fade" role="dialog" data-controls-modal="card-modal" data-backdrop="static">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" style="color: #800000">You are the Czar - Click card to pick the next question</h4>
+        </div>
+        <div class="modal-body" align="center">
+          <div ng-click="shuffleCards()" ng-style="{'cursor':'pointer'}" style='margin:auto;' class='animated flipInX' id='card'>
+            <div><img src='../img/card.jpg'></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="closeModal" data-dismiss="modal" style="display:none; ">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <div id="question-container-inner">
   <div class="card longBlack">
+    <button class="btn btn-primary" ng-click="getUsers()" ng-show="showInviteButton">Invite Players</button>
     <span ng-bind-html-unsafe="game.curQuestion.text" ng-hide="game.state === 'game ended' || game.state ==='game dissolved' || game.state === 'awaiting players'"></span>
 
     <div id="notifications" ng-if="game.notification" ng-animate="{enter:'animated fadeInLeft', leave:'animated fadeOut'}">{{game.notification}}</div>
+    <br><p ng-show="!isCzar() && game.state !== 'awaiting players'"> <center> {{ czarHasDrawn }} </center></p>
+
 
     <div id="startGame" ng-show="game.state === 'awaiting players'">
       <div id="finding-players">Finding Players</div>
       <div id="player-count-container">
-        <div id="player-count">{{game.players.length}} / 6 </div>
+        <div id="player-count">{{game.players.length}} / 12 </div>
         <div id="the-word-players"> Players </div>
       </div>
       <div id="loading-container">
         <div id="loading-gif"><img ng-src="../img/loader.gif"/></div>
       </div>
-      <div id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride) && game.players.length >= game.playerMinLimit">
+      <div id="start-game-container" ng-click="startGame(); selectCountry('58f4de8ef08434413b6aec50');" ng-show="(game.playerIndex === 0 || game.joinOverride)">
         <div id='start-game-button'>
-          Start Game</br>with {{game.players.length}} players
+          Start Game
         </div>
+      </div>
+      <div id="card-deck-container">
       </div>
     </div>
     <!-- Game Over Stuff -->
@@ -36,3 +135,12 @@
   </div>
 </div>
 
+<script>
+$(document).ready(function(){
+  $('.dropdown a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+</script>
