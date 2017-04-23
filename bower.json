@@ -7,14 +7,12 @@
     "angular-ui-utils": "0.0.4",
     "jquery": "~1.9.1",
     "underscore": "~1.5.2",
-    "ResponsiveSlides": "*",
-    "font-awesome": "fontawesome#^4.7.0",
-    "intro.js": "^2.5.0",
-    "angular-intro.js": "^3.2.4"
+    "ResponsiveSlides": "*"
   },
   "exportsOverride": {
     "bootstrap": {
       "css": "dist/css/*",
+      
       "js": "dist/js/*",
       "fonts": "dist/fonts/*"
     },

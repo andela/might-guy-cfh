@@ -11,60 +11,65 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location = '/'">Close</button>
       </div>
-    </div>
+</div>
+
 
   </div>
 </div>
 
 <div id="app-container" ng-controller="GameController">
-  <div id="menu-container">
-    <div class="container">
-      <div class="navbar-header">
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="app-container-bg">
+  <div id="menu-container" class="nav-wrapper">
+      <nav class="navbar" role="navigation">
+        <a href="#!/">
           <div id="logo">
             <span id="first-word">Cards</span>
             <span id="second-word"> for</span>
             <span id="third-word">Humanity</span>
           </div>
-         
-            <div class=" pull-right">
-              <ul class="nav navbar-nav">
-                <li class="dropdown">
+          </a>
+        <div class=" pull-right nav-wrapper">
+        <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons"></i></a>
+              <ul class="navbar-nav">
+                <li ng-hide="showOptions" class="dropdown" id="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-bell"></i>
-              <span ng-show="allNotification.length" class="label label-danger">{{ count }}</span></a>
-
-                  <ul class="dropdown-menu notify">
-                    <span ng-hide="allNotification.length" style="text-align: center; padding: 10px;"> You have no new notification</span>
+                    <span ng-show="allNotification.length" class="label label-danger">{{ count }}</span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <span ng-hide="allNotification.length" style="text-align: center; padding: 10px;">You have no new notification</span>
                     <li ng-click="readNotifications(item._id)" ng-repeat="item in allNotification"><span><a target="_blank" href="{{ item.link }}">{{ item.message }}</a></span></li>
                   </ul>
                 </li>
-                <li> <a href="">Tweet </a></li>
-                <li id='abandon-game-button' ng-click="abandonGame()">
+                <li id='abandon-game-button' class="waves-effect waves-light btn" ng-click="abandonGame()">
                   Abandon Game
                 </li>
+                <li id="donate-now" class="waves-effect waves-light btn">
+                  <a href="https://www.crowdrise.com/fundraise-and-volunteer/donate-mobile/project/cfhio/cards4humanity?widget=true&redirect_to=http%3A%2F%2Fcfh.io%2F%23!%2F&stylesheet=&amounts=" target="_blank">Donate Now</a>
+                </li>
+                <li id="tweet-container">
+                  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://cfh.io" data-text="Cards for Humanity: A Game for Horrible People Desperately Trying to do Good" data-related="CFH_App"><img src="../images/tweet.png" alt="share-on-twitter" width="30px" height="30px"></a>
+                  </script>
+                </li>
               </ul>
-            </div>
-        </nav>
-
-
-      </div>
-    </div>
-  </div>
-  <div id="gameplay-container">
-    <div id="upper-gameplay-container">
-      <div id="menu-timeremaining-container">
-        <div id="menu-container">
-          <span id="menu-button">Menu</span>
         </div>
-        <div id="timer-container">
-          <timer></timer>
+    </nav>
+  </div>
 
+    <div id="gameplay-container">
+      <div id="upper-gameplay-container">
+        <div id="menu-timeremaining-container">
+          <div id="menu-container">
+            <span id="menu-button">Menu</span>
+          </div>
+          <div id="timer-container">
+            <timer></timer>
+          </div>
+        </div>
+        <div id="question-container-outer">
+          <question></question>
         </div>
       </div>
-      <div id="question-container-outer">
-        <question></question>
-      </div>
+      <answers></answers>
     </div>
-    <answers></answers>
-  </div>
+</div>
 </div>
