@@ -1,4 +1,4 @@
-angular.module('mean.system')
+angular.module('mean.system', 'angular-intro')
 .controller('TourController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', function ($scope, game, $timeout, $location, MakeAWishFactsService, $dialog) {
     $scope.hasPickedCards = false;
     $scope.winningCardPicked = false;

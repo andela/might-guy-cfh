@@ -27,9 +27,13 @@ angular.module('mean.system')
          other players.`
         },
         {
-          element: '#start-game-button',
+          element: '#start-game',
           intro: `Once the minimum required players have joined, you or any other user
          can start the game by clicking on the start game button.`
+        },
+        {
+          element: '#invite-player',
+          intro: `Invite other players to join you in the game`
         },
         {
           element: '#question',
@@ -83,9 +87,9 @@ angular.module('mean.system')
 
     const tourComplete = () => {
       if (isGameCustom()) {
-        $window.location = '/play?custom';
+        $window.location = '/app?custom';
       } else {
-        $window.location = '/play';
+        $window.location = '#!/';
       }
     };
 
@@ -116,7 +120,7 @@ angular.module('mean.system')
             });
             break;
           }
-        case 'start-game-button':
+        case 'start-game':
           {
             $scope.$apply(() => {
               $scope.awaitingPlayers = false;
@@ -124,6 +128,18 @@ angular.module('mean.system')
               $scope.showStartButton = true;
               $scope.showTime = false;
               $scope.showQuestion = false;
+            });
+            break;
+          }
+        case 'invite-player':
+          {
+            $scope.$apply(() => {
+              $scope.awaitingPlayers = false;
+              $scope.showOtherPlayers = true;
+              $scope.showStartButton = true;
+              $scope.showTime = false;
+              $scope.showQuestion = false;
+              $scope.showInviteButton = true;
             });
             break;
           }

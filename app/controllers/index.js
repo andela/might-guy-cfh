@@ -21,9 +21,16 @@ exports.play = function(req, res) {
  */
 exports.gameTour = function(req, res) {
   if (Object.keys(req.query)[0] === 'custom') {
-    res.redirect('/#!/gametour?custom');
-  } else {
     res.redirect('/#!/gametour');
+  } else {
+    res.redirect('/#!/app');
+  }
+};
+exports.dashBoard = function(req, res) {
+  if (Object.keys(req.query)[0] === 'custom') {
+    res.redirect('/#!/dashboard');
+  } else {
+    res.redirect('/#!/app');
   }
 };
 
