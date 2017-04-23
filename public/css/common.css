@@ -4,6 +4,7 @@
   box-sizing: border-box;
   width: 17.5%;
   height: 215px;
+  padding: 1%;
   margin: 1%;
   background-color: #fff;
   border-radius: 3px;
@@ -144,7 +145,7 @@ body {
         display: inline-block;
         font-weight: 400;
         text-align: center;
-        background-color: #14a4d4;
+        background-color: rgba(39, 101, 134, 0.9);
         color: white;
         float: right;
         border-radius: 20px;
@@ -216,7 +217,7 @@ body {
       margin-top: 20px;
       margin-left: 30px;
       right: 0;
-      top: 80px;
+      top: 60px;
       z-index: 1;
       overflow-y: scroll; }
       @media (max-width: 520px) {
@@ -530,13 +531,11 @@ body {
                 overflow: hidden;
                 height: 100%;
                 position: absolute;
-                right: 1%;
-                top: 3px; }
+                right: 1%; }
                 #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #startGame #finding-players {
                   font-size: 33px;
                   text-align: center;
-                  margin-top: 0;
-                  font-family: 'Roboto BoldItalic'; }
+                  margin-top: 15px; }
                   @media (max-width: 520px) {
                     #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #startGame #finding-players {
                       font-size: 21px;
@@ -564,11 +563,11 @@ body {
                     -moz-border-radius: 5px;
                     -webkit-border-radius: 5px;
                     font-size: 20px;
-                    font-size: 1.2rem;
+                    font-size: 1.25rem;
                     font-weight: 400;
                     color: white;
                     background: #1F959C;
-                    padding: 0.3em 10px;
+                    padding: 0.6em 10px;
                     margin: 10px;
                     width: 65%;
                     cursor: pointer; }
@@ -606,7 +605,7 @@ body {
         padding-left: 5px;
         height: 50%;
         margin-top: 2%;
-        margin-left: 1%;
+        margin-left: 2%;
         margin-right: 5%; }
         @media only screen and (min-width: 521px) and (max-width: 768px) {
           #main-container #app-container #gameplay-container #info-container {
@@ -941,4 +940,5 @@ body {
   border-radius: 8px !important;
   text-transform: none !important; }
   .gradientButton .donateNow {
-    border-top: 0px solid black !important; }
+    border-top: 0px solid black !important;
+   }

@@ -12,21 +12,19 @@ var mongoose = require('mongoose'),
  * User Schema
  */
 var UserSchema = new Schema({
-  name: String,
-  email: String,
-  username: String,
-  provider: String,
-  avatar: String,
-  premium: Number, // null or 0 for non-donors, 1 for everyone else (for now)
-  donations: [],
-  hashed_password: String,
-  facebook: {},
-  twitter: {},
-  github: {},
-  google: {},
-  gameRecord: {},
-  friends: [],
-  gameWins: { type: Number, default: 0 }
+    name: String,
+    email: String,
+    username: String,
+    provider: String,
+    avatar: String,
+    premium: Number, // null or 0 for non-donors, 1 for everyone else (for now)
+    donations: [],
+    hashed_password: String,
+    facebook: {},
+    twitter: {},
+    github: {},
+    google: {},
+    gameWins: { type: Number, default: 0 }
 });
 
 /**
