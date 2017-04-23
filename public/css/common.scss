@@ -299,7 +299,6 @@ $color-background: #fff;
     box-sizing: border-box;
     width: 17.5%;
     height: 215px;
-    padding: 1%;
     margin: 1%;
 
     background-color: #fff;
@@ -484,7 +483,7 @@ body{
                 display: inline-block;
                 font-weight: 400;
                 text-align: center;
-                background-color: rgba(39, 101, 134, 0.9);
+                background-color: rgb(20, 164, 212);
                 color: white;
                 float: right;
                 border-radius: 20px;
@@ -576,7 +575,7 @@ body{
             margin-top: 20px;
             margin-left: 30px;
             right: 0;
-            top: 60px;
+            top: 80px;
             z-index: 1;
             overflow-y: scroll;
 
@@ -941,11 +940,13 @@ body{
                                 height: 100%;
                                 position: absolute;
                                 right: 1%;
+                                top: 3px;
 
                                 #finding-players {
                                     font-size: 33px;
                                     text-align: center;
-                                    margin-top: 15px;
+                                    margin-top: 0;
+                                    font-family: 'Roboto BoldItalic';
 
                                     @include mobile-only{
                                         font-size: 21px;
@@ -988,11 +989,11 @@ body{
                                         -moz-border-radius: 5px;
                                         -webkit-border-radius: 5px;
                                         font-size: 20px;
-                                        font-size: 1.25rem;
+                                        font-size: 1.2rem;
                                         font-weight: 400;
                                         color: white;
                                         background: #1F959C;
-                                        padding: 0.6em 10px;
+                                        padding: 0.3em 10px;
                                         margin: 10px;
                                         width: 65%;
                                         cursor: pointer;
@@ -1046,7 +1047,7 @@ body{
                 padding-left:5px;
                 height: 50%;
                 margin-top: 2%;
-                margin-left: 2%;
+                margin-left: 1%;
                 margin-right:5%;
 
                 @include tablet-portrait-only{
