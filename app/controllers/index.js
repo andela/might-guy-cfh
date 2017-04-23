@@ -16,6 +16,24 @@ exports.play = function(req, res) {
   }
 };
 
+/**
+ * Redirect users to the tour of the app
+ */
+exports.gameTour = function(req, res) {
+  if (Object.keys(req.query)[0] === 'custom') {
+    res.redirect('/#!/gametour');
+  } else {
+    res.redirect('/#!/app');
+  }
+};
+exports.dashBoard = function(req, res) {
+  if (Object.keys(req.query)[0] === 'custom') {
+    res.redirect('/#!/dashboard');
+  } else {
+    res.redirect('/#!/app');
+  }
+};
+
 exports.render = function(req, res) {
     res.render('index', {
         user: req.user ? JSON.stringify(req.user) : "null"

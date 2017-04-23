@@ -12,6 +12,7 @@
   "exportsOverride": {
     "bootstrap": {
       "css": "dist/css/*",
+      
       "js": "dist/js/*",
       "fonts": "dist/fonts/*"
     },

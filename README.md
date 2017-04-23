@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/andela/might-guy-cfh.svg?branch=master)](https://travis-ci.org/andela/might-guy-cfh)
-[![Coverage Status](https://coveralls.io/repos/github/andela/might-guy-cfh/badge.svg?branch=chore%2F141409251%2Fintegrate-coveralls-readme-badge)](https://coveralls.io/github/andela/might-guy-cfh?branch=chore%2F141409251%2Fintegrate-coveralls-readme-badge)
+ [![Coverage Status](https://coveralls.io/repos/github/andela/might-guy-cfh/badge.svg?branch=chore%2F141409251%2Fintegrate-coveralls-readme-badge)](https://coveralls.io/github/andela/might-guy-cfh?branch=chore%2F141409251%2Fintegrate-coveralls-readme-badge)
 
 Cards for Humanity - [http://cfh.io](http://cfh.io)
 ===========
