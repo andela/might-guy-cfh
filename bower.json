@@ -10,7 +10,8 @@
     "ResponsiveSlides": "*",
     "font-awesome": "fontawesome#^4.7.0",
     "angular-intro.js": "^3.2.4",
-    "intro.js": "^2.5.0"
+    "intro.js": "^2.5.0",
+    "emojionearea": "^2.1.0"
   },
   "exportsOverride": {
     "bootstrap": {
@@ -23,6 +24,7 @@
     }
   },
   "resolutions": {
-    "intro.js": "~2.4.0"
+    "intro.js": "~2.4.0",
+    "emojionearea": "^2.1.4"
   }
 }
