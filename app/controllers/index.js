@@ -23,7 +23,7 @@ exports.gameTour = function(req, res) {
   if (Object.keys(req.query)[0] === 'custom') {
     res.redirect('/#!/gametour');
   } else {
-    res.redirect('/#!/app');
+    res.redirect('/#!/gametour');
   }
 };
 exports.dashBoard = function(req, res) {

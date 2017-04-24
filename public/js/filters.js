@@ -10,6 +10,6 @@ angular.module('mean.system')
       if (friendsEmail.includes(input)) {
         return 'Unfriend';
       }
-      return 'Addfriend';
+      return 'Add Friend';
     };
   });

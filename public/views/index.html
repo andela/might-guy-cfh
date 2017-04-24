@@ -34,7 +34,7 @@
                     <span ng-show="allNotification.length" class="label label-danger" style="font-size: 16px;">{{ count }}</span>
                   </a>
                 <ul class="dropdown-menu" style="font-size: 16px;">
-                  <span ng-hide="allNotification.length" style="text-align: center; padding: 10px;">You have no new notification</span>
+                  <p ng-hide="allNotification.length" style="text-align: center; padding: 10px;">You have no new notification</p>
                   <li ng-click="readNotifications(item._id)" ng-repeat="item in allNotification"><span><a target="_blank" href="{{ item.link }}">{{ item.message }}</a></span></li>
                 </ul>
               </li>
@@ -189,7 +189,7 @@
           <i class="fa fa-twitter"></i> Tweet</a>
       </div>
       <div class="col-md-7 trailer">
-        <iframe width="640" height="360" src="https://www.youtube.com/embed/pIjGCSVNwYE" frameborder="0" allowfullscreen></iframe>
+        <iframe width="640" height="360" src="https://www.youtube.com/embed/AmuF0lg8Bf0" frameborder="0" allowfullscreen></iframe>
         <p class="preview"> Watch a live Screencast On How to Play </p>
       </div>
       <div class="clearfix"> </div>
