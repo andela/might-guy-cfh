@@ -105,4 +105,3 @@ exports.sendNotification = (req, res) => {
       });
   }
 };
-
