@@ -3,20 +3,43 @@ var Player = require('./player');
 require("console-stamp")(console, "m/dd HH:MM:ss");
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+const config = require('../config');
+const firebase = require('firebase');
+
+const firebaseConfig = {
+  apiKey: config.firebase_apiKey,
+  authDomain: config.firebase_authDomain,
+  databaseURL: config.firebase_databaseUrl,
+  projectId: config.firebase_projectId,
+  storageBucket: config.firebase_storageBucket,
+  messagingSenderId: config.firebase_messagingSenderId
+};
+
+
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database(); // Unique chat database on firebase
 
 var avatars = require(__dirname + '/../../app/controllers/avatars.js').all();
 // Valid characters to use to generate random private game IDs
 var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
 
-module.exports = function(io) {
+const chatMessages = []; // Initialize chat messages to nothing
 
-  var game;
-  var allGames = {};
-  var allPlayers = {};
-  var gamesNeedingPlayers = [];
-  var gameID = 0;
+module.exports = function(io) {
+  let game;
+  const allGames = {};
+  const allPlayers = {};
+  const gamesNeedingPlayers = [];
+  let gameID = 0;
 
   io.sockets.on('connection', function (socket) {
+    socket.emit('initializeChat', chatMessages);
+    socket.on('chat message', (chat) => {
+      game.players
+        .forEach(player => player.socket.emit('chat message', chat));
+      chatMessages.push(chat);
+      database.ref(`chat/${gameID}`).set(chatMessages);
+    });
     console.log(socket.id +  ' Connected');
     socket.emit('id', {id: socket.id});
 
@@ -160,11 +183,10 @@ module.exports = function(io) {
         fireGame(player,socket);
       }
     }
-
   };
 
   var fireGame = function(player,socket) {
-    var game;
+    // var game;
     if (gamesNeedingPlayers.length <= 0) {
       gameID += 1;
       var gameIDStr = gameID.toString();
@@ -211,7 +233,7 @@ module.exports = function(io) {
       }
     }
     console.log(socket.id,'has created unique game',uniqueRoom);
-    var game = new Game(uniqueRoom,io);
+    game = new Game(uniqueRoom,io);
     allPlayers[socket.id] = true;
     game.players.push(player);
     allGames[uniqueRoom] = game;
@@ -242,5 +264,4 @@ module.exports = function(io) {
     }
     socket.leave(socket.gameID);
   };
-
 };

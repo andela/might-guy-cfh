@@ -5,7 +5,8 @@
     "node": true,
     "es6": true,
     "mocha": true,
-    "commonjs": true
+    "commonjs": true,
+    "browser": true
   },
   "globals": {
     "sessionStorage": false,

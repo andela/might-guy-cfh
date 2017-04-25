@@ -11,6 +11,7 @@
       <div id="player-score"><h2>{{player.points}}/{{game.pointLimit}}</h2></div>
       <div ng-show="isPlayer($index)" id="player-star">
         <img src="../img/11.png"/>
+        <span ng-if="!isPlayerSet && isPlayer($index)">{{setPlayer(player.avatar, player.username)}}</span>
       </div>
     </div>
   </div>
