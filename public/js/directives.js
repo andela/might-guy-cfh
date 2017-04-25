@@ -167,7 +167,7 @@ angular.module('mean.directives', [])
        `,
   })])
   .directive('chatbox', ['socket', socket => ({
-    restrict: 'AE',
+    restrict: 'EA',
     replace: true,
     link: (scope, element) => {
         // Send chat message

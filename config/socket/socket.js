@@ -26,7 +26,6 @@ var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
 const chatMessages = []; // Initialize chat messages to nothing
 
 module.exports = function(io) {
-
   let game;
   const allGames = {};
   const allPlayers = {};
@@ -184,11 +183,10 @@ module.exports = function(io) {
         fireGame(player,socket);
       }
     }
-
   };
 
   var fireGame = function(player,socket) {
-    //var game;
+    // var game;
     if (gamesNeedingPlayers.length <= 0) {
       gameID += 1;
       var gameIDStr = gameID.toString();
@@ -235,7 +233,7 @@ module.exports = function(io) {
       }
     }
     console.log(socket.id,'has created unique game',uniqueRoom);
-    var game = new Game(uniqueRoom,io);
+    game = new Game(uniqueRoom,io);
     allPlayers[socket.id] = true;
     game.players.push(player);
     allGames[uniqueRoom] = game;
@@ -266,5 +264,4 @@ module.exports = function(io) {
     }
     socket.leave(socket.gameID);
   };
-
 };
