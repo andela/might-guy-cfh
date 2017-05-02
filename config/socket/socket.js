@@ -145,7 +145,7 @@ module.exports = function(io) {
     console.log(socket.id,'is requesting room',requestedGameId);
     if (requestedGameId.length && allGames[requestedGameId]) {
       console.log('Room',requestedGameId,'is valid');
-      var game = allGames[requestedGameId];
+      game = allGames[requestedGameId];
       // Ensure that the same socket doesn't try to join the same game
       // This can happen because we rewrite the browser's URL to reflect
       // the new game ID, causing the view to reload.
@@ -247,7 +247,7 @@ module.exports = function(io) {
   var exitGame = function(socket) {
     console.log(socket.id,'has disconnected');
     if (allGames[socket.gameID]) { // Make sure game exists
-      var game = allGames[socket.gameID];
+      game = allGames[socket.gameID];
       console.log(socket.id,'has left game',game.gameID);
       delete allPlayers[socket.id];
       if (game.state === 'awaiting players' ||
